@@ -1,7 +1,18 @@
 # PyroCMS
 
-PyroCMS is an easy to use, powerful, and modular CMS and development platform built with Laravel 5.
+# Several steps to install project #
 
-## Security
+git clone https://ennaque@bitbucket.org/lob_lba/meds.git
 
-If you discover any security related issues, please email ryan@pyrocms.com instead of using the issue tracker.
+sudo chmod -R 777 meds
+
+cd meds/docker
+
+docker-compose up --build
+
+docker exec -ti p_php_fpm fish
+
+composer install
+
+php artisan install --ready
+
