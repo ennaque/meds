@@ -1,0 +1,28 @@
+FROM php:7.1-fpm
+
+
+RUN apt-get update && apt-get install -y libmcrypt-dev fish wget curl git mysql-client \
+    && docker-php-ext-install mcrypt pdo_mysql && \
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --version=1.6.5 && \
+    mv /usr/local/bin/composer.phar /usr/local/bin/composer && \
+    php -r "unlink('composer-setup.php');" && \
+    wget "https://phar.phpunit.de/phpunit-6.5.phar" && chmod +x phpunit-6.5.phar && mv phpunit-6.5.phar /usr/local/bin/phpunit  && \
+    php -r "copy('https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz', 'wkhtmltopdf.tar');" && \
+    tar -xvf wkhtmltopdf.tar && mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf && usermod -s /usr/bin/fish root
+
+RUN curl -fsSL 'https://xdebug.org/files/xdebug-2.5.1.tgz' -o xdebug.tar.gz \
+    && mkdir -p xdebug \
+    && tar -xf xdebug.tar.gz -C xdebug --strip-components=1 \
+    && rm xdebug.tar.gz \
+    && ( \
+    cd xdebug \
+    && phpize \
+    && ./configure --enable-xdebug \
+    && make -j$(nproc) \
+    && make install \
+    ) \
+    && rm -r xdebug \
+    && docker-php-ext-enable xdebug
+
+WORKDIR /var/www
