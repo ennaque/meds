@@ -1,8 +1,9 @@
 FROM php:7.1-fpm
 
 
-RUN apt-get update && apt-get install -y libmcrypt-dev fish wget curl git mysql-client \
-    && docker-php-ext-install mcrypt pdo_mysql && \
+RUN apt-get update && apt-get install -y libmcrypt-dev fish libxss1 libzip-dev zip unzip wget curl git mysql-client \
+    && docker-php-ext-configure zip --with-libzip \
+    && docker-php-ext-install mcrypt pdo_mysql iconv mbstring zip && \
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
     php composer-setup.php --install-dir=/usr/local/bin --version=1.6.5 && \
     mv /usr/local/bin/composer.phar /usr/local/bin/composer && \
