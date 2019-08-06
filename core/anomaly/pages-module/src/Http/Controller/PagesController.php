@@ -1,6 +1,4 @@
-<?php
-
-namespace Anomaly\PagesModule\Http\Controller;
+<?php namespace Anomaly\PagesModule\Http\Controller;
 
 use Anomaly\PagesModule\Page\Contract\PageInterface;
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
@@ -40,6 +38,7 @@ class PagesController extends PublicController
         $handler = $type->getHandler();
 
         $template->set('page', $page);
+
         $handler->make($page);
 
         return $page->getResponse();
