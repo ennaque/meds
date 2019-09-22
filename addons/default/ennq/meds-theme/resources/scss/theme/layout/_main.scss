@@ -1,0 +1,141 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.logo_section {
+    background: #e9f4f6;
+}
+
+.logo_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26px;
+    padding-bottom: 26px;
+}
+.logo_sect_title {
+    color: #65849e;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+.phone_container {
+    display: flex;
+    flex-direction: row;
+}
+.adress_desc {
+    opacity: 0.5;
+    font-size: 14px;
+}
+.phone_first {
+    color: #65849e;
+    font-size: 17px;
+    padding-right: 5px;
+}
+.phone_second {
+    color: #65849e;
+    font-size: 30px;
+}
+.phone_title_swap {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav_section {
+    background: #326999;
+}
+
+.flex_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+.menu_elem {
+    border: 1px solid #99b4cc;
+    color: white;
+    border-radius: 21px;
+    font-size: 15px;
+    padding: 0 19px;
+    line-height: 43px;
+    height: 43px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.search_elem {
+    align-self: center;
+}
+
+.search {
+    //background: white url(./img/search_button.png) 10px 50% no-repeat;
+    height: 45px;
+}
+
+
+.footer {
+    background: #496280;
+    color: #8a999a;
+    font-size: 12px;
+    padding-top: 34px;
+    padding-bottom: 34px;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 1000px) {
+    .logo {
+        max-width: 350px;
+    }
+    .address_section {
+        display: none;
+    }
+}
+@media screen and (max-width: 768px) {
+    .logo_container {
+        flex-direction: column;
+    }
+    .logo {
+        max-width: 420px;
+    }
+    .phone_link {
+        display: none;
+    }
+    .phone_section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .phone_container {
+        justify-content: center;
+        align-items: center;
+        padding-left: 5px;
+    }
+    .phone_first {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .logo {
+        width: 320px;
+    }
+    .logo_sect_title {
+        font-size: 14px;
+    }
+    .phone_first, .phone_second {
+        font-size: 17px;
+    }
+    .phone_title_swap {
+        flex-direction: column;
+    }
+}
+
+/*/media queries*/

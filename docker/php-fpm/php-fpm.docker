@@ -1,7 +1,13 @@
 FROM php:7.1-fpm
 
 
-RUN apt-get update && apt-get install -y libmcrypt-dev fish libxss1 libzip-dev zip unzip wget curl git mysql-server \
+RUN apt-get update && apt-get install -y libmcrypt-dev vim fish libxss1 libzip-dev zip unzip wget libpng-dev curl git mysql-server \
+    libfreetype6-dev \
+    libwebp-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libgmp-dev libxpm-dev \
+    libldap2-dev \
     && docker-php-ext-configure zip --with-libzip \
     && docker-php-ext-install mcrypt pdo_mysql iconv mbstring zip && \
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -11,6 +17,19 @@ RUN apt-get update && apt-get install -y libmcrypt-dev fish libxss1 libzip-dev z
     wget "https://phar.phpunit.de/phpunit-6.5.phar" && chmod +x phpunit-6.5.phar && mv phpunit-6.5.phar /usr/local/bin/phpunit  && \
     php -r "copy('https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz', 'wkhtmltopdf.tar');" && \
     tar -xvf wkhtmltopdf.tar && mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf && usermod -s /usr/bin/fish root
+
+
+RUN docker-php-ext-configure gd \
+    --with-gd \
+    --with-webp-dir \
+    --with-jpeg-dir \
+    --with-png-dir \
+    --with-zlib-dir \
+    --with-xpm-dir \
+    --with-freetype-dir \
+    --enable-gd-native-ttf
+
+RUN docker-php-ext-install gd
 
 RUN curl -fsSL 'https://xdebug.org/files/xdebug-2.5.1.tgz' -o xdebug.tar.gz \
     && mkdir -p xdebug \

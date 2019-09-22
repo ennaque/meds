@@ -1,0 +1,158 @@
+{#{% htmlcompress %}#}
+{#<!doctype html>#}
+
+{#<!--[if lt IE 7]>#}
+{#<html class="nojs ms lt_ie7" lang="en"><![endif]-->#}
+{#<!--[if IE 7]>#}
+{#<html class="nojs ms ie7" lang="en"><![endif]-->#}
+{#<!--[if IE 8]>#}
+{#<html class="nojs ms ie8" lang="en"><![endif]-->#}
+{#<!--[if gt IE 8]>#}
+{#<html class="nojs ms" lang="en"><![endif]-->#}
+
+{#<html>#}
+
+{#<head>#}
+{#    {% include "theme::partials/metadata" %}#}
+{#</head>#}
+
+{#<body>#}
+
+{#{% include "theme::partials/header" %}#}
+
+{#<main id="main">#}
+{#    <div class="container">#}
+
+{#        {% include "theme::partials/messages" %}#}
+
+{#        {% block content %}{% endblock %}#}
+
+{#    </div>#}
+{#</main>#}
+
+{#{% include "theme::partials/footer" %}#}
+{#{% include "theme::partials/assets" %}#}
+
+{#</body>#}
+{#</html>#}
+{#{% endhtmlcompress %}#}
+
+{% htmlcompress %}
+{#    {{ asset_add('styles.css', 'anomaly.module.files::less/upload.less') }}#}
+{#    {{ asset_add('styles.css', 'anomaly.theme.meds::theme.scss') }}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        {% include "theme::partials/metadata" %}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
+{#    <link href="main.css" type="text/css" rel="stylesheet">#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"#}
+{#          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
+</head>
+<body>
+
+<!--  logo section  -->
+<section class="logo_section">
+    <div class="container logo_container">
+        <div class="">
+{#            <img alt="logo" src="photo_2019-07-04_00-03-06.jpg" class="logo">#}
+            {{ image('theme::img/photo_2019-07-04_00-03-06.jpg').class('logo')|raw }}
+        </div>
+        <div class="address_section">
+            <div class="address_title logo_sect_title">
+                Наш адресс:
+            </div>
+            <div class="adress_desc">
+                г. Москва, <br />
+                Ломоносовский пр-т, 43
+            </div>
+            <div class="address_link">
+                Контакты и карта
+            </div>
+        </div>
+        <div class="phone_section">
+            <div class="phone_title logo_sect_title">
+                <div class="phone_title_swap">
+                    <div>Телефон&nbsp;</div>
+                    <div>регистратуры:</div>
+                </div>
+            </div>
+            <div class="phone_desc">
+                <div class="phone_container">
+                    <div class="phone_first">
+                        (499)
+                    </div>
+                    <div class="phone_second">
+                        777-77-88
+                    </div>
+                </div>
+                <div class="phone_link">
+                    Заказать обратный звонок
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  /logo section  -->
+<!-- nav section -->
+<section class="nav_section">
+    <div class="container nav_container">
+        <div class="flex_menu">
+            <div class="menu_elem">
+                item1
+            </div>
+            <div class="menu_elem">
+                item2longlong long
+            </div>
+            <div class="menu_elem">
+                item3longloglonglonglong
+            </div>
+            <div class="menu_elem">
+                item5 log long longlognlonglo nlgonglo dfgb
+            </div>
+            <div class="menu_elem">
+                item5
+            </div>
+            <div class="menu_elem">
+                item5 log long longlognlonglo nlgonglo
+            </div>
+            <div class="menu_elem">
+                item7
+            </div>
+            <div class="menu_elem">
+                item7dg srdg dsth
+            </div>
+            <div class="search_elem">
+                <input name="search" class="search">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /nav section -->
+
+<section class="content">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+<!--footer section-->
+<section class="footer">
+    <div class="container footer_container">
+        <div class="footer_content">
+            © 2015-2017 Официальный сайт Поликлиники ФБУЗ «Лечебно-реабилитационный центр Минэкономразвития России»; Головная организация: ФБУЗ «Лечебно-реабилитационный центр Минэкономразвития России»
+        </div>
+    </div>
+</section>
+<!--/footer section-->
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+{% endhtmlcompress %}
