@@ -3,10 +3,10 @@
 return [
     'title'       => 'Страницы',//'Pages',
     'name'        => 'Модуль страниц',//'Pages Module',
-    'description' => 'Создание страниц, автоматическое создание навигации, управление содержимым и прочий функционал, позволяющий быстро создать сайт.',//'Create pages, generate navigation, manage content, and build websites faster than ever.',
+    'description' => 'Создание страниц, автоматическое создание навигации, управление содержимым и прочие функии для быстрого создания сайта.',//'Create pages, generate navigation, manage content, and build websites faster than ever.',
     'section'     => [
         'pages'       => 'Страницы',//'Pages',
-        'types'       => 'Типы',//'Types',
+        'types'       => 'Типы страниц',//'Types',
         'fields'      => 'Поля',//'Fields',
         'assignments' => 'Назначение',//'Assignments',
     ],

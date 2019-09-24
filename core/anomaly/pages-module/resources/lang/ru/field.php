@@ -3,7 +3,7 @@
 return [
     'title'            => [
         'name'         => 'Заголовок',//'Title',
-        'instructions' => 'Короткое название данной страницы.',//'Specify a short descriptive name for this page.',
+        'instructions' => 'Название страницы.',//'Specify a short descriptive name for this page.',
     ],
     'slug'             => [
         'name'         => 'Идентификатор',//'Slug',
@@ -23,14 +23,14 @@ return [
     ],
     'name'             => [
         'name'         => 'Название',//'Name',
-        'instructions' => 'Короткое название данного типа страницы.',//'Specify a short descriptive name for this page type.',
+        'instructions' => 'Название данного типа страниц.',//'Specify a short descriptive name for this page type.',
     ],
     'description'      => [
         'name'         => 'Описание',//'Description',
-        'instructions' => 'Краткое описание данного типа страницы.',//'Briefly describe this page type.',
+        'instructions' => 'Описание данного типа страниц.',//'Briefly describe this page type.',
     ],
     'theme_layout'     => [
-        'name'         => 'Макет темы',//'Theme Layout',
+        'name'         => 'Тема оформления',//'Theme Layout',
         'instructions' => 'Макет темы оформления, в который будет обёрнут <strong>макет страницы</strong>.',//'Specify the theme layout to wrap the <strong>page layout</strong> with.',
     ],
     'layout'           => [
@@ -55,13 +55,13 @@ return [
     ],
     'enabled'          => [
         'name'         => 'Состояние страницы',//'Enabled',
-        'label'        => '"Включена" или "отключена" данная страница.',//'Is this page enabled?',
-        'instructions' => 'Если страница отключена, то доступ к ней можно получить из панели управления по защищённой ссылке предварительного просмотра.',//'If disabled, you can still access a secure preview link in the control panel.',
+        'label'        => 'Состояние страницы',//'"Включена" или "отключена" данная страница.',//'Is this page enabled?',
+        'instructions' => '"Включена" или "отключена" данная страница. Если страница отключена, то доступ к ней можно получить из панели управления по защищённой ссылке предварительного просмотра.',//'If disabled, you can still access a secure preview link in the control panel.',
         'warning'      => 'Данная страница должна быть включена, прежде чем её можно будет посмотреть <strong>публично</strong>.',//'This page must be enabled before it can be viewed <strong>publicly</strong>.',
     ],
     'home'             => [
         'name'         => 'Домашняя страница',//'Home Page',
-        'label'        => 'Флаг того, является ли страница домашней.',//'Is this the home page?',
+        'label'        => 'Домашняя страница',//'Флаг того, является ли страница домашней.',//'Is this the home page?',
         'instructions' => 'Домашняя страница используется в качестве начальной страницы Вашего сайта.',//'The home page is the default landing page for your website.',
     ],
     'parent'           => [
@@ -76,7 +76,7 @@ return [
         'name' => 'Содержимое',//'Content',
     ],
     'path'             => [
-        'name' => '',//'Path',
+        'name' => 'Путь',//'Path',
     ],
     'type'             => [
         'name' => 'Тип',//'Type',
