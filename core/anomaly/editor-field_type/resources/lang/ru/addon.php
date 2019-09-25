@@ -2,6 +2,6 @@
 
 return [
     'title'       => 'Редактор',//'Editor',
-    'name'        => 'Поле редактора',//'Editor Field Type',
-    'description' => 'Поле редактора кода.',//'A code editor field type.',
+    'name'        => 'Редактор',//'Editor Field Type',
+    'description' => 'Поле с редактором кода.',//'A code editor field type.',
 ];

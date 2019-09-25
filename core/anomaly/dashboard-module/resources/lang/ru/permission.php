@@ -5,7 +5,7 @@ return [
         'name'   => 'Панели инструментов',//'Dashboards',
         'option' => [
             'read'   => 'Доступ к разделу панелей инструментов.',//'Can access dashboards section.',
-            'write'  => 'Создание, редактирование и перестановка панелей инструментов.',//'Can create, edit, and rearrange dashboards.',
+            'write'  => 'Создание, редактирование и перестановка элементов панелей инструментов.',//'Can create, edit, and rearrange dashboards.',
             'delete' => 'Удаление панелей инструментов.',//'Can delete dashboards.',
         ],
     ],
