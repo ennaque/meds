@@ -2,7 +2,7 @@
 
 return [
     'mode'          => [
-        'label'        => 'Стиль отображения',//'Mode',
+        'label'        => 'Внешний вид',//'Mode',
         'instructions' => 'Стиль отображения логического поля.',//'What kind of input would you like to display?',
         'option'       => [
             'switch'   => 'Переключатель',//'Switch',
@@ -17,12 +17,12 @@ return [
     ],
     'on_text'       => [
         'label'        => 'Текст в состоянии "ВКЛ"',//'"On" Text',
-        'instructions' => 'Текст, который будет использоваться при состоянии "ВКЛ" логического поля.',//'This text will be used for the switch\'s "on" state.',
+        'instructions' => 'Текст, отображаемый в состоянии "ВКЛ" логического поля.',//'This text will be used for the switch\'s "on" state.',
         'placeholder'  => 'ДА',//'YES',
     ],
     'on_color'      => [
         'label'        => 'Цвет в состоянии "ВКЛ"',//'"On" Color',
-        'instructions' => 'Цвет, который будет использоваться при состоянии "ВКЛ" логического поля.',//'This color will be used for the switch\'s "on" state.',
+        'instructions' => 'Цвет, отображаемый в состоянии "ВКЛ" логического поля.',//'This color will be used for the switch\'s "on" state.',
         'option'       => [
             'green'  => 'Зеленый',//'Green',
             'blue'   => 'Синий',//'Blue',
@@ -33,12 +33,12 @@ return [
     ],
     'off_text'      => [
         'label'        => 'Текст в состоянии "ВЫКЛ"',//'"Off" Text',
-        'instructions' => 'Текст, который будет использоваться при состоянии "ВЫКЛ" логического поля.',//'This text will be used for the switch\'s "off" state.',
+        'instructions' => 'Текст, отображаемый в состоянии "ВЫКЛ" логического поля.',//'This text will be used for the switch\'s "off" state.',
         'placeholder'  => 'НЕТ',//'NO',
     ],
     'off_color'     => [
         'label'        => 'Цвет в состоянии "ВЫКЛ"',//'"Off" Color',
-        'instructions' => 'Цвет, который будет использоваться при состоянии "ВЫКЛ" логического поля.',//'This color will be used for the switch\'s "off" state.',
+        'instructions' => 'Цвет, отображаемый в состоянии "ВЫКЛ" логического поля.',//'This color will be used for the switch\'s "off" state.',
         'option'       => [
             'green'  => 'Зеленый',//'Green',
             'blue'   => 'Синий',//'Blue',

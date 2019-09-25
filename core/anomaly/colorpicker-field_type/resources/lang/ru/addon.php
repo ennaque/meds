@@ -3,5 +3,5 @@
 return [
     'title'       => 'Палитра',//'Colorpicker',
     'name'        => 'Поле "палитра"',//'Colorpicker Field Type',
-    'description' => 'Поле "палитра".',//'A colorpicker field type.',
+    'description' => 'Поле для выбора цвета.',//'A colorpicker field type.',
 ];

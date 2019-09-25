@@ -6,7 +6,7 @@ return [
     ],
     'name'           => [
         'name'         => 'Название',//'Name',
-        'instructions' => 'Короткое название области.',//'Specify a short easily identifiable name.',
+        'instructions' => 'Название области.',//'Specify a short easily identifiable name.',
     ],
     'slug'           => [
         'name'         => 'Идентификатор',//'Slug',
@@ -14,7 +14,7 @@ return [
     ],
     'description'    => [
         'name'         => 'Описание',//'Description',
-        'instructions' => 'Краткое описание области и того, как она будет использована.',//'Briefly describe the area and how it will be used.',
+        'instructions' => 'Описание области и того, как она будет использована.',//'Briefly describe the area and how it will be used.',
     ],
     'area'           => [
         'name' => 'Область',//'Area',
@@ -33,11 +33,11 @@ return [
         'name' => 'Категория',//'Category',
     ],
     'content_layout' => [
-        'name'         => 'Макет содержимого',//'Content Layout',
-        'instructions' => 'Используется для отображения внутреннего содержимого блока.',//'The content layout is used for displaying the block\'s inner content.',
+        'name'         => 'Содержимое',//'Content Layout',
+        'instructions' => 'Макет, используемый для отображения внутреннего содержимого блока.',//'The content layout is used for displaying the block\'s inner content.',
     ],
     'wrapper_layout' => [
-        'name'         => 'Макет оболочки',//'Wrapper Layout',
-        'instructions' => 'Задаёт внешний вид макета содержимого блока.',//'The wrapper layout is used to wrap the block\'s content layout.',
+        'name'         => 'Оболочка',//'Wrapper Layout',
+        'instructions' => 'Макет, задающий внешний вид содержимого блока.',//'The wrapper layout is used to wrap the block\'s content layout.',
     ],
 ];
