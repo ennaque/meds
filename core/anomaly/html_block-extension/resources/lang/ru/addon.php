@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'       => 'Код HTML',//'HTML Code',
-    'name'        => 'Расширение блоков HTML',//'HTML Block Extension',
-    'description' => 'Произвольный блок HTML-кода.',//'An arbitrary HTML code block.',
+    'title'       => 'HTML',//'HTML Code',
+    'name'        => 'Расширение блоков HTML-кода',//'HTML Block Extension',
+    'description' => 'Расширение, позволяющее использовать произвольный блок HTML-кода.',//'An arbitrary HTML code block.',
 ];

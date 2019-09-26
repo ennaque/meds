@@ -19,6 +19,6 @@ return [
     ],
     'default_value' => [
         'label'        => 'Значение по умолчанию',//'Default Value',
-        'instructions' => 'Значение по умолчанию для числа в поле.',//'Enter the default value if any.',
+        'instructions' => 'Число, которое будет задано в поле по умолчанию.',//'Enter the default value if any.',
     ],
 ];

@@ -2,6 +2,6 @@
 
 return [
     'title'       => 'Файл',//'File',
-    'name'        => 'Поле файла',//'File Field Type',
-    'description' => 'Поле загрузки файла.',//'A file upload field type.',
+    'name'        => 'Файл',//'File Field Type',
+    'description' => 'Поле для загрузки и выбора файла.',//'A file upload field type.',
 ];

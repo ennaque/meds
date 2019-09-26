@@ -3,7 +3,7 @@
 return [
     'show_text'    => [
         'name'         => 'Показывать текст',//'Show Text',
-        'instructions' => 'Отображение вводимого текста.',//'Show the input text?',
+        'instructions' => 'Отображение символов вводимого текста.',//'Show the input text?',
     ],
     'auto_decrypt' => [
         'name'         => 'Автоматическая расшифровка',//'Automatically Decrypt',

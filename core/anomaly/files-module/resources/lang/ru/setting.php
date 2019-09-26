@@ -8,8 +8,8 @@ $system = $file > $post ? $post : $file;
 return [
     'max_upload_size'      => [
         'name'         => 'Максимальный размер загружаемых файлов',//'Maximum Upload Size',
-        'instructions' => 'Максимальный размер файла, который может быть загружен на сервер.',//'Specify the maximum file size for uploads.',
-        'warning'      => 'На данный момент, максимально возможный размер файла для загрузки на сервер - ' . $system . 'мегабайт.',//'Your server\'s max upload size is currently ' . $system . 'MB',
+        'instructions' => 'Ограничение на максимальный размер файла, загружаемого на сервер.',//'Specify the maximum file size for uploads.',
+        'warning'      => 'На данный момент, на сервер можно загрузить максимум ' . $system . 'мегабайт.',//'Your server\'s max upload size is currently ' . $system . 'MB',
     ],
     'max_parallel_uploads' => [
         'name'         => 'Максимальное количество параллельных загрузок',//'Maximum Parallel Uploads',
