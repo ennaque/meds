@@ -31,7 +31,7 @@ return [
     ],
     'theme_layout'     => [
         'name'         => 'Тема оформления',//'Theme Layout',
-        'instructions' => 'Макет темы оформления, в который будет обёрнут <strong>макет страницы</strong>.',//'Specify the theme layout to wrap the <strong>page layout</strong> with.',
+        'instructions' => 'Макет темы оформления, который будет применён к <strong>макету страницы</strong>.',//'Specify the theme layout to wrap the <strong>page layout</strong> with.',
     ],
     'layout'           => [
         'name'         => 'Макет страницы',//'Page Layout',

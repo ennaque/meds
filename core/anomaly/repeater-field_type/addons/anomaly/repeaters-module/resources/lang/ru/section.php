@@ -2,12 +2,12 @@
 
 return [
     'repeaters'   => [
-        'title' => 'Repeaters',
+        'title' => 'Списки',//'Repeaters',
     ],
     'assignments' => [
-        'title' => 'Assignments',
+        'title' => 'Назначение',//'Assignments',
     ],
     'fields'      => [
-        'title' => 'Fields',
+        'title' => 'Поля',//'Fields',
     ],
 ];

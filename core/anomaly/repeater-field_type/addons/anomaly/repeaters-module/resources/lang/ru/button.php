@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'new_repeater' => 'New Repeater',
-    'new_field'    => 'New Field',
+    'new_repeater' => 'Новый список',//'New Repeater',
+    'new_field'    => 'Новое поле',//'New Field',
 ];

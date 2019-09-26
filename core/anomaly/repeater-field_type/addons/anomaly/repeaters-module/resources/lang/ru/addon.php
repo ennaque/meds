@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'       => 'Repeaters',
-    'name'        => 'Repeaters Module',
-    'description' => 'A repeatable stream management utility.',
+    'title'       => 'Списки',//'Repeaters',
+    'name'        => 'Модуль списков',//'Repeaters Module',
+    'description' => 'Утилита управления списками.',//'A repeatable stream management utility.',
 ];

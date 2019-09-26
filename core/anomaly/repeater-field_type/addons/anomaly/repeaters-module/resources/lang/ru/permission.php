@@ -2,18 +2,18 @@
 
 return [
     'repeaters' => [
-        'name'   => 'Repeaters',
+        'name'   => 'Списки',//'Repeaters',
         'option' => [
-            'read'   => 'Can read repeaters?',
-            'write'  => 'Can write repeaters?',
-            'delete' => 'Can delete repeaters?',
-            'fields' => 'Can modify fields of repeaters?',
+            'read'   => 'Чтение списков',//'Can read repeaters?',
+            'write'  => 'Запись списков',//'Can write repeaters?',
+            'delete' => 'Удаление списков',//'Can delete repeaters?',
+            'fields' => 'Изменение списков',//'Can modify fields of repeaters?',
         ],
     ],
     'fields'    => [
-        'name'   => 'Fields',
+        'name'   => 'Поля',//'Fields',
         'option' => [
-            'manage' => 'Can manage fields?',
+            'manage' => 'Управление полями',//'Can manage fields?',
         ],
     ],
 ];

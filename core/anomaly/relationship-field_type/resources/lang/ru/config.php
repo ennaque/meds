@@ -8,7 +8,7 @@ return [
         'label'  => 'Внешний вид',//'Input Mode',
         'option' => [
             'dropdown' => 'Выпадающее меню',//'Dropdown',
-            'lookup'   => 'Предпросмотр <original_shit_name>LOOKUP</original_shit_name>',//'Lookup',
+            'lookup'   => 'Предпросмотр',//'Lookup',
             'search'   => 'Поисковая строка',//'Search',
         ],
     ],
