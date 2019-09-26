@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'choose_type'       => 'Тип создаваемой страницы.',//'What type of page would you like to create?',
-    'change_type'       => 'Тип используемой страницы.',//'What type of page would you like to use?',
-    'choose_field_type' => 'Тип используемого поля.',//'What field type would you like to use?',
-    'choose_field'      => 'Тип добавляемого поля.',//'What field would you like to add?',
+    'choose_type'       => 'Выберите тип создаваемой страницы',//'What type of page would you like to create?',
+    'change_type'       => 'Выберите тип страницы',//'What type of page would you like to use?',
+    'choose_field_type' => 'Выберите тип поля',//'What field type would you like to use?',
+    'choose_field'      => 'Выберите тип добавляемого поля',//'What field would you like to add?',
     'restricted'        => 'Ограниченные',//'Restricted',
     'disabled'          => 'Отключённые',//'Disabled',
     'hidden'            => 'Скрытые',//'Hidden',

@@ -7,7 +7,7 @@ return [
     ],
     'page'        => [
         'name'         => 'Страница',//'Page',
-        'instructions' => 'Страница, на которую должна ссылаться данная ссылка.',//'Choose the page this link should point to.',
+        'instructions' => 'Страница, на которую будет ссылаться данная ссылка.',//'Choose the page this link should point to.',
         'placeholder'  => 'Выберите страницу...',//'Choose a page...',
     ],
     'description' => [

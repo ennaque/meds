@@ -4,7 +4,7 @@ return [
     'name'          => [
         'name'         => 'Название',//'Name',
         'instructions' => [
-            'menus' => '',//'Specify a short descriptive name for this menu.',
+            'menus' => 'Название меню.',//'Specify a short descriptive name for this menu.',
         ],
     ],
     'slug'          => [
@@ -13,11 +13,11 @@ return [
     ],
     'description'   => [
         'name'         => 'Описание',//'Description',
-        'instructions' => 'Краткое описание меню навигации.',//'Briefly describe this navigation menu.',
+        'instructions' => 'Описание меню навигации.',//'Briefly describe this navigation menu.',
     ],
     'target'        => [
-        'name'         => 'Открытие ссылки',//'Target',
-        'instructions' => 'То, как будет открываться ссылка при нажатии на неё.',//'How does this link open when clicked?',
+        'name'         => 'Поведение ссылки при нажатии',//'Target',
+        'instructions' => 'Открытие ссылки в текущем или в новом окне.',//'How does this link open when clicked?',
         'option'       => [
             'self'  => 'Открывать ссылку в текущем окне.',//'Open in the current window.',
             'blank' => 'Открывать ссылку в новом окне.',//'Open in a new window.',
