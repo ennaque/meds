@@ -3,5 +3,5 @@
 return [
     'title'       => 'Robots',//'Robots',
     'name'        => 'Расширение Robots',//'Robots Extension',
-    'description' => 'Простой генератор файла "robots.txt".',//'A simple robots.txt generator.'
+    'description' => 'Генератор файла "robots.txt", содержащего параметры индексирования сайта для поисковых систем.',//'A simple robots.txt generator.'
 ];

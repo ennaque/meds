@@ -3,7 +3,7 @@
 return [
     'mode'          => [
         'label'        => 'Внешний вид',//'Mode',
-        'instructions' => 'Внешний вид поля выбора области.',//'What kind of input would you like to display?',
+        'instructions' => 'Стиль отображения поля выбора региона.',//'What kind of input would you like to display?',
         'option'       => [
             'input'    => 'Простой текстовый ввод',//'Text Input',
             'dropdown' => 'Выпадающее меню',//'Dropdown',
@@ -16,6 +16,6 @@ return [
     ],
     'default_value' => [
         'name'         => 'Значение по умолчанию',//'Default Value',
-        'instructions' => 'Область, используемая по умолчанию (если таковая имеется).',//'Select a default state if any.',
+        'instructions' => 'Область (регион), используемая по умолчанию (если таковая имеется).',//'Select a default state if any.',
     ],
 ];

@@ -3,11 +3,11 @@
 return [
     'type'      => [
         'label'        => 'Тип идентификатора',//'Slug Type',
-        'instructions' => '',//'What kind of slugs do you want to generate?',
+        'instructions' => 'Тип идентификатора, который будет генерироваться.',//'What kind of slugs do you want to generate?',
     ],
     'slugify'   => [
         'label'        => 'Slugify',//'Slugify',
-        'instructions' => 'Enter the field slug to automatically slugify values if any.',//'Enter the field slug to automatically slugify values if any.',
+        'instructions' => 'Задайте идентификатор поля для автоматического добавления значений, если таковые имеются.',//'Enter the field slug to automatically slugify values if any.',
     ],
     'lowercase' => [
         'label'        => 'Нижний регистр',//'Lowercase',

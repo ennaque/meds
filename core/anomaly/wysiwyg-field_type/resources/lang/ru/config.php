@@ -19,6 +19,6 @@ return [
     ],
     'folders'     => [
         'name'         => 'Папки',//'Folders',
-        'instructions' => 'Доступная для изображений и прочи файлов папка.',//'Which folders are available for files and images?',
+        'instructions' => 'Папки, доступные для изображений и прочих файлов.',//'Which folders are available for files and images?',
     ],
 ];
