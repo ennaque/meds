@@ -11,6 +11,6 @@ return [
         'title' => 'Переменные',//'Variables',
     ],
     'assignments' => [
-        'title' => 'Назначение',//'Assignments',
+        'title' => 'Связи',//'Assignments',
     ],
 ];

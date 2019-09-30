@@ -10,6 +10,6 @@ return [
         'fields'      => 'Поля',//'Fields',
         'folders'     => 'Папки',//'Folders',
         'adapters'    => 'Адаптеры',//'Adapters',
-        'assignments' => 'Назначение',//'Assignments',
+        'assignments' => 'Связи',//'Assignments',
     ],
 ];

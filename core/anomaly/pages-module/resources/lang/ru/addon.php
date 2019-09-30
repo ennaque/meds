@@ -8,6 +8,6 @@ return [
         'pages'       => 'Страницы',//'Pages',
         'types'       => 'Типы страниц',//'Types',
         'fields'      => 'Поля',//'Fields',
-        'assignments' => 'Назначение',//'Assignments',
+        'assignments' => 'Связи',//'Assignments',
     ],
 ];

@@ -5,7 +5,7 @@ return [
         'title' => 'Списки',//'Repeaters',
     ],
     'assignments' => [
-        'title' => 'Назначение',//'Assignments',
+        'title' => 'Связи',//'Assignments',
     ],
     'fields'      => [
         'title' => 'Поля',//'Fields',

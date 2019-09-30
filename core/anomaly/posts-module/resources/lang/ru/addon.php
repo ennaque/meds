@@ -9,6 +9,6 @@ return [
         'types'       => 'Типы',//'Types',
         'fields'      => 'Поля',//'Fields',
         'categories'  => 'Категории',//'Categories',
-        'assignments' => 'Назначение',//'Assignments',
+        'assignments' => 'Связи',//'Assignments',
     ],
 ];

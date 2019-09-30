@@ -14,6 +14,6 @@ return [
         'title' => 'Поля',//'Fields',
     ],
     'assignments' => [
-        'title' => 'Назначение',//'Assignments',
+        'title' => 'Связи',//'Assignments',
     ],
 ];
