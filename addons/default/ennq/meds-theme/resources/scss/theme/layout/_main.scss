@@ -5,6 +5,7 @@
 
 .logo_section {
     background: #e9f4f6;
+    //background: black;
 }
 
 .logo_container {
@@ -48,13 +49,13 @@
     background: #326999;
 }
 
-.flex_menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 20px 0;
-    flex-wrap: wrap;
-}
+//.flex_menu {
+//    display: flex;
+//    flex-direction: row;
+//    justify-content: flex-start;
+//    padding: 20px 0;
+//    flex-wrap: wrap;
+//}
 
 .menu_elem {
     border: 1px solid #99b4cc;
@@ -69,8 +70,20 @@
     margin-top: 5px;
 }
 
+.menu_elem a {
+    color: white !important;
+}
+
+.menu_elem .dropdown-menu .dropdown-item {
+    color: black !important;
+}
+
 .search_elem {
     align-self: center;
+}
+
+.navbar-nav > li > a {
+    padding-top: 0;
 }
 
 .search {
