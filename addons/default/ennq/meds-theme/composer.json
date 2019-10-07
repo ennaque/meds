@@ -1,0 +1,9 @@
+{
+    "name": "ennq/meds-theme",
+    "type": "streams-addon",
+    "autoload": {
+        "psr-4": {
+            "Ennq\\MedsTheme\\": "src/"
+        }
+    }
+}

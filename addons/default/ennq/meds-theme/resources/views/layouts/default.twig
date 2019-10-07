@@ -1,0 +1,79 @@
+{% htmlcompress %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "theme::partials/metadata" %}
+</head>
+<body>
+
+<!--  logo section  -->
+<section class="logo_section">
+    <div class="container logo_container">
+        <div class="">
+            {{ image('theme::img/photo_2019-07-04_00-03-06.jpg').class('logo')|raw }}
+        </div>
+        <div class="address_section">
+            <div class="address_title logo_sect_title">
+                Наш адресс:
+            </div>
+            <div class="adress_desc">
+                г. Москва, <br />
+                Ломоносовский пр-т, 43
+            </div>
+            <div class="address_link">
+                Контакты и карта
+            </div>
+        </div>
+        <div class="phone_section">
+            <div class="phone_title logo_sect_title">
+                <div class="phone_title_swap">
+                    <div>Телефон&nbsp;</div>
+                    <div>регистратуры:</div>
+                </div>
+            </div>
+            <div class="phone_desc">
+                <div class="phone_container">
+                    <div class="phone_first">
+                        (499)
+                    </div>
+                    <div class="phone_second">
+                        777-77-88
+                    </div>
+                </div>
+                <div class="phone_link">
+                    Заказать обратный звонок
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  /logo section  -->
+<!-- nav section -->
+<section class="nav_section">
+    <div class="container nav_container">
+        {% include "theme::partials/menu" %}
+    </div>
+</section>
+<!-- /nav section -->
+
+<section class="content">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+<!--footer section-->
+<section class="footer">
+    <div class="container footer_container">
+        <div class="footer_content">
+            © 2015-2017 Официальный сайт Поликлиники ФБУЗ «Лечебно-реабилитационный центр Минэкономразвития России»; Головная организация: ФБУЗ «Лечебно-реабилитационный центр Минэкономразвития России»
+        </div>
+    </div>
+</section>
+<!--/footer section-->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+{% endhtmlcompress %}
