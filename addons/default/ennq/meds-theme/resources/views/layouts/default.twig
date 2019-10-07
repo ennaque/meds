@@ -1,56 +1,8 @@
-{#{% htmlcompress %}#}
-{#<!doctype html>#}
-
-{#<!--[if lt IE 7]>#}
-{#<html class="nojs ms lt_ie7" lang="en"><![endif]-->#}
-{#<!--[if IE 7]>#}
-{#<html class="nojs ms ie7" lang="en"><![endif]-->#}
-{#<!--[if IE 8]>#}
-{#<html class="nojs ms ie8" lang="en"><![endif]-->#}
-{#<!--[if gt IE 8]>#}
-{#<html class="nojs ms" lang="en"><![endif]-->#}
-
-{#<html>#}
-
-{#<head>#}
-{#    {% include "theme::partials/metadata" %}#}
-{#</head>#}
-
-{#<body>#}
-
-{#{% include "theme::partials/header" %}#}
-
-{#<main id="main">#}
-{#    <div class="container">#}
-
-{#        {% include "theme::partials/messages" %}#}
-
-{#        {% block content %}{% endblock %}#}
-
-{#    </div>#}
-{#</main>#}
-
-{#{% include "theme::partials/footer" %}#}
-{#{% include "theme::partials/assets" %}#}
-
-{#</body>#}
-{#</html>#}
-{#{% endhtmlcompress %}#}
-
 {% htmlcompress %}
-{#    {{ asset_add('styles.css', 'anomaly.module.files::less/upload.less') }}#}
-{#    {{ asset_add('styles.css', 'anomaly.theme.meds::theme.scss') }}#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-        {% include "theme::partials/metadata" %}
-{#    <meta charset="UTF-8">#}
-{#    <title>Title</title>#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
-{#    <link href="main.css" type="text/css" rel="stylesheet">#}
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"#}
-{#          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
+    {% include "theme::partials/metadata" %}
 </head>
 <body>
 
@@ -106,15 +58,7 @@
 
 <section class="content">
     <div class="container">
-
-{#        <div class="row row-offcanvas row-offcanvas-right">#}
-{#            <div class="col-12 col-md-9">#}
-                {% block content %}{% endblock %}
-{#            </div>#}
-{#            {% include "theme::partials/sidebar" %}#}
-{#        </div>#}
-
-
+        {% block content %}{% endblock %}
     </div>
 </section>
 <!--footer section-->
@@ -126,8 +70,6 @@
     </div>
 </section>
 <!--/footer section-->
-
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
