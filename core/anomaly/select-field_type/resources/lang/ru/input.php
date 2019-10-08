@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'theme_layouts' => 'Макеты тем',//'Theme Layouts',
+    'theme_layouts' => 'Темы',//'Theme Layouts',
     'placeholder'   => 'Выберите опцию...',//'Choose an option...',
 ];

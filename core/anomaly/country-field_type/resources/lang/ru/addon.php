@@ -3,5 +3,5 @@
 return [
     'title'       => 'Страна',//'Country',
     'name'        => 'Поле "Выбор страны"',//'Country Field Type',
-    'description' => 'Поле с выпадающим меню, предназначенное для выбора страны.',//'A country dropdown field type.',
+    'description' => 'Поле, позволяющее пользователю выбрать страну.',//'A country dropdown field type.',
 ];

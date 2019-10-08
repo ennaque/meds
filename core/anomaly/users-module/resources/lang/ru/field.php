@@ -4,23 +4,23 @@ return [
     'name'             => [
         'name'         => 'Название',//'Name',
         'instructions' => [
-            'roles' => 'Короткое название для данной группы пользователей.',//'Specify a short descriptive name for this role.',
+            'roles' => 'Название группы пользователей.',//'Specify a short descriptive name for this role.',
         ],
 
     ],
     'description'      => [
         'name'         => 'Описание',//'Description',
         'instructions' => [
-            'roles' => 'Краткое описание группы пользователей.',//'Briefly describe this role.',
+            'roles' => 'Описание группы пользователей.',//'Briefly describe this role.',
         ],
     ],
     'first_name'       => [
         'name'         => 'Имя',//'First Name',
-        'instructions' => 'Укажите ваше настоящее имя.',//'Specify the user\'s real first name.',
+        'instructions' => '',//'Укажите ваше настоящее имя.',//'Specify the user\'s real first name.',
     ],
     'last_name'        => [
         'name'         => 'Фамилия',//'Last Name',
-        'instructions' => 'Укажите вашу настоящую фамилию.',//'Specify the user\'s real last name.',
+        'instructions' => '',//'Укажите вашу настоящую фамилию.',//'Specify the user\'s real last name.',
     ],
     'display_name'     => [
         'name'         => 'Отображаемое имя',//'Display Name',
@@ -50,7 +50,7 @@ return [
     ],
     'roles'            => [
         'name'         => 'Группы',//'Roles',
-        'instructions' => 'Группа, к которой принадлежит пользователь.',//'Specify which roles the user belongs to.',
+        'instructions' => 'Группа, в которую входит пользователь.',//'Specify which roles the user belongs to.',
     ],
     'permissions'      => [
         'name' => 'Разрешения',//'Permissions',

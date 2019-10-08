@@ -5,6 +5,6 @@ return [
         'name' => 'Страницы',//'Pages',
     ],
     'types' => [
-        'name' => 'Тип страницы',//'Page Types',
+        'name' => 'Типы страницы',//'Page Types',
     ],
 ];

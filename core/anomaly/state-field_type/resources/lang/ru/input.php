@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'placeholder' => 'Выберите область...',//'Choose a state...',
+    'placeholder' => 'Выберите регион/область...',//'Choose a state...',
 ];

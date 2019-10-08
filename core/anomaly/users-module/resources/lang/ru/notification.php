@@ -16,7 +16,7 @@ return [
         'subject'      => 'Сброс пароля',//'Reset Your Password',
         'greeting'     => 'Здравствуйте, :display_name!',//'Hello :display_name!',
         'notice'       => 'С Вашего аккаунта был запрошен сброс пароля.',//'A password reset has been requested for your account.',
-        'warning'      => 'Если данный запрос совершили не Вы, то проигнорируйте это сообщение.',//'If you did not make this request, you can safely ignore this email.',
+        'warning'      => 'Если данный запрос выполнили не Вы, то проигнорируйте это сообщение.',//'If you did not make this request, you can safely ignore this email.',
         'instructions' => 'Если Вы хотите сбросить пароль, то нажмите на кнопку ниже.',//'If you would actually like to reset your password click the button below.',
         'button'       => 'Сбросить пароль',//'Reset Password',
     ],
@@ -34,9 +34,9 @@ return [
         'button'       => 'Посмотреть профиль',//'View Profile',
     ],
     'user_has_been_activated' => [
-        'subject'      => 'Аккаунт активирован',//'Account Activated',
+        'subject'      => 'Учётная запись активирована',//'Account Activated',
         'greeting'     => 'Здравствуйте, :display_name!',//'Hello :display_name!',
-        'instructions' => 'Ваш аккаунт активирован.',//'Your account has been activated.',
+        'instructions' => 'Ваша учётная запись активирована.',//'Your account has been activated.',
         'button'       => 'Войти',//'Login',
     ],
 ];

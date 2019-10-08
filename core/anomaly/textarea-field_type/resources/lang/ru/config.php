@@ -24,6 +24,6 @@ return [
     ],
     'default_value' => [
         'label'        => 'Значение по умолчанию',//'Default Value',
-        'instructions' => 'Значение по умолчанию, которое будет записано в текстовое поле.',//'Specify the default value.',
+        'instructions' => 'Текст, который будет задан в текстовом поле по умолчанию.',//'Specify the default value.',
     ],
 ];

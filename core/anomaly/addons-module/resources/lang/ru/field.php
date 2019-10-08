@@ -26,8 +26,8 @@ return [
         'name' => 'Описание',//'Description',
     ],
     'seed'        => [
-        'label'        => 'Заполнить дополнение данными во время установки?',//'Seed addon when installing?',
-        'instructions' => 'Данная опция позволяет загрузить в дополнение фиктивные демонстрационные данные, что поможет настроить и продемонстрировать дополнеине.',//'Seed data helps setup / demonstrate the addon.',
-        'option'       => 'Да, включить заполнение данными во время установки.',//'Yes, include seed data when installing.',
+        'label'        => 'Загрузить в дополнение примеры во время установки?',//'Seed addon when installing?',
+        'instructions' => 'Данная опция позволяет загрузить в дополнение некоторые начальные данные (примеры), что поможет его настроить и продемонстрировать.',//'Seed data helps setup / demonstrate the addon.',
+        'option'       => 'Да, включить загрузку примеров во время установки.',//'Yes, include seed data when installing.',
     ],
 ];

@@ -11,12 +11,12 @@ return [
         ],
     ],
     'types'  => [
-        'name'   => 'Типы',//'Types',
+        'name'   => 'Типы страниц',//'Types',
         'option' => [
             'read'   => 'Чтение типов.',//'Can read types?',
             'write'  => 'Запись типов.',//'Can write types?',
             'delete' => 'Удаление типов.',//'Can delete types?',
-            'fields' => 'Модификация полей типов.',//'Can modify fields of types?',
+            'fields' => 'Модификация полей типов страниц.',//'Can modify fields of types?',
         ],
     ],
     'fields' => [

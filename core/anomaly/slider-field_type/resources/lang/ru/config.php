@@ -3,11 +3,11 @@
 return [
     'min'           => [
         'label'        => 'Минимальное значение',//'Minimum Value',
-        'instructions' => 'Минимальное значение, которое может задать слайдер.',//'What is the minimum value allowed?',
+        'instructions' => 'Минимальное значение, которое можно задать с помощью слайдера.',//'What is the minimum value allowed?',
     ],
     'max'           => [
         'label'        => 'Максимальное значение',//'Maximum Value',
-        'instructions' => 'Максимальное значение, которое может задать слайдер.',//'What is the maximum value allowed?',
+        'instructions' => 'Максимальное значение, которое можно задать с помощью слайдера.',//'What is the maximum value allowed?',
     ],
     'step'          => [
         'label'        => 'Шаг',//'Step',

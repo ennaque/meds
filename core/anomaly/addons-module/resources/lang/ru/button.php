@@ -8,5 +8,5 @@ return [
     'install'   => 'Установить',//'Install',
     'migrate'   => 'Перенести',//'Migrate',
     'download'  => 'Скачать',//'Download',
-    'uninstall' => 'Удалить',//'Uninstall',
+    'uninstall' => 'Деинсталлировать',//'Uninstall',
 ];

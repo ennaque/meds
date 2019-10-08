@@ -4,36 +4,36 @@ return [
     'modules'     => [
         'name'   => 'Модули',//'Modules',
         'option' => [
-            'read'   => 'Читать модули?',//'Can read modules?',
-            'manage' => 'Управлять модулями?',//'Can manage modules?',
+            'read'   => 'Чтение модулей',//'Can read modules?',
+            'manage' => 'Управление модулями',//'Can manage modules?',
         ],
     ],
     'themes'      => [
         'name'   => 'Темы',//'Themes',
         'option' => [
-            'read'   => 'Читать темы?',//'Can read themes?',
-            'manage' => 'Управлять темами?',//'Can manage themes?',
+            'read'   => 'Чтение тем',//'Can read themes?',
+            'manage' => 'Управление темами',//'Can manage themes?',
         ],
     ],
     'plugins'     => [
         'name'   => 'Плагины',//'Plugins',
         'option' => [
-            'read'   => 'Читать плагины?',//'Can read plugins?',
-            'manage' => 'Управлять плагинами?',//'Can manage manage?',
+            'read'   => 'Чтение плагинов',//'Can read plugins?',
+            'manage' => 'Управление плагинами',//'Can manage manage?',
         ],
     ],
     'extensions'  => [
         'name'   => 'Расширения',//'Extensions',
         'option' => [
-            'read'   => 'Читать расширения?',//'Can read extensions?',
-            'manage' => 'Управлять расширениями?',//'Can manage extensions?',
+            'read'   => 'Чтение расширений',//'Can read extensions?',
+            'manage' => 'Управление расширениями',//'Can manage extensions?',
         ],
     ],
     'field_types' => [
-        'name'   => 'Типы полей',//'Field Types',
+        'name'   => 'Поля',//'Field Types',
         'option' => [
-            'read'   => 'Читать типы полей?',//'Can read field types?',
-            'manage' => 'Управлять типами полей?',//'Can manage field types?',
+            'read'   => 'Чтение полей',//'Can read field types?',
+            'manage' => 'Управление полями',//'Can manage field types?',
         ],
     ],
 ];

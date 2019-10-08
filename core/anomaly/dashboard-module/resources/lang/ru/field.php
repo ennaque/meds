@@ -3,11 +3,11 @@
 return [
     'name'          => [
         'name'         => 'Название',//'Name',
-        'instructions' => 'Короткое название текущей панели инструментов.',//'Specify a short descriptive name for this dashboard.',
+        'instructions' => 'Название панели инструментов.',//'Specify a short descriptive name for this dashboard.',
     ],
     'title'         => [
         'name'         => 'Заголовок',//'Title',
-        'instructions' => 'Короткий заголовок текущего виджета.',//'Specify a short descriptive title for this widget.',
+        'instructions' => 'Заголовок виджета.',//'Specify a short descriptive title for this widget.',
     ],
     'slug'          => [
         'name'         => 'Идентификатор',//'Slug',
@@ -22,7 +22,7 @@ return [
     ],
     'layout'        => [
         'name'         => 'Макет',//'Layout',
-        'instructions' => 'Макет, определяющий расположение виджетов панели инструментов.',//'The layout determines how you can organize dashboard widgets.',
+        'instructions' => 'Макет, определяющий расположение виджетов на панели инструментов.',//'The layout determines how you can organize dashboard widgets.',
         'option'       => [
             '24'      => 'Одна колонка',//'Single column',
             '12-12'   => 'Две колонки одинаковой ширины',//'Two equal columns',
@@ -37,7 +37,7 @@ return [
     ],
     'dashboard'     => [
         'name'         => 'Панель инструментов',//'Dashboard',
-        'instructions' => 'Панель инструментов, которой принадлежит данный виджет.',//'Choose which dashboard this widget belongs to.',
+        'instructions' => 'Панель инструментов, которой принадлежит виджет.',//'Choose which dashboard this widget belongs to.',
     ],
     'extension'     => [
         'name' => 'Расширение',//'Extension',
@@ -50,12 +50,12 @@ return [
     'allowed_roles' => [
         'name'         => 'Разрешённые группы',//'Allowed Roles',
         'instructions' => [
-            'dashboards' => 'Группы пользователей, которые могут взаимодействовать с данной панелью инструментов.',//'Specify which user roles can access this dashboard.',
-            'widgets'    => 'Группы пользователей, которые могут видеть данный виджет.',//'Specify which user roles can see this widget.',
+            'dashboards' => 'Группы пользователей, которые могут взаимодействовать с панелью инструментов.',//'Specify which user roles can access this dashboard.',
+            'widgets'    => 'Группы пользователей, которые могут видеть виджет.',//'Specify which user roles can see this widget.',
         ],
         'warning'      => [
-            'dashboards' => 'Если разрешённые группы пользователей не указаны, то все, у кого есть доступ к дополнению, смогут получить доступ к данной панели инструментов.',//'If no roles are specified then everyone with access to this addon can access this dashboard.',
-            'widgets'    => 'Если разрешённые группы пользователей не указаны, то все, у кого есть доступ к дополнению, смогут видеть данный виджет.',//'If no roles are specified then everyone with access to this addon can see this widget.',
+            'dashboards' => 'Если разрешённые группы пользователей не указаны, то все, у кого есть доступ к дополнению, смогут получить доступ к панели инструментов.',//'If no roles are specified then everyone with access to this addon can access this dashboard.',
+            'widgets'    => 'Если разрешённые группы пользователей не указаны, то все, у кого есть доступ к дополнению, смогут видеть виджет.',//'If no roles are specified then everyone with access to this addon can see this widget.',
         ],
     ],
 ];

@@ -15,8 +15,8 @@ return [
         'name'         => 'Плотность отображения',//'Display Density',
         'instructions' => 'Компактное отображение позволит показать больше контента на экране.',//'Compact display allows more content to be shown on the screen at once.',
         'option'       => [
-            'default' => 'По умолчанию',//'Default',
-            'compact' => 'Компактно',//'Compact',
+            'default' => 'Обычная',//'Default',
+            'compact' => 'Компактная',//'Compact',
         ],
     ],
     'sidebars'      => [

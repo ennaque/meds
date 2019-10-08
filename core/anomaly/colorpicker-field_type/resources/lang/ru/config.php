@@ -3,7 +3,7 @@
 return [
     'format'        => [
         'label'        => 'Формат цвета',//'Color Format',
-        'instructions' => 'Формат для определения цветов.',//'Specify the format for defining colors.',
+        'instructions' => 'Формат, в котором задаются цвета.',//'Specify the format for defining colors.',
     ],
     'default_value' => [
         'label'        => 'Значение по умолчанию',//'Default Value',

@@ -2,7 +2,7 @@
 
 return [
     'organization' => 'Организация',//'Organization',
-    'permalinks'   => 'Пермалинки',//'Permalinks',
+    'permalinks'   => 'Постоянные ссылки',//'Permalinks',
     'advanced'     => 'Расширенные',//'Advanced',
     'general'      => 'Общие',//'General',
     'display'      => 'Отображение',//'Display',

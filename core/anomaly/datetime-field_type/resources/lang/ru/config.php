@@ -2,7 +2,7 @@
 
 return [
     'mode'        => [
-        'label'        => 'Режим ввода',//'Input Mode',
+        'label'        => 'Тип ввода',//'Input Mode',
         'instructions' => 'Тип ввода даты и времени.',//'Do you want to display inputs for date, time, or both?',
         'datetime'     => 'Дата и время',//'Date + Time',
         'date'         => 'Только дата',//'Date',
@@ -27,7 +27,7 @@ return [
         'placeholder'  => 'Часовой пояс по умолчанию',//'Default Timezone',
     ],
     'step'        => [
-        'label'        => 'Минутный шаг',//'Minute Step',
-        'instructions' => 'Минутный интервал для ввода времени.',//'Select the minute interval for time input.',
+        'label'        => 'Интервал',//'Minute Step',
+        'instructions' => 'Интервал в минутах, используемый для ввода времени.',//'Select the minute interval for time input.',
     ],
 ];

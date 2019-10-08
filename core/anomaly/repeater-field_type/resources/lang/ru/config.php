@@ -2,10 +2,10 @@
 
 return [
     'related' => [
-        'label'        => 'Повторяющиеся данные',//'Repeater',
-        'instructions' => 'Specify the related <a href="' . url(
+        'label'        => 'Репитер',//'Repeater',
+        'instructions' => 'Задайте связанный <a href="' . url('admin/repeaters') . '" target="_blank">репитер</a>.',/*'Specify the related <a href="' . url(
                 'admin/repeaters'
-            ) . '" target="_blank">repeater</a>.',
+            ) . '" target="_blank">repeater</a>.',*/
     ],
     'add_row' => [
         'label'        => 'Добавить строку',//'Add Row',

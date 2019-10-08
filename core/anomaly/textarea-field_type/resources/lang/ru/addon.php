@@ -3,5 +3,5 @@
 return [
     'title'       => 'Текстовое поле',//'Textarea',
     'name'        => 'Текстовое поле',//'Textarea Field Type',
-    'description' => 'Поле, содержащее простую текстовую область.',//'A simple textarea field type.',
+    'description' => 'Поле, содержащее область для ввода текста.',//'A simple textarea field type.',
 ];

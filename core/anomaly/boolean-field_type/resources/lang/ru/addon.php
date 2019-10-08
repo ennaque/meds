@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'       => 'Логический',//'Boolean',
+    'title'       => 'Логическое поле',//'Boolean',
     'name'        => 'Логическое поле',//'Boolean Field Type',
-    'description' => 'Поле, представляющее собой переключатель, имеющий состояния "ВКЛ" и "ВЫКЛ"',//'An on/off switch style field type.',
+    'description' => 'Поле, представляющее собой переключатель, который может находиться в состоянии "ВКЛ" или "ВЫКЛ".',//'An on/off switch style field type.',
 ];
