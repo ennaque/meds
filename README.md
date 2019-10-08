@@ -16,3 +16,4 @@ composer install
 
 php artisan install --ready
 
+php artisan db:seed --addon=ennq.theme.meds
