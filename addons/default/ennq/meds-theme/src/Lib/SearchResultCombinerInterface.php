@@ -8,7 +8,7 @@ interface SearchResultCombinerInterface
      * @param array<SearchEntry> $data
      * @param string $needle
      * @param int $num
-     * @return array<string>
+     * @return array<SearchEntry>
      */
     public function get(array $data, string $needle, int $num = 1): array;
 }
