@@ -39,7 +39,10 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      *
      * @type array|null
      */
-    protected $routes = [];
+    protected $routes = [
+        'search-test' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@index',
+        'async-search' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch'
+    ];
 
     /**
      * The addon middleware.
@@ -93,7 +96,10 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      *
      * @type array|null
      */
-    protected $bindings = [];
+    protected $bindings = [
+        'Ennq\MedsTheme\Lib\SearchResultCombinerInterface' => 'Ennq\MedsTheme\Service\SearchResultCombiner',
+        'Ennq\MedsTheme\Lib\SearchInterface' => 'Ennq\MedsTheme\Service\SearchEngine'
+    ];
 
     /**
      * The addon singleton bindings.
