@@ -1,0 +1,7 @@
+{% extends 'theme::layouts/default' %}
+
+{% block content %}
+    {% for entity in entities %}
+        <a href="{{ entity.link }}">{{ entity.title }}</a><br />
+    {% endfor %}
+{% endblock %}
