@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\Response;
 class PostModel extends PostsPostsEntryModel implements PostInterface
 {
 
+    public const URL_SLUG = '/posts/';
+
     /**
      * The versionable flag.
      *

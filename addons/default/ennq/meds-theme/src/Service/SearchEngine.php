@@ -12,6 +12,9 @@ use Ennq\MedsTheme\Lib\SearchResultCombinerInterface;
 
 class SearchEngine implements SearchInterface
 {
+    /**
+     * @var SearchResultCombinerInterface
+     */
     private $searchResultCombiner;
 
     public function __construct(SearchResultCombinerInterface $searchResultCombiner)
@@ -41,6 +44,7 @@ class SearchEngine implements SearchInterface
         foreach ($pagesEntries as $pagesEntry) {
             $resultArray[] = $this->getSearchEntry(
                 $pagesEntry->getId(),
+                $pagesEntry->getPath(),
                 PageModel::class,
                 $pagesEntry->getContent(),
                 $pagesEntry->getTitle()
@@ -50,6 +54,7 @@ class SearchEngine implements SearchInterface
         foreach ($postsEntries as $postsEntry) {
             $resultArray[] = $this->getSearchEntry(
                 $postsEntry->getId(),
+                PostModel::URL_SLUG . $postsEntry->getSlug(),
                 PostModel::class,
                 $postsEntry->getContent(),
                 $postsEntry->getTitle()
@@ -61,13 +66,25 @@ class SearchEngine implements SearchInterface
 
     /**
      * @param int $id
+     * @param string $link
      * @param string $entryClass
      * @param string $content
      * @param string $title
      * @return SearchEntry
      */
-    private function getSearchEntry(?int $id, string $entryClass, ?string $content, ?string $title): SearchEntry
+    private function getSearchEntry(
+        ?int $id,
+        string $link,
+        string $entryClass,
+        ?string $content,
+        ?string $title
+    ): SearchEntry
     {
-        return (new SearchEntry())->setId($id)->setContent($content)->setTitle($title)->setEntryClass($entryClass);
+        return (new SearchEntry())
+            ->setId($id)
+            ->setContent($content)
+            ->setTitle($title)
+            ->setEntryClass($entryClass)
+            ->setLink($link);
     }
 }

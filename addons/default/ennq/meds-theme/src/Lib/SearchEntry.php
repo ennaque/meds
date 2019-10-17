@@ -27,6 +27,11 @@ class SearchEntry
     private $entryClass;
 
     /**
+     * @var string
+     */
+    private $link;
+
+    /**
      * @return string
      */
     public function getEntryClass(): string
@@ -98,6 +103,25 @@ class SearchEntry
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     * @return SearchEntry
+     */
+    public function setLink(string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }
