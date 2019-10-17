@@ -21,6 +21,7 @@
         }
     ],
     "require": {
+        "php": "7.1.*",
         "wikimedia/composer-merge-plugin": "~1.4.0",
         "anomaly/streams-composer-plugin": "~1.1.0",
         "anomaly/streams-platform": "~1.5.0",
