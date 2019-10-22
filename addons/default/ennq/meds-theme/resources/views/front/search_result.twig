@@ -1,7 +1,10 @@
 {% extends 'theme::layouts/default' %}
 
 {% block content %}
+    {% if entities is empty %}
+        Поиск не дал результатов.
+    {% endif %}
     {% for entity in entities %}
-        <a href="{{ entity.link }}">{{ entity.title }}</a><br />
+        <a href="{{ entity.link }}">{{ entity.content }}</a><br />
     {% endfor %}
 {% endblock %}

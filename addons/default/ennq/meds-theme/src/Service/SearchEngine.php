@@ -6,6 +6,7 @@ namespace Ennq\MedsTheme\Service;
 
 use Anomaly\PagesModule\Page\PageModel;
 use Anomaly\PostsModule\Post\PostModel;
+use Anomaly\PostsModule\Post\PostRepository;
 use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Lib\SearchResultCombinerInterface;
@@ -26,8 +27,12 @@ class SearchEngine implements SearchInterface
      * @param string $query
      * @return array
      */
-    public function search(string $query): array
+    public function search(?string $query = null): array
     {
+        if ($query === null || $query === '') {
+            return [];
+        }
+
         return $this->searchResultCombiner->get($this->getMixedData($query), $query);
     }
 
@@ -46,7 +51,7 @@ class SearchEngine implements SearchInterface
                 $pagesEntry->getId(),
                 $pagesEntry->getPath(),
                 PageModel::class,
-                $pagesEntry->getContent(),
+                $pagesEntry->content(),
                 $pagesEntry->getTitle()
             );
         }
@@ -56,7 +61,7 @@ class SearchEngine implements SearchInterface
                 $postsEntry->getId(),
                 PostModel::URL_SLUG . $postsEntry->getSlug(),
                 PostModel::class,
-                $postsEntry->getContent(),
+                $postsEntry->content(),
                 $postsEntry->getTitle()
             );
         }
