@@ -60,6 +60,7 @@ class SearchResultCombiner implements SearchResultCombinerInterface
                 $result[$needleCounter] = $t;
                 $needleCounter += 1;
             }
+            $i += 1;
         }
         return $result;
     }
