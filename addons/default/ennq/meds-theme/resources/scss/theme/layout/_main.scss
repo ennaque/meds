@@ -161,6 +161,18 @@
     padding-bottom: 34px;
 }
 
+.search-result-container{
+    padding: 10px 35px;
+    //border: 1px red solid;
+}
+
+.search-entry {
+    margin-bottom: 15px;
+}
+
+.search-entry-link {
+    padding-left: 3px;
+}
 /*media queries*/
 
 @media (min-width: 1200px) {

@@ -15,6 +15,19 @@ class SearchResultCombiner implements SearchResultCombinerInterface
      */
     public function get(array $data, string $needle, int $num = 1): array
     {
+        $this->removeHtml($data);
+
         return $data;
+    }
+
+    /**
+     * @param array<SearchEntry> $data
+     */
+    private function removeHtml(array &$data): void
+    {
+        /** @var SearchEntry $entity */
+        foreach ($data as $entity) {
+            $entity->setContent(strip_tags($entity->getContent()));
+        }
     }
 }

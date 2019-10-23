@@ -57,7 +57,7 @@ class ExampleSeeder extends Seeder
                 'en'           => [
                     'title' => 'ЕУЫЕЫУЕЫУЕ',
                 ],
-                'slug'         => 'testPageSlug1',
+                'slug'         => 'testPageSlug11111',
                 'entry'        => $type->getEntryModel()->create(
                     [
                         'en' => [
@@ -78,7 +78,7 @@ class ExampleSeeder extends Seeder
                 'en'           => [
                     'title' => 'ЕУЫЕЫУЕЫУЕ',
                 ],
-                'slug'         => 'testPageSlug1_child',
+                'slug'         => 'testPageSlug1_child12121',
                 'entry'        => $type->getEntryModel()->create(
                     [
                         'en' => [
@@ -92,5 +92,26 @@ class ExampleSeeder extends Seeder
                 'theme_layout' => 'theme::layouts/default.twig',
             ]
         )->allowedRoles()->sync([]);
+
+        for ($i = 0; $i < 20; $i ++) {
+            $this->pages->create(
+                [
+                    'en'           => [
+                        'title' => 'ЕУЫЕЫУЕЫУЕ',
+                    ],
+                    'slug'         => 'testPageSlug' . $i,
+                    'entry'        => $type->getEntryModel()->create(
+                        [
+                            'en' => [
+                                'content' => '<h1>TEST LOOP TEST LOOP TEST LOOP TESTLOOP</h1> <div style="text-align: center"> test</div> ',
+                            ],
+                        ]
+                    ),
+                    'type'         => $type,
+                    'enabled'      => true,
+                    'theme_layout' => 'theme::layouts/default.twig',
+                ]
+            )->allowedRoles()->sync([]);
+        }
     }
 }

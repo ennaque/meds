@@ -2,8 +2,10 @@
 
 namespace Ennq\MedsTheme\Http\Controller\Front;
 
+use Anomaly\PagesModule\Page\PageModel;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 use Ennq\MedsTheme\Lib\SearchInterface;
+use Ennq\MedsTheme\Service\Paginator;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,12 +21,19 @@ class SearchController extends PublicController
         $this->search = $search;
     }
 
-    public function index(Request $request): View
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function index(Request $request)//: View
     {
-        dump($this->search->search($request->get('query')));
+        $pag = new Paginator();
+        $pag->setContent($this->search->search($request));
 
         return view('theme::front/search_result', [
-            'entities' => $this->search->search($request->get('query'))
+            'entities' => $pag->getContent(),
+            'query' => $request->get('query'),
+            'pag' => $pag
         ]);
     }
 

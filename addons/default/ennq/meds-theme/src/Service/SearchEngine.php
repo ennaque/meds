@@ -10,9 +10,12 @@ use Anomaly\PostsModule\Post\PostRepository;
 use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Lib\SearchResultCombinerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class SearchEngine implements SearchInterface
 {
+    private const SEARCH_KEY = 'query';
+
     /**
      * @var SearchResultCombinerInterface
      */
@@ -24,16 +27,19 @@ class SearchEngine implements SearchInterface
     }
 
     /**
-     * @param string $query
+     * @param Request|null $request
      * @return array
      */
-    public function search(?string $query = null): array
+    public function search(Request $request): array
     {
-        if ($query === null || $query === '') {
+        $searchRequest = $request->get(self::SEARCH_KEY);
+        if (null === $searchRequest || '' === $searchRequest) {
             return [];
         }
 
-        return $this->searchResultCombiner->get($this->getMixedData($query), $query);
+        return $this->searchResultCombiner->get($this->getMixedData($searchRequest), $searchRequest);
+
+
     }
 
     /**

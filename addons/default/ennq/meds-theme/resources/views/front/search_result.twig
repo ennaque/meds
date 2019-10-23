@@ -1,10 +1,26 @@
 {% extends 'theme::layouts/default' %}
 
 {% block content %}
-    {% if entities is empty %}
-        Поиск не дал результатов.
-    {% endif %}
-    {% for entity in entities %}
-        <a href="{{ entity.link }}">{{ entity.content }}</a><br />
-    {% endfor %}
+    <div class="search-result-container">
+        <h2 class="search-result-title">
+            Результа поиска "{{ query }}":
+        </h2>
+        {% if entities is empty %}
+            Поиск не дал результатов.
+        {% endif %}
+        {% if entities is not empty %}
+                {% for entity in entities %}
+                    <div class="search-entry">
+                        <a href="{{ entity.link }}" class="search-entry-link">
+                            {{ entity.title }}
+                        </a>
+                        {{ entity.getPath() }}
+                        <div class="search-entry-content">
+                            {{ entity.content() }}
+                        </div>
+                    </div>
+                {% endfor %}
+        {% endif %}
+        {{ pag.render() | raw }}
+    </div>
 {% endblock %}
