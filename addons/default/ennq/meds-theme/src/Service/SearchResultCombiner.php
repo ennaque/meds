@@ -48,7 +48,7 @@ class SearchResultCombiner implements SearchResultCombinerInterface
             $entriesPositions = $this->findNeedleEntries($content, $needle, $count);
             $tmp = $this->extractNeedleEntries($content, $needle, $entriesPositions);
             foreach($tmp as $t) {
-                $result[$needleCounter] = $t;
+                $result[$needleCounter] = $data[$i]->setContent($t);
                 ++$needleCounter;
             }
             ++$i;

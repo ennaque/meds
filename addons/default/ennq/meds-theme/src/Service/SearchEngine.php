@@ -37,7 +37,9 @@ class SearchEngine implements SearchInterface
             return new Paginator([]);
         }
 
-        $data = $this->searchResultCombiner->get($this->getMixedData($searchRequest), $searchRequest);
+        $data = $this->searchResultCombiner->get($this->getMixedData($searchRequest), $searchRequest, 2);
+
+        dump($data);
 
         return new Paginator($data);
     }
