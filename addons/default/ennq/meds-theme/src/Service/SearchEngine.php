@@ -28,17 +28,22 @@ class SearchEngine implements SearchInterface
 
     /**
      * @param Request|null $request
-     * @return array
+     * @return Paginator
      */
-    public function search(Request $request): array
+    public function paginate(Request $request): Paginator
     {
         $searchRequest = $request->get(self::SEARCH_KEY);
         if (null === $searchRequest || '' === $searchRequest) {
-            return [];
+            return new Paginator([]);
         }
 
-        return $this->searchResultCombiner->get($this->getMixedData($searchRequest), $searchRequest);
+        $data = $this->searchResultCombiner->get($this->getMixedData($searchRequest), $searchRequest);
 
+        return new Paginator($data);
+    }
+
+    public function search(Request $request): array
+    {
 
     }
 

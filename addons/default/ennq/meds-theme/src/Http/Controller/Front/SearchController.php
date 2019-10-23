@@ -27,13 +27,12 @@ class SearchController extends PublicController
      */
     public function index(Request $request)//: View
     {
-        $pag = new Paginator();
-        $pag->setContent($this->search->search($request));
+        $paginator = $this->search->paginate($request);
 
         return view('theme::front/search_result', [
-            'entities' => $pag->getContent(),
+            'entities' => $paginator->getPaginatedItems(),
             'query' => $request->get('query'),
-            'pag' => $pag
+            'pag' => $paginator
         ]);
     }
 
@@ -41,5 +40,4 @@ class SearchController extends PublicController
     {
         return new Response();
     }
-
 }
