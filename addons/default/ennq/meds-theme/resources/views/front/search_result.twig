@@ -16,7 +16,7 @@
                         </a>
                         {{ entity.getPath() }}
                         <div class="search-entry-content">
-                            {{ entity.content() }}
+                            {{ entity.content() | raw }}
                         </div>
                     </div>
                 {% endfor %}
