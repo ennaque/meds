@@ -17,6 +17,11 @@ class SearchEntry
     private $content;
 
     /**
+     * @var array<string>
+     */
+    private $additionalFormattedContent;
+
+    /**
      * @var string
      */
     private $title;
@@ -78,12 +83,32 @@ class SearchEntry
     }
 
     /**
+     * @return array<string>
+     */
+    public function getAdditionalFormattedContent(): array
+    {
+        return $this->additionalFormattedContent;
+    }
+
+    /**
      * @param string $content
      * @return SearchEntry
      */
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @param string $content
+     * @return SearchEntry
+     */
+    public function pushAdditionalFormattedContent(string $content): self
+    {
+        $index = count($this->additionalFormattedContent);
+        $this->additionalFormattedContent[$index] = $content;
 
         return $this;
     }
