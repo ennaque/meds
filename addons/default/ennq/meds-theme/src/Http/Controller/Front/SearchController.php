@@ -36,8 +36,8 @@ class SearchController extends PublicController
         ]);
     }
 
-    public function asyncSearch(Request $request): Response
+    public function asyncSearch(Request $request)
     {
-        return new Response();
+        $this->search->search($request);
     }
 }

@@ -107,8 +107,7 @@ class SearchEntry
      */
     public function pushAdditionalFormattedContent(string $content): self
     {
-        $index = count($this->additionalFormattedContent);
-        $this->additionalFormattedContent[$index] = $content;
+        $this->additionalFormattedContent[] = $content;
 
         return $this;
     }
@@ -149,5 +148,22 @@ class SearchEntry
         $this->link = $link;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        $arr = [
+            'title' => $this->getTitle(),
+            'content' => $this->getContent(),
+            'link' => $this->getLink()
+        ];
+
+        $str = json_encode($arr, JSON_UNESCAPED_UNICODE);
+
+        if (is_string($str)) {
+            return $str;
+        }
+
+        throw new \InvalidArgumentException('something went wrong');
     }
 }
