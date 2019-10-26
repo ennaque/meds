@@ -49,13 +49,30 @@ class SearchEngine implements SearchInterface
 
     public function search(Request $request, ?int $limit = null): array
     {
+        /*
+        !!! IMPORTANT SHIT !!!
+        It needs creating fulltext index for title and content fields.
+        So, there has to will be a seeder or anything like that creating the index. In general, i don't know how to do that right without crashing down CMS and myself.
+        Otherwise, the search will most likely be slow (but it's not exactly).
+
+        Example queries:
+            to create the index when creating table:
+                CREATE TABLE table_name(id INT PRIMARY KEY, content_field TEXT, FULLTEXT (content_field));
+            to create the index when the table is already exists:
+                ALTER TABLE table_name ADD FULLTEXT optional_index_name (content_field);
+        */
+
+        // The MATCH/AGAINST construction is a standart MySQL solution for the fulltext morphological search. Works with MyISAM table engine.
+        // Some people say that the best way for the fulltext search in MySQL is Sphinx. But it requires additional installation and integration.
         $data = DB::table('pages_default_pages_translations')
-            ->where('content', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')
+            ->where('MATCH(content) AGAINST("' . $request->get(self::SEARCH_KEY) . '" IN BOOLEAN MODE)')
+            /*->where('content', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')*/
             ->join('pages_pages', 'pages_default_pages_translations.entry_id', '=', 'pages_pages.id')
             ->join('pages_pages_translations', 'pages_default_pages_translations.entry_id', '=', 'pages_pages_translations.entry_id')
             ->get();
         $data2 = DB::table('pages_pages_translations')
-            ->where('title', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')
+            ->where('MATCH(title) AGAINST("' . $request->get(self::SEARCH_KEY) . '" IN BOOLEAN MODE)')
+            /*->where('title', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')*/
             ->join('pages_pages', 'pages_pages_translations.entry_id', '=', 'pages_pages.id')
             ->join('pages_default_pages_translations', 'pages_pages_translations.entry_id', '=', 'pages_default_pages_translations.entry_id')
             ->get();
