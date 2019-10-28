@@ -126,7 +126,7 @@ class SearchEngine implements SearchInterface
         return $res;
     }
 
-    private function attach(array &$arr, $id = null, $content = null, $path = null, $title = null)
+    private function attach(array &$arr, $id = null, $content = null, $path = null, $title = null): void
     {
         if (!isset($arr[$id])) {
             $arr[$id] = (new SearchEntry())->setId((int)$id);

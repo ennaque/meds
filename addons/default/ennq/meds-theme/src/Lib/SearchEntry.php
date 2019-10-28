@@ -4,7 +4,9 @@
 namespace Ennq\MedsTheme\Lib;
 
 
-class SearchEntry
+use JsonSerializable;
+
+class SearchEntry implements JsonSerializable
 {
     /**
      * @var int
@@ -150,6 +152,9 @@ class SearchEntry
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         $arr = [
@@ -160,10 +165,22 @@ class SearchEntry
 
         $str = json_encode($arr, JSON_UNESCAPED_UNICODE);
 
-        if (is_string($str)) {
-            return $str;
+        if (!is_string($str)) {
+            throw new \InvalidArgumentException('something went wrong');  // TODO: i think should move to empty arr here
         }
 
-        throw new \InvalidArgumentException('something went wrong');
+        return $str;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return $this->__toString();
     }
 }
