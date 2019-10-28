@@ -153,6 +153,30 @@ class SearchEntry implements JsonSerializable
     }
 
     /**
+     * @param int $id
+     * @param string $link
+     * @param string $entryClass
+     * @param string $content
+     * @param string $title
+     * @return self
+     */
+    public static function newInstance(
+        ?int $id,
+        string $link,
+        string $entryClass,
+        ?string $content,
+        ?string $title
+    ): self
+    {
+        return (new self())
+            ->setId($id)
+            ->setContent($content)
+            ->setTitle($title)
+            ->setEntryClass($entryClass)
+            ->setLink($link);
+    }
+
+    /**
      * @return string
      */
     public function __toString()

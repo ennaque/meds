@@ -40,17 +40,17 @@ class SearchResultCombiner implements SearchResultCombinerInterface
     public function get(array $data, string $needle, int $num = 1): array
     {
         $result = [];
-        for ($i = 0, $iMax = count($data); $i < $iMax; ++$i) {
-            $content = $this->extractContent($data[$i]);
+        foreach ($data as $iValue) {
+            $content = $this->extractContent($iValue);
             $entriesPositions = $this->findNeedleEntries($content, $needle, $num);
             if (count($entriesPositions) > 0) {
                 $needleEntries = $this->extractNeedleEntries($content, $needle, $entriesPositions);
-                $data[$i]->setContent($needleEntries[0]);
+                $iValue->setContent($needleEntries[0]);
                 for ($j = 1, $jMax = count($data); $j < $jMax; ++$j) {
-                    $data[$i]->pushAdditionalFormattedContent($needleEntries[$j]);
+                    $iValue->pushAdditionalFormattedContent($needleEntries[$j]);
                 }
             } else {
-                $data[$i]->setContent('');
+                $iValue->setContent('');
             }
         }
 
@@ -138,7 +138,7 @@ class SearchResultCombiner implements SearchResultCombinerInterface
                 }
             }
             $result[$ri] .= substr($content, $from, $length);
-            $result[$ri] .= "<b>" . $needle . "</b>";
+            $result[$ri] .= '<b>' . $needle . '</b>';
             /* PROCESSING THE SUBSTING PLACED AFTER THE NEEDLE ENTRY */
             if ($i < (count($entriesPositions) - 1)) {
                 if (($entriesPositions[$i + 1] - $iValue + strlen($needle)) >= ($cutLength * 2)) {// if the next entry is far enough (double distance from current one), ...

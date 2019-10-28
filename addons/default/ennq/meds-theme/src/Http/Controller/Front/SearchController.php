@@ -6,6 +6,7 @@ use Anomaly\PagesModule\Page\PageModel;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Service\Paginator;
+use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,9 +37,10 @@ class SearchController extends PublicController
         ]);
     }
 
-    public function asyncSearch(Request $request)
+    public function asyncSearch(Request $request): JsonResponse
     {
-        dump(json_encode($this->search->search($request), JSON_UNESCAPED_UNICODE));
-         return json_encode($this->search->search($request), JSON_UNESCAPED_UNICODE);
+        $searchResult = $this->search->search($request);
+
+        return (new JsonResponse($searchResult))->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }
 }

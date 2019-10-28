@@ -14,7 +14,7 @@ interface SearchInterface
      * @param int|null $limit
      * @return array<SearchEntry>
      */
-    public function search(Request $request, ?int $limit = null): array;
+    public function search(Request $request, ?int $limit = 10): array;
 
     /**
      * @param Request $request

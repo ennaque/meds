@@ -6,6 +6,8 @@ use Anomaly\PostsModule\Post\Contract\PostRepositoryInterface;
 use Anomaly\PostsModule\Type\Contract\TypeInterface;
 use Anomaly\Streams\Platform\Entry\EntryCollection;
 use Anomaly\Streams\Platform\Entry\EntryRepository;
+use Illuminate\Support\Facades\DB;
+use Laravel\Scout\Builder;
 
 /**
  * Class PostRepository
@@ -157,5 +159,33 @@ class PostRepository extends EntryRepository implements PostRepositoryInterface
         return $this->model
             ->live()
             ->get();
+    }
+
+    /**
+     * @param string $needle
+     * @return Builder
+     */
+    public function search(string $needle): Builder
+    {
+        return $this->model::search($needle);
+    }
+
+    /**
+     * @param string $needle
+     * @return mixed
+     */
+    public function searchLikeContentOrTitle(string $needle)
+    {
+        return DB::select('
+            SELECT * FROM `default_posts_posts`
+                JOIN `default_posts_default_posts_translations`
+                    ON `default_posts_default_posts_translations`.`entry_id` = `default_posts_posts`.`id`
+                JOIN `default_posts_posts_translations`
+                    ON `default_posts_default_posts_translations`.`entry_id` = `default_posts_posts_translations`.`entry_id`
+                WHERE 
+                    MATCH(`default_posts_default_posts_translations`.`content`) AGAINST("' . $needle . '" IN BOOLEAN MODE) 
+                OR
+                    MATCH(`default_posts_posts_translations`.`title`) AGAINST("' . $needle . '" IN BOOLEAN MODE);
+                    ');
     }
 }
