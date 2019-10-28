@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchEngine implements SearchInterface
 {
     private const SEARCH_KEY = 'query';
-    public const ASYNC_SEARCH_RESULTS = 10;
+    public const ASYNC_SEARCH_RESULTS = 50;
 
     /**
      * @var SearchResultCombinerInterface
@@ -26,7 +26,6 @@ class SearchEngine implements SearchInterface
     public function __construct(SearchResultCombinerInterface $searchResultCombiner)
     {
         $this->searchResultCombiner = $searchResultCombiner;
-//        PageModel::
     }
 
     /**
@@ -40,7 +39,11 @@ class SearchEngine implements SearchInterface
             return new Paginator([]);
         }
 
-        $data = $this->searchResultCombiner->get($this->getMixedData($searchRequest), $searchRequest, 14);
+        $data = $this->searchResultCombiner->get(
+            $this->getMixedData($searchRequest),
+            $searchRequest,
+            14
+        );
 
         dump($data);
 
@@ -51,6 +54,10 @@ class SearchEngine implements SearchInterface
 
     public function search(Request $request, ?int $limit = null): array
     {
+        $searchRequest = $request->get(self::SEARCH_KEY);
+        if (null === $searchRequest || '' === $searchRequest) {
+            return [];
+        }
         /*
         !!! IMPORTANT SHIT !!!
         It needs creating fulltext index for title and content fields.
@@ -67,22 +74,24 @@ class SearchEngine implements SearchInterface
         // The MATCH/AGAINST construction is a standart MySQL solution for the fulltext morphological search. Works with MyISAM table engine.
         // Some people say that the best way for the fulltext search in MySQL is Sphinx. But it requires additional installation and integration.
         $pagesContentData = DB::table('pages_default_pages_translations')
-            ->where('content', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')
+//            ->where('MATCH(content) AGAINST("' . $request->get(self::SEARCH_KEY) . '" IN BOOLEAN MODE)')
+            ->where('content', 'LIKE', '%' . $searchRequest . '%')
             ->join('pages_pages', 'pages_default_pages_translations.entry_id', '=', 'pages_pages.id')
             ->join('pages_pages_translations', 'pages_default_pages_translations.entry_id', '=', 'pages_pages_translations.entry_id')
             ->get();
         $pagesTitleData = DB::table('pages_pages_translations')
-            ->where('title', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')
+//            ->where('MATCH(title) AGAINST("' . $request->get(self::SEARCH_KEY) . '" IN BOOLEAN MODE)')
+            ->where('title', 'LIKE', '%' . $searchRequest . '%')
             ->join('pages_pages', 'pages_pages_translations.entry_id', '=', 'pages_pages.id')
             ->join('pages_default_pages_translations', 'pages_pages_translations.entry_id', '=', 'pages_default_pages_translations.entry_id')
             ->get();
         $postsContentData = DB::table('posts_default_posts_translations')
-            ->where('content', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')
+            ->where('content', 'LIKE', '%' . $searchRequest . '%')
             ->join('posts_posts', 'posts_default_posts_translations.entry_id', '=', 'posts_posts.id')
             ->join('posts_posts_translations', 'posts_default_posts_translations.entry_id', '=', 'posts_posts_translations.entry_id')
             ->get();
         $postsTitleData = DB::table('posts_posts_translations')
-            ->where('title', 'LIKE', '%' . $request->get(self::SEARCH_KEY) . '%')
+            ->where('title', 'LIKE', '%' . $searchRequest . '%')
             ->join('posts_posts', 'posts_posts_translations.entry_id', '=', 'posts_posts.id')
             ->join('posts_default_posts_translations', 'posts_posts_translations.entry_id', '=', 'posts_default_posts_translations.entry_id')
             ->get();
@@ -92,7 +101,14 @@ class SearchEngine implements SearchInterface
 
         $resData = array_merge($pagesRes, $postsRes);
 
-        return array_slice($resData, 0, self::ASYNC_SEARCH_RESULTS);
+        dump($resData);
+
+        $data = $this->searchResultCombiner->get(
+            $resData,
+            $searchRequest
+        );
+
+        return array_slice($data, 0, self::ASYNC_SEARCH_RESULTS);
     }
 
     private function combine(Collection $data, Collection $data2, bool $isPosts = false): array

@@ -39,20 +39,19 @@ class SearchResultCombiner implements SearchResultCombinerInterface
      */
     public function get(array $data, string $needle, int $num = 1): array
     {
-        $needleCounter = 0;
-        $i = 0;
         $result = [];
-        for($i = 0; $i < count($data); ++$i) {
+        for ($i = 0, $iMax = count($data); $i < $iMax; ++$i) {
             $content = $this->extractContent($data[$i]);
             $entriesPositions = $this->findNeedleEntries($content, $needle, $num);
-            if(count($entriesPositions) > 0){
+            if (count($entriesPositions) > 0) {
                 $needleEntries = $this->extractNeedleEntries($content, $needle, $entriesPositions);
                 $data[$i]->setContent($needleEntries[0]);
-                for($j = 1; $j < count($data); ++$j)
+                for ($j = 1, $jMax = count($data); $j < $jMax; ++$j) {
                     $data[$i]->pushAdditionalFormattedContent($needleEntries[$j]);
+                }
+            } else {
+                $data[$i]->setContent('');
             }
-            else
-                $data[$i]->setContent("");
         }
 
         return $result;
@@ -92,8 +91,8 @@ class SearchResultCombiner implements SearchResultCombinerInterface
         $result = [];
         $offset = 0;
         $position = strpos($content, $needle, $offset);
-        while($position !== FALSE && count($result) < $count) {
-            $result[count($result)] = $position;
+        while ($position !== FALSE && count($result) < $count) {
+            $result[] = $position;
             $offset = $position + strlen($needle);
             $position = strpos($content, $needle, $offset);
         }
@@ -119,8 +118,8 @@ class SearchResultCombiner implements SearchResultCombinerInterface
 
         foreach ($entriesPositions as $i => $iValue) {
             /* PROCESSING THE SUBSTRING BEFORE THE NEEDLE ENTRY INCLUDING NEEDLE */
-            if($i === 0) {
-                if($iValue >= $cutLength) {
+            if ($i === 0) {
+                if ($iValue >= $cutLength) {
                     $from = $iValue - $cutLength;
                     $length = $cutLength;
                 } else {
@@ -130,7 +129,7 @@ class SearchResultCombiner implements SearchResultCombinerInterface
             } else {
                 $previousPosition = $entriesPositions[$i - 1] + strlen($needle);
                 $distance = $iValue - $previousPosition;
-                if($distance >= $cutLength*2) {
+                if ($distance >= $cutLength * 2) {
                     $from = $iValue - $cutLength;
                     $length = $cutLength;
                 } else {
@@ -142,7 +141,7 @@ class SearchResultCombiner implements SearchResultCombinerInterface
             $result[$ri] .= "<b>" . $needle . "</b>";
             /* PROCESSING THE SUBSTING PLACED AFTER THE NEEDLE ENTRY */
             if ($i < (count($entriesPositions) - 1)) {
-                if (($entriesPositions[$i+1] - $iValue + strlen($needle)) >= ($cutLength*2)) {// if the next entry is far enough (double distance from current one), ...
+                if (($entriesPositions[$i + 1] - $iValue + strlen($needle)) >= ($cutLength * 2)) {// if the next entry is far enough (double distance from current one), ...
                     // ...then copy $cutLength symbols after the needle to the result ...
                     $result[$ri] .= substr($content, $iValue + strlen($needle), $cutLength);
                     ++$ri; // ...and go over towards the next result string
@@ -160,12 +159,13 @@ class SearchResultCombiner implements SearchResultCombinerInterface
         }
         foreach ($result as $i => $iValue) {
             $firstChar = $result[$i][0];
-            $lastChar = $result[$i][strlen($iValue)-1];
+            $lastChar = $result[$i][strlen($iValue) - 1];
             if ($firstChar !== ' ') {
                 $from = strpos($iValue, ' ', 1) + 1;
             } else {
                 $from = 1;
-            } if ($lastChar !== ' ' && $lastChar !== '.' && $lastChar !== ',' && $lastChar !== ';' && $lastChar !== ':') {
+            }
+            if ($lastChar !== ' ' && $lastChar !== '.' && $lastChar !== ',' && $lastChar !== ';' && $lastChar !== ':') {
                 $to = strrpos($iValue, ' ', -1);
             } else {
                 $to = strlen($iValue) - 1;
