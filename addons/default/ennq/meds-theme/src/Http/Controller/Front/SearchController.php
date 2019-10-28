@@ -38,6 +38,7 @@ class SearchController extends PublicController
 
     public function asyncSearch(Request $request)
     {
-         return json_encode($this->search->search($request));
+        dump(json_encode($this->search->search($request), JSON_UNESCAPED_UNICODE));
+         return json_encode($this->search->search($request), JSON_UNESCAPED_UNICODE);
     }
 }
