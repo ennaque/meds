@@ -38,6 +38,6 @@ class SearchController extends PublicController
 
     public function asyncSearch(Request $request)
     {
-        $this->search->search($request);
+        dump($this->search->search($request));
     }
 }

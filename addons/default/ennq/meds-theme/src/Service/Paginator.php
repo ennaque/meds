@@ -42,7 +42,7 @@ class Paginator
         return view('theme::partials/pagination', [
             'page' => $this->currentPage,
             'pagination' => $this->getPaginationArray($this->currentPage),
-            'link' => '/search?query=' . app('request')->get('query')
+            'link' => '/search?query=' . app('request')->get('query') //TODO: fix this shit
         ]);
     }
 
@@ -96,5 +96,4 @@ class Paginator
     {
         return $this->currentPage;
     }
-
 }
