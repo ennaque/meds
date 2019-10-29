@@ -91,6 +91,28 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*"
     },
+    "scripts": {
+        "post-install-cmd": [
+            "php -r \"copy('.env.dist', '.env');\"",
+            "php artisan key:generate",
+            "php artisan cache:clear",
+            "php artisan httpcache:clear",
+            "php artisan route:clear",
+            "php artisan storage:link",
+            "php artisan twig:clear",
+            "php artisan view:clear"
+        ],
+        "post-update-cmd": [
+            "php -r \"copy('.env.dist', '.env');\"",
+            "php artisan key:generate",
+            "php artisan cache:clear",
+            "php artisan httpcache:clear",
+            "php artisan route:clear",
+            "php artisan storage:link",
+            "php artisan twig:clear",
+            "php artisan view:clear"
+        ]
+    },
     "repositories": [
         {
             "type": "composer",
