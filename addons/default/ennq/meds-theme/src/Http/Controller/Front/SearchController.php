@@ -30,7 +30,7 @@ class SearchController extends PublicController
      */
     public function index(Request $request): View
     {
-        $paginator = $this->search->paginate($request);
+        $paginator = $this->search->paginate($request->get(self::SEARCH_QUERY));
 
         return view('theme::front/search_result', [
             'entities' => $paginator->getPaginatedItems(),
@@ -39,9 +39,9 @@ class SearchController extends PublicController
         ]);
     }
 
-    public function asyncSearch(Request $request)//: View
+    public function asyncSearch(Request $request): View
     {
-        $searchResult = $this->search->search($request);
+        $searchResult = $this->search->search($request->get(self::SEARCH_QUERY));
 
         $json = json_encode($searchResult, JSON_UNESCAPED_UNICODE);
 
