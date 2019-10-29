@@ -6,6 +6,7 @@ namespace Ennq\MedsTheme;
 
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 use Ennq\MedsTheme\Seeders\ExampleSeeder;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
 
 class MedsThemeSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class MedsThemeSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ExampleSeeder::class);
+        $this->call(Seeder6::class);
     }
 }
