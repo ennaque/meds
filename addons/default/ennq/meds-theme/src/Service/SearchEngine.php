@@ -12,12 +12,9 @@ use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Lib\SearchResultCombinerInterface;
 use stdClass;
-use Symfony\Component\HttpFoundation\Request;
 
 class SearchEngine implements SearchInterface
 {
-    private const SEARCH_KEY = 'query';
-
     /** @var SearchResultCombinerInterface */
     private $searchResultCombiner;
     /** @var PageRepository */
@@ -37,12 +34,11 @@ class SearchEngine implements SearchInterface
     }
 
     /**
-     * @param Request|null $request
+     * @param string $searchRequest
      * @return Paginator<SearchEntry>
      */
-    public function paginate(Request $request): Paginator
+    public function paginate(string $searchRequest): Paginator
     {
-        $searchRequest = $request->get(self::SEARCH_KEY);
         if (null === $searchRequest || '' === $searchRequest) {
             return new Paginator([]);
         }
@@ -61,13 +57,12 @@ class SearchEngine implements SearchInterface
 
 
     /**
-     * @param Request $request
+     * @param string $searchRequest
      * @param int|null $limit
      * @return array<SearchEntry>
      */
-    public function search(Request $request, ?int $limit = 10): array
+    public function search(string $searchRequest, ?int $limit = 10): array
     {
-        $searchRequest = $request->get(self::SEARCH_KEY);
         if (null === $searchRequest || '' === $searchRequest) {
             return [];
         }

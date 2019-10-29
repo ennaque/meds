@@ -92,8 +92,12 @@ class Paginator
         return $arr;
     }
 
-    public function getCurrentPage()
+
+
+    public function getCurrentPageUrl()
     {
+        $se = app('request')->getUri();
+
         return $this->currentPage;
     }
 }

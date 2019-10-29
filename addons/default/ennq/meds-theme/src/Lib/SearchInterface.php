@@ -10,15 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 interface SearchInterface
 {
     /**
-     * @param Request $request
+     * @param string $request
      * @param int|null $limit
      * @return array<SearchEntry>
      */
-    public function search(Request $request, ?int $limit = 10): array;
+    public function search(string $request, ?int $limit = 10): array;
 
     /**
-     * @param Request $request
+     * @param string $request
      * @return Paginator
      */
-    public function paginate(Request $request): Paginator;
+    public function paginate(string $request): Paginator;
 }

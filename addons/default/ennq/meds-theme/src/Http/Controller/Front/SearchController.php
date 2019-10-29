@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SearchController extends PublicController
 {
+    public const SEARCH_QUERY = 'query';
+
     /**@var SearchInterface */
     private $search;
 
@@ -26,7 +28,7 @@ class SearchController extends PublicController
      * @param Request $request
      * @return View
      */
-    public function index(Request $request)//: View
+    public function index(Request $request): View
     {
         $paginator = $this->search->paginate($request);
 
@@ -37,10 +39,18 @@ class SearchController extends PublicController
         ]);
     }
 
-    public function asyncSearch(Request $request): JsonResponse
+    public function asyncSearch(Request $request)//: View
     {
         $searchResult = $this->search->search($request);
 
-        return (new JsonResponse($searchResult))->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+        $json = json_encode($searchResult, JSON_UNESCAPED_UNICODE);
+
+        return view('theme::front/api', [
+            'code' => 200,
+            'message' => 'OK',
+            'list' => 1,
+            'listof' => 1,
+            'data' => $json
+        ]);
     }
 }
