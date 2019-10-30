@@ -30,6 +30,7 @@ class Seeder6 extends Seeder
      */
     public function __construct(PageRepositoryInterface $pages, TypeRepositoryInterface $types)
     {
+        parent::__construct();
         $this->pages = $pages;
         $this->types = $types;
     }
@@ -73,16 +74,16 @@ class Seeder6 extends Seeder
                     </h2>
                 </div>
                 <div>
-                    <img src='/app/default/files-module/local/images/lic1_6.jpg' width='500' style='padding-bottom: 5px'>
+                    <img src='/app/default/files-module/local/images/lic1_6.jpg' width='300'>
                 </div>
                 <div>
-                    <img src='/app/default/files-module/local/images/lic2_6.jpg' width='500'>
+                    <img src='/app/default/files-module/local/images/lic2_6.jpg' width='300'>
                 </div>
                 <div>
-                    <img src='/app/default/files-module/local/images/lic4_6.jpg' width='500'>
+                    <img src='/app/default/files-module/local/images/lic4_6.jpg' width='300'>
                 </div>
                 <div>
-                    <img src='/app/default/files-module/local/images/lic3_6.jpg' width='500'>
+                    <img src='/app/default/files-module/local/images/lic3_6.jpg' width='300'>
                 </div>
             </div>";
     }
