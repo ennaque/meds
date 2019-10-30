@@ -38,10 +38,8 @@ class Seeder6 extends Seeder
     /**
      * Run the seeder.
      */
-    public function run()
+    public function run(): void
     {
-        $this->pages->truncate();
-
         $type = $this->types->findBySlug('default');
         $content = $this->getContent();
         $this->pages->create(

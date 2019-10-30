@@ -8,6 +8,7 @@ use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder7;
 use Illuminate\Support\Facades\DB;
 
 class MedsThemeSeeder extends Seeder
@@ -27,12 +28,13 @@ class MedsThemeSeeder extends Seeder
     /**
      * Run the seeder.
      */
-    public function run()
+    public function run(): void
     {
         $this->truncate();
 
         $this->call([
-            Seeder6::class
+            Seeder6::class,
+            Seeder7::class
         ]);
     }
 
