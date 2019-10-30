@@ -95,6 +95,9 @@
         "post-install-cmd": [
             "php -r \"copy('.env.dist', '.env');\"",
             "php artisan key:generate",
+            "php artisan install --ready",
+            "php artisan db:seed --addon=ennq.theme.meds",
+            "php artisan meds:images:warmup",
             "php artisan cache:clear",
             "php artisan httpcache:clear",
             "php artisan route:clear",
@@ -103,8 +106,8 @@
             "php artisan view:clear"
         ],
         "post-update-cmd": [
-            "php -r \"copy('.env.dist', '.env');\"",
-            "php artisan key:generate",
+            "php artisan db:seed --addon=ennq.theme.meds",
+            "php artisan meds:images:warmup",
             "php artisan cache:clear",
             "php artisan httpcache:clear",
             "php artisan route:clear",
