@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.1-fpm-stretch
 
 
 RUN apt-get update && apt-get install -y libmcrypt-dev vim fish libxss1 libzip-dev zip unzip wget libpng-dev curl git mariadb-client \
