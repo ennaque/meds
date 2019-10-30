@@ -39,7 +39,7 @@ class Seeder6 extends Seeder
      */
     public function run()
     {
-//        $this->pages->truncate();
+        $this->pages->truncate();
 
         $type = $this->types->findBySlug('default');
         $content = $this->getContent();
@@ -48,7 +48,7 @@ class Seeder6 extends Seeder
                 'ru'           => [
                     'title' => 'Лицензии ГБУЗ МО «Красногорская городская больница № 2»',
                 ],
-                'slug'         => '/main3',
+                'slug'         => '/licenses',
                 'entry'        => $type->getEntryModel()->create(
                     [
                         'ru' => [
@@ -67,8 +67,23 @@ class Seeder6 extends Seeder
     {
         return
             "<div>
-                <span>test</span>
-                {{ image('theme::img/seed/lic1_6.jpg').class('zoomable')|raw }}
+                <div class='second-title'>
+                    <h2>
+                        Лицензии ГБУЗ МО «Красногорская городская больница № 2»
+                    </h2>
+                </div>
+                <div>
+                    <img src='/app/default/files-module/local/images/lic1_6.jpg' width='500' style='padding-bottom: 5px'>
+                </div>
+                <div>
+                    <img src='/app/default/files-module/local/images/lic2_6.jpg' width='500'>
+                </div>
+                <div>
+                    <img src='/app/default/files-module/local/images/lic4_6.jpg' width='500'>
+                </div>
+                <div>
+                    <img src='/app/default/files-module/local/images/lic3_6.jpg' width='500'>
+                </div>
             </div>";
     }
 }

@@ -24,42 +24,30 @@ class ImageMigrationCommand extends Command
      */
     protected $description = 'Move images from addon dir into public.';
 
-    protected $addon;
-
-    public function __construct(Addon $addon)
-    {
-        parent::__construct();
-        $this->addon = $addon;
-    }
 
     /**
      * Handle the command.
-     *
+     * @param Filesystem $filesystem
      */
-    public function handle(Filesystem $filesystem)
+    public function handle(Filesystem $filesystem): void
     {
-        $this->info($this->addon->getPath());
+        $fromPath = base_path('/addons/default/ennq/meds-theme/resources/img/seed');
+        $destinationPath = public_path('app/default/files-module/local/images');
 
-        $ans = $filesystem->copyDirectory('/var/www/addons/default/ennq/meds-theme/resources/img/seed',
-            public_path('app/default/assets/file-module/local/images/test'));
-//        $ans = $filesystem->copyDirectory(__DIR__ . '../../resources/img/seed', public_path('app/default/assets/file-module/local/images/test'));
+        $this->info('moving from ' . $fromPath);
+        $this->info('to ' . $destinationPath);
 
-        $this->info((string)$ans);
+        $result = $filesystem->copyDirectory(
+            $fromPath,
+            $destinationPath
+        );
 
-//        $this->info('started ' . __DIR__ . '../../resources/img/seed');
-//        File::copyDirectory(__DIR__ . '../../resources/img/seed', public_path('app/default/assets/file-module/local/images'));
-//        $this->info('end ' . public_path('app/default/assets/file-module/local/images'));
+        if ($result) {
+            $this->info('Moved successfully');
+
+            return;
+        }
+
+        $this->info('Something went wrong');
     }
-
-//    /**
-//     * Get the console command options.
-//     *
-//     * @return array
-//     */
-//    protected function getOptions()
-//    {
-//        return [
-//            ['force', null, InputOption::VALUE_NONE, 'Override.'],
-//        ];
-//    }
 }

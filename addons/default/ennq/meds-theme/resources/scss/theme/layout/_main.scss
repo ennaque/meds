@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+.container {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
 .logo_section {
     background: #e9f4f6;
     //background: black;
@@ -48,14 +53,6 @@
 .nav_section {
     background: #326999;
 }
-
-//.flex_menu {
-//    display: flex;
-//    flex-direction: row;
-//    justify-content: flex-start;
-//    padding: 20px 0;
-//    flex-wrap: wrap;
-//}
 
 .menu_elem {
     border: 1px solid #99b4cc;
@@ -245,5 +242,13 @@
         flex-direction: column;
     }
 }
-
 /*/media queries*/
+
+/*pages styles*/
+
+.second-title h2{
+    border-top: 1px grey solid;
+    border-bottom: 1px grey solid;
+}
+
+/*/pages styles*/
