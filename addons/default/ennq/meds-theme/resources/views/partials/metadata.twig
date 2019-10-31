@@ -32,6 +32,8 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 {{ asset_add("build.css", "theme::scss/theme/theme.scss", ["live"]) }}
 
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
 {# Include Asset Collections #}
 <style type="text/css">
     {{ asset_inline("build.css", ["parse", "min", "watch@theme::scss/theme"]) }}

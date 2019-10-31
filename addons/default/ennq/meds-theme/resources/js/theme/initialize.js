@@ -1,5 +1,7 @@
 (function (window, document) {
 
-    // Go!
+    $(document).ready(function() {
+        $('#test-table').DataTable();
+    } );
     
 })(window, document);
