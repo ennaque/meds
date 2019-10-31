@@ -7,6 +7,7 @@ namespace Ennq\MedsTheme;
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder3;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder5;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
@@ -35,6 +36,7 @@ class MedsThemeSeeder extends Seeder
         $this->truncate();
 
         $this->call([
+            Seeder3::class,
             Seeder4::class,
             Seeder5::class,
             Seeder6::class,
