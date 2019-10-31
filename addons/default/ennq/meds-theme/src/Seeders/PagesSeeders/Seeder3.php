@@ -81,6 +81,7 @@ class Seeder6 extends Seeder
                     <p style='padding-bottom: 7px>
                         Понедельник 15.00-17.00
                     </p>
+                </div>    
             </div>";
     }
 }
