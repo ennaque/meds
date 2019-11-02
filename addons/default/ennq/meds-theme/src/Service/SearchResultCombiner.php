@@ -46,9 +46,10 @@ class SearchResultCombiner implements SearchResultCombinerInterface
             if (count($entriesPositions) > 0) {
                 $needleEntries = $this->extractNeedleEntries($content, $needle, $entriesPositions);
                 $iValue->setContent($needleEntries[0]);
-                for ($j = 1, $jMax = count($data); $j < $jMax; ++$j) {
+                for ($j = 1, $jMax = count($needleEntries); $j < $jMax; ++$j) {
                     $iValue->pushAdditionalFormattedContent($needleEntries[$j]);
                 }
+                $result[] = $iValue;
             } else {
                 $iValue->setContent('');
             }

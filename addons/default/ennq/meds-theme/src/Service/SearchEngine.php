@@ -37,22 +37,21 @@ class SearchEngine implements SearchInterface
      * @param string $searchRequest
      * @return Paginator<SearchEntry>
      */
-    public function paginate(string $searchRequest): Paginator
+    public function paginate(string $searchRequest = null): Paginator
     {
         if (null === $searchRequest || '' === $searchRequest) {
             return new Paginator([]);
         }
-
-//        $data = $this->searchResultCombiner->get(
-//            $this->getMixedData($searchRequest),
-//            $searchRequest,
-//            14
-//        );
-
         $pagesEntries = $this->pageRepo->search($searchRequest)->get();
         $postsEntries = $this->postRepo->search($searchRequest)->get();
 
-        return new Paginator($this->combineFromModel($pagesEntries, $postsEntries));
+        $searchResults = $this->searchResultCombiner->get(
+            $this->combineFromModel($pagesEntries, $postsEntries),
+            $searchRequest,
+            14
+        );
+
+        return new Paginator($searchResults);
     }
 
 
