@@ -44,6 +44,7 @@ class MedsThemeSeeder extends Seeder
 
     private function truncate(): void
     {
+        DB::statement('ALTER TABLE default_pages_default_pages_translations MODIFY content MEDIUMTEXT;');
         DB::table('pages_default_pages')->truncate();
         DB::table('pages_default_pages_translations')->truncate();
         DB::table('pages_pages')->truncate();
