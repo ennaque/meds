@@ -166,7 +166,7 @@ class Seeder10 extends Seeder
                     </ul></td>
                 </tr>
                 <tr>
-                    <td style="display: none;"></td>
+                    <td></td>
                     <td>Аэрозольтерапия</td>
                     <td><ul>
                         <li>Ингаляции небулайзерные</li>
@@ -174,12 +174,12 @@ class Seeder10 extends Seeder
                     </ul></td>
                 </tr>
                 <tr>
-                    <td style="display: none;"></td>
+                    <td></td>
                     <td>Массаж детям</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="display: none;"></td>
+                    <td></td>
                     <td>Лечебная физкультура (ЛФК)</td>
                     <td><ul>
                         <li>Групповые и индивидуальные занятия на тренажёрах с инструктором</li>
@@ -200,8 +200,8 @@ class Seeder10 extends Seeder
                     </ul></td>
                 </tr>
                 <tr>
-                    <td><b>ФУНКЦИОНАЛЬНАЯ ДИАГНОСТИКА</b></td>
-                    <td style="display: none;"></td>
+                    <td><b>Функциональная диагностика</b></td>
+                    <td></td>
                     <td><ul>
                         <li>Электрокардиограмма (ЭКГ)</li>
                         <li>Исследование функций внешнего дыхания (ФВД)</li>
@@ -221,7 +221,7 @@ class Seeder10 extends Seeder
                     </ul></td>
                 </tr>
                 <tr>
-                    <td style="display: none;"></td>
+                    <td></td>
                     <td>Исследование кала</td>
                     <td><ul>
                         <li>Копрологическое исследование</li>
@@ -233,7 +233,7 @@ class Seeder10 extends Seeder
                 </tr>
                 <tr>
                     <td><b>Гематологические исследования</b></td>
-                    <td style="display: none;"></td>
+                    <td></td>
                     <td><ul>
                         <li>Клинический (общий) анализ крови по 18-ти параметрам</li>
                         <li>Определение скорости оседания эритроцитов (СОЭ)</li>
