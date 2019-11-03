@@ -142,6 +142,9 @@ class Seeder10 extends Seeder
         </a>
     </div>
     <div>
+        <p style="padding-bottom: 7px">
+            Услуги оказываемые в Детской поликлинике №1:
+        </p>
         <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
                 <tr>
