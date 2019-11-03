@@ -11,6 +11,8 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder5;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder7;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder10;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder11;
 use Illuminate\Support\Facades\DB;
 
 class MedsThemeSeeder extends Seeder
@@ -38,7 +40,9 @@ class MedsThemeSeeder extends Seeder
             Seeder4::class,
             Seeder5::class,
             Seeder6::class,
-            Seeder7::class
+            Seeder7::class,
+            Seeder10::class,
+            Seeder11::class
         ]);
     }
 
