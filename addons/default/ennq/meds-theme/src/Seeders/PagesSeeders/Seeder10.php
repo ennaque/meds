@@ -244,7 +244,7 @@ class Seeder10 extends Seeder
                     </ul></td>
                 </tr>
             </tbody>
-        <table>
+        </table>
     </div>
 </div>
 ';
