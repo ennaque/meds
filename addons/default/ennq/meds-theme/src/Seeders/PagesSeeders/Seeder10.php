@@ -71,9 +71,7 @@ class Seeder10 extends Seeder
 <div>
     <div>
         <p style="padding-bottom: 7px">
-            <span style="color: #ea1d14; font-size: large;" mce_style="color: #ea1d14; font-size: large;">
-                Уважаемые пациенты!
-            </span>
+            <h3 style="color: #ea1d14;">Уважаемые пациенты!</h3>
         </p>
         <p style="padding-bottom: 7px">
             <span style="color: red">Дома  №8, №11, №13 по бульвару Космонавтов в г. Красногоск закреплены за врачом Вибе Лилия Алексеевна. Просим Вас, обратить внимание при записи на прием через портал <a href="http://uslugi.mosreg.ru" mce_href="http://uslugi.mosreg.ru" target="_blank" rel="noopener noreferrer">uslugi.mosreg.ru</a> , Call-центр 8-800-550-50-30 , а также Call-центр КГБ№2 8-495-150-20-14. Спасибо!<br />
@@ -81,10 +79,9 @@ class Seeder10 extends Seeder
             </span>
         </p>
     </div>
-    <p><br /></p>
     <div>
         <p style="padding-bottom: 7px">
-            ГБУЗ МО «КГБ № 2» требуются:
+            <h3>ГБУЗ МО «КГБ № 2» требуются:</h3>
             <ul>
                 <li>врач-педиатр (возможность участвовать в социальной ипотеке)</li>
                 <li>заведующая педиатрическим отделением</li>
@@ -106,27 +103,27 @@ class Seeder10 extends Seeder
         </p>
     </div>
     <div>
-        <p style="padding-bottom: 7px">
-            <img src="/app/default/files-module/local/images/photos1_10.jpg">
+        <p style="padding-bottom: 7px; text-align: center">
+            <img src="/app/default/files-module/local/images/photos1_10.jpg" class="resizeable" width="800px">
         </p>
     </div>
     <div>
         <p style="padding-bottom: 7px">
             <b>
                 <p style="padding-bottom: 7px">
-                    Регистратура Детской поликлиники №1
-                    Режим работы регистратуры с 8.00 до 20.00 часов
-                    <span style="color: red">Телефон - 8 (495) 563-45-78; 8 (495) 563-22-57</span>
+                    <p>Регистратура Детской поликлиники №1</p>
+                    <p>Режим работы регистратуры с 8.00 до 20.00 часов</p>
+                    <p><span style="color: red">Телефон - 8 (495) 563-45-78; 8 (495) 563-22-57</span></p>
                 </p>
                 <p style="padding-bottom: 7px">
-                    Заведующая поликлиникой
-                    Ильясова Патимат Нуцалхановна
-                    <span style="color: red">Телефон - 8 (495) 563-36-49</span>
+                    <p>Заведующая поликлиникой</p>
+                    <p>Ильясова Патимат Нуцалхановна</p>
+                    <p><span style="color: red">Телефон - 8 (495) 563-36-49</span></p>
                 </p>
                 <p style="padding-bottom: 7px">
-                    Старшая медицинская сестра
-                    Панкова Оксана Александровна
-                    <span style="color: red">Телефон - 8 (495) 563-24-93</span>
+                    <p>Старшая медицинская сестра</p>
+                    <p>Панкова Оксана Александровна</p>
+                    <p><span style="color: red">Телефон - 8 (495) 563-24-93</span></p>
                 </p>
             </b>
         </p>
@@ -142,9 +139,7 @@ class Seeder10 extends Seeder
         </a>
     </div>
     <div>
-        <p style="padding-bottom: 7px">
-            Услуги оказываемые в Детской поликлинике №1:
-        </p>
+        <h3 style="padding-bottom: 15px; padding-top: 15px">Услуги оказываемые в Детской поликлинике №1:</h3>
         <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
                 <tr>

@@ -71,7 +71,7 @@ class Seeder11 extends Seeder
 <div>
     <div>
         <p style="padding-bottom: 7px">
-            ГБУЗ МО «КГБ № 2» требуются:
+            <h3>ГБУЗ МО «КГБ № 2» требуются:</h3>
             <ul>
                 <li>врач-педиатр (возможность участвовать в социальной ипотеке)</li>
                 <li>заведующая педиатрическим отделением</li>
@@ -93,8 +93,8 @@ class Seeder11 extends Seeder
         </p>
     </div>
     <div>
-        <p style="padding-bottom: 7px">
-            <img src="/app/default/files-module/local/images/photos1_11.jpg">
+        <p style="padding-bottom: 7px; text-align: center">
+            <img src="/app/default/files-module/local/images/photos1_11.jpg" class="resizeable" width="800px">
         </p>
     </div>
     <div>
@@ -104,24 +104,24 @@ class Seeder11 extends Seeder
             <span style="color: red">8 (800) 550-50-30</span>
             <b>
                 <p style="padding-bottom: 7px">
-                    Регистратура Детской поликлиники №2
-                    Режим работы регистратуры с 8.00 до 20.00 часов
-                    <span style="color: red">Телефон - 8 (495) 562-90-28; 8 (495) 561-00-45</span>
+                    <p>Регистратура Детской поликлиники №2</p>
+                    <p>Режим работы регистратуры с 8.00 до 20.00 часов</p>
+                    <p><span style="color: red">Телефон - 8 (495) 562-90-28; 8 (495) 561-00-45</span></p>
                 </p>
                 <p style="padding-bottom: 7px">
-                    Зам. главного врача по поликлинической работе
-                    Силкина Светлана Владимировна
-                    <span style="color: red">Телефон - 8 (495) 561-00-26</span>
+                    <p>Зам. главного врача по поликлинической работе</p>
+                    <p>Силкина Светлана Владимировна</p>
+                    <p><span style="color: red">Телефон - 8 (495) 561-00-26</span></p>
                 </p>
                 <p style="padding-bottom: 7px">
-                    Заведующий педиатрическим отделением
-                    Буровцев Вадим Владимирович
-                    <span style="color: red">Телефон - 8 (495) 562-23-33</span>
+                    <p>Заведующий педиатрическим отделением</p>
+                    <p>Буровцев Вадим Владимирович</p>
+                    <p><span style="color: red">Телефон - 8 (495) 562-23-33</span></p>
                 </p>
                 <p style="padding-bottom: 7px">
-                    Старшая медицинская сестра Детской поликлиники №2
-                    Калинина Жанна Васильевна
-                    <span style="color: red">Телефон - 8 (495) 562-23-33</span>
+                    <p>Старшая медицинская сестра Детской поликлиники №2</p>
+                    <p>Калинина Жанна Васильевна</p>
+                    <p><span style="color: red">Телефон - 8 (495) 562-23-33</span></p>
                 </p>
             </b>
         </p>
@@ -137,9 +137,9 @@ class Seeder11 extends Seeder
         </a>
     </div>
     <div>
-        <p style="padding-bottom: 7px">
+        <h3 style="padding-bottom: 15px; padding-top: 15px">
             Услуги оказываемые в Детской поликлинике №2:
-        </p>
+        </h3>
         <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
                 <tr>
