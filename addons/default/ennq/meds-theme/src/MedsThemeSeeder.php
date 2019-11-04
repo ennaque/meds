@@ -7,6 +7,8 @@ namespace Ennq\MedsTheme;
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder12;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder13;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder5;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
@@ -42,7 +44,9 @@ class MedsThemeSeeder extends Seeder
             Seeder6::class,
             Seeder7::class,
             Seeder10::class,
-            Seeder11::class
+            Seeder11::class,
+            Seeder12::class,
+            Seeder13::class,
         ]);
     }
 
