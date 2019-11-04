@@ -101,7 +101,6 @@
             "php7.1 artisan cache:clear",
             "php7.1 artisan httpcache:clear",
             "php7.1 artisan route:clear",
-            "php7.1 artisan storage:link",
             "php7.1 artisan twig:clear",
             "php7.1 artisan view:clear"
         ],
@@ -111,7 +110,6 @@
             "php7.1 artisan cache:clear",
             "php7.1 artisan httpcache:clear",
             "php7.1 artisan route:clear",
-            "php7.1 artisan storage:link",
             "php7.1 artisan twig:clear",
             "php7.1 artisan view:clear"
         ]
@@ -152,6 +150,7 @@
     "config": {
         "bin-dir": "bin",
         "preferred-install": "dist",
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "process-timeout": 2000
     }
 }

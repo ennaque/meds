@@ -1,6 +1,7 @@
 <?php namespace Ennq\MedsTheme;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Ennq\MedsTheme\Command\ImageMigrationCommand;
 use Illuminate\Routing\Router;
 
 class MedsThemeServiceProvider extends AddonServiceProvider
@@ -18,7 +19,9 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      *
      * @type array|null
      */
-    protected $commands = [];
+    protected $commands = [
+        ImageMigrationCommand::class
+    ];
 
     /**
      * The addon's scheduled commands.
