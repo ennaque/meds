@@ -6,7 +6,7 @@ use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
-class Seeder6 extends Seeder
+class Seeder3 extends Seeder
 {
     /**
      * The page repository.
@@ -78,7 +78,7 @@ class Seeder6 extends Seeder
                     <p style='padding-bottom: 7px; font-weight: bold'>
                         График приема посетителей:
                     </p>
-                    <p style='padding-bottom: 7px>
+                    <p style='padding-bottom: 7px'>
                         Понедельник 15.00-17.00
                     </p>
                 </div>    
