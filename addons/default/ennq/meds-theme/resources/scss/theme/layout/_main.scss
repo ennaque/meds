@@ -159,8 +159,13 @@
     background: #496280;
     color: #8a999a;
     font-size: 12px;
-    padding-top: 34px;
-    padding-bottom: 34px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.no-padding {
+  padding: 0;
+  margin: 0;
 }
 
 /*media queries*/
