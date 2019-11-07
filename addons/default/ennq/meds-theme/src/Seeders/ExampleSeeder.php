@@ -93,7 +93,7 @@ class ExampleSeeder extends Seeder
             ]
         )->allowedRoles()->sync([]);
 
-        for ($i = 0; $i < 20; $i ++) {
+        for ($i = 0; $i < 26; $i ++) {
             $this->pages->create(
                 [
                     'en'           => [

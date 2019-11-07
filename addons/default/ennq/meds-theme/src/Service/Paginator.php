@@ -4,100 +4,169 @@
 namespace Ennq\MedsTheme\Service;
 
 
-use Symfony\Component\HttpFoundation\Request;
+use Countable;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Route;
+use function is_numeric;
 
 class Paginator
 {
-    private const PAGINATION_KEY = 'page';
+    public const PAGINATION_KEY = 'page';
 
     /** @var int */
     private $perPage;
     /** @var int */
     private $currentPage;
-    /** @var \Countable */
+    /** @var Countable */
     private $items;
     /** @var int */
     private $total;
 
-    public function __construct($items, int $perPage = 5, int $currentPage = 1)
+    public function __construct($items, ?int $total = null, int $perPage = 5, int $currentPage = 1)
     {
         $realCurrentPage = app('request')->get(self::PAGINATION_KEY);
-        if (\is_numeric($realCurrentPage)) {
+        if (is_numeric($realCurrentPage)) {
             $this->currentPage = $realCurrentPage;
         } else {
             $this->currentPage = $currentPage;
         }
         $this->perPage = $perPage;
         $this->items = $items;
-        $this->total = count($items);
+        $this->total = $total ?? count($items);
     }
 
-    public function getPaginatedItems(): array
+    /**
+     * @return bool
+     */
+    public function hasNextPage(): bool
     {
-        return array_slice((array)$this->items, ($this->currentPage - 1) * 5, $this->perPage);
+        return !($this->getPaginationLength() === $this->currentPage);
     }
 
-    public function render(): string
+    /**
+     * @return bool
+     */
+    public function hasPreviousPage(): bool
     {
-        return view('theme::partials/pagination', [
-            'page' => $this->currentPage,
-            'pagination' => $this->getPaginationArray($this->currentPage),
-            'link' => '/search?query=' . app('request')->get('query') //TODO: fix this shit
-        ]);
+        return (false !== Input::get(self::PAGINATION_KEY, false)
+            && 1 !== Input::get(self::PAGINATION_KEY));
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrentPage(): string
+    {
+        return $this->getPage($this->currentPage);
     }
 
     /**
      * @return int
      */
-    private function getPaginationLength(): int
+    public function getCurrentPageIndex(): int
+    {
+        return $this->currentPage;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNextPage(): ?string
+    {
+        if ($this->hasNextPage()) {
+            return $this->getPage($this->currentPage + 1);
+        }
+
+        return null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPreviousPage(): ?string
+    {
+        if ($this->hasPreviousPage()) {
+            return $this->getPage($this->currentPage - 1);
+        }
+
+        return null;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLastPageIndex(): int
+    {
+        return $this->getPaginationLength();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstPage(): string
+    {
+        return $this->getPage(1);
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastPage(): string
+    {
+        return $this->getPage($this->getPaginationLength());
+    }
+
+    /**
+     * @return array
+     */
+    public function getPaginatedItems(): array
+    {
+        return array_slice((array)$this->items, ($this->currentPage - 1) * 5, $this->perPage);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPaginationLength(): int
     {
         return (int)ceil($this->total / $this->perPage);
     }
 
     /**
-     * @param int $page
-     * @return array|null
+     * @return string
      */
-    private function getPaginationArray(int $page): ?array
+    public function render(): string
     {
-        $length = $this->getPaginationLength();
+        return view('theme::partials/pagination', [
+            'paginator' => $this
+        ]);
+    }
 
-        if (($page < 1) || ($page > $length) || ($length <= 1)) {
+    /**
+     * @param int $offset
+     * @return string|null
+     */
+    public function getPageByOffset(int $offset): ?string
+    {
+        if (0 === $offset) {
+            return $this->getCurrentPage();
+        }
+        if ($this->currentPage + $offset < 1 || $this->currentPage + $offset > $this->total) {
             return null;
         }
 
-        if ($length <= 5) {
-            for ($i = 1; $i <= $length; ++$i) {
-                $arr[] = (string)$i;
-            }
-            return $arr ?? null;
-        }
-
-        switch ($page) {
-            case 1:
-            case 2:
-            case 3:
-                $arr = ['1', '2', '3', '4', '...', (string)$length];
-                break;
-            case $length:
-            case $length - 1:
-            case $length - 2:
-                $arr = ['1', '...', (string)($length - 3), (string)($length - 2), (string)($length - 1), (string)($length)];
-                break;
-            default:
-                $arr = ['1', '...', (string)($page - 1), (string)($page), (string)($page + 1), '...', (string)$length];
-                break;
-        }
-
-        return $arr;
+        return $this->getPage($offset);
     }
 
-
-
-    public function getCurrentPageUrl()
+    /**
+     * @param int $page
+     * @return string
+     */
+    protected function getPage(int $page): string
     {
-        $se = app('request')->getUri();
+        $parameters = Input::get();
+        $parameters[self::PAGINATION_KEY] = $page;
 
-        return $this->currentPage;
+        return route(Route::currentRouteName(), $parameters);
     }
 }

@@ -48,7 +48,7 @@ class Seeder6 extends Seeder
                 'ru'           => [
                     'title' => 'Лицензии ГБУЗ МО «Красногорская городская больница № 2»',
                 ],
-                'slug'         => '/licenses',
+                'slug'         => '/license1s',
                 'entry'        => $type->getEntryModel()->create(
                     [
                         'ru' => [
