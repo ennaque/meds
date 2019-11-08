@@ -9,6 +9,10 @@
     min-height: 1vh;
 }
 
+.logo {
+    max-width: 400px;
+}
+
 .logo_section {
     background: #e9f4f6;
     //background: black;
@@ -155,8 +159,13 @@
     background: #496280;
     color: #8a999a;
     font-size: 12px;
-    padding-top: 34px;
-    padding-bottom: 34px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.no-padding {
+  padding: 0;
+  margin: 0;
 }
 
 /*media queries*/
@@ -260,4 +269,34 @@
     text-decoration: none;
 }
 
-/*/pages styles*/
+.dataTables_filter {
+    float: right !important;
+}
+
+.dataTables_paginate {
+    float: right !important;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+/* /pages styles */
+
+/* resizable images */
+@media screen and (max-width: 1200px) and (min-width:768px) {
+    .resizeable {
+        max-width: 600px !important;
+    }
+}
+@media screen and (max-width: 768px) and (min-width:560px) {
+    .resizeable {
+        max-width: 450px !important;
+    }
+}
+@media screen and (max-width: 560px) {
+    .resizeable {
+        max-width: 300px !important;
+    }
+}
+/* /resizable images */
