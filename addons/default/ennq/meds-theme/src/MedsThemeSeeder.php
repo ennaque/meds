@@ -7,15 +7,21 @@ namespace Ennq\MedsTheme;
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
-use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder12;
-use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder13;
+
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder2;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder3;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder5;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder7;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder8;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder9;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder10;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder11;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder12;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder13;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder17;
+
 use Illuminate\Support\Facades\DB;
 
 class MedsThemeSeeder extends Seeder
@@ -41,11 +47,13 @@ class MedsThemeSeeder extends Seeder
 
         $this->call([
             Seeder2::class,
+            Seeder3::class,
             Seeder4::class,
             Seeder5::class,
             Seeder6::class,
             Seeder7::class,
             Seeder8::class,
+            Seeder9::class,
             Seeder10::class,
             Seeder11::class,
             Seeder12::class,
