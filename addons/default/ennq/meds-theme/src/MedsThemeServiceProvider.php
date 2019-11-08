@@ -100,7 +100,7 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $bindings = [
-        'Ennq\MedsTheme\Lib\SearchResultCombinerInterface' => 'Ennq\MedsTheme\Service\SearchResultCombiner',
+        'Ennq\MedsTheme\Lib\SearchResultFormatterInterface' => 'Ennq\MedsTheme\Service\SearchResultFormatter',
         'Ennq\MedsTheme\Lib\SearchInterface' => 'Ennq\MedsTheme\Service\SearchEngine'
     ];
 

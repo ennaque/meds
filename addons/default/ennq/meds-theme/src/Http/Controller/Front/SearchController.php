@@ -3,10 +3,14 @@
 namespace Ennq\MedsTheme\Http\Controller\Front;
 
 use Anomaly\PagesModule\Page\PageModel;
+use Anomaly\PagesModule\Page\PageRepository;
+use Anomaly\PostsModule\Post\PostModel;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Service\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -19,11 +23,12 @@ class SearchController extends PublicController
 
     /**@var SearchInterface */
     private $search;
-
-    public function __construct(SearchInterface $search)
+    private $pr;
+    public function __construct(SearchInterface $search, PageRepository $pr)
     {
         parent::__construct();
         $this->search = $search;
+        $this->pr = $pr;
     }
 
     /**
@@ -32,15 +37,10 @@ class SearchController extends PublicController
      */
     public function index(Request $request)//: View
     {
-//        dump($request->getRequestUri());
-//        dump(Route::currentRouteName());
-//        dump(Route::getCurrentRoute()->parameters());
+//        dump($this->pr->countAll('TEST')->total);
 //        return;
-//        return 'test';
-        $paginator = $this->search->paginate($request->get(self::SEARCH_QUERY));
 
-//        dump($paginator->getPaginationLength());
-//        return ;
+        $paginator = $this->search->paginate($request->get(self::SEARCH_QUERY));
 
         return view('theme::front/search_result', [
             'entities' => $paginator->getPaginatedItems(),

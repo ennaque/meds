@@ -2,34 +2,11 @@
 
 namespace Ennq\MedsTheme\Service;
 
-use Ennq\MedsTheme\Lib\SearchResultCombinerInterface;
+use Ennq\MedsTheme\Lib\SearchResultFormatterInterface;
 use Ennq\MedsTheme\Lib\SearchEntry;
 
-/*
-PROTECTION THE CODE BY
-                              |~~~~~|        _____       _____
-         _____                  \~~~/ /~~~~\ /   __|     /   __|
-        |  =  |\                 | | |  o  / \  /  _  _  \  /
-        |  =  | \           |~|  | | | /~~~   \ \  || ||  \ \
-        |  =  |  |          \ \_/  / | |___    \ \ ||_||   \ \
- _______|  =  |__|____       \____/  |_____||\__| ||___||\__| |
-|          =          |\                    \____/      \____/
-| =================== | \               ,   ,
-|_______   =   _______|  |             /////|                 _.-/`)
- \      |  =  |\       \ |            ///// |                // / / )
-  \_____|  =  | \_______\|           /////  |             .=// / / / )
-        |  =  |  |                  |~~~| | |            //`/ / / / /
-        |  =  |  |                  |===| |/|           // /     ` /
-        |  =  |  |                  | B |/| |          ||         /
-        |  =  |  |                  | I | | |           \\       /
-        |  =  |  |                  | B | | |            ))    .'
-        |  =  |  |                  | L |  /            //    /
-        |_____|  |                  | E | /                  /  PRAY TO MAKE IT WORK
-        \      \ |                  |===|/
-         \______\|                  '---'
-*/
 
-class SearchResultCombiner implements SearchResultCombinerInterface
+class SearchResultFormatter implements SearchResultFormatterInterface
 {
     /**
      * @param array<SearchEntry> $data
@@ -37,7 +14,7 @@ class SearchResultCombiner implements SearchResultCombinerInterface
      * @param int $num
      * @return array<string>
      */
-    public function get(array $data, string $needle, int $num = 1): array
+    public function get(array $data, string $needle, int $num = 20): array
     {
         $result = [];
         foreach ($data as $iValue) {

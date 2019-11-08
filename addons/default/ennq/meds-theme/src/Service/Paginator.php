@@ -22,7 +22,7 @@ class Paginator
     /** @var int */
     private $total;
 
-    public function __construct($items, ?int $total = null, int $perPage = 5, int $currentPage = 1)
+    public function __construct($items = [], ?int $total = null, int $perPage = 10, int $currentPage = 1)
     {
         $realCurrentPage = app('request')->get(self::PAGINATION_KEY);
         if (is_numeric($realCurrentPage)) {
@@ -33,6 +33,11 @@ class Paginator
         $this->perPage = $perPage;
         $this->items = $items;
         $this->total = $total ?? count($items);
+    }
+
+    public function setItems($items): self
+    {
+        $this->items = $items;
     }
 
     /**

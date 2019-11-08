@@ -2,7 +2,7 @@
 
 namespace Ennq\MedsTheme\Lib;
 
-interface SearchResultCombinerInterface
+interface SearchResultFormatterInterface
 {
     /**
      * @param array<SearchEntry> $data
@@ -10,5 +10,5 @@ interface SearchResultCombinerInterface
      * @param int $num
      * @return array<SearchEntry>
      */
-    public function get(array $data, string $needle, int $num = 1): array;
+    public function get(array $data, string $needle, int $num = 20): array;
 }

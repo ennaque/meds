@@ -10,12 +10,12 @@ use Anomaly\PostsModule\Post\PostModel;
 use Anomaly\PostsModule\Post\PostRepository;
 use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
-use Ennq\MedsTheme\Lib\SearchResultCombinerInterface;
+use Ennq\MedsTheme\Lib\SearchResultFormatterInterface;
 use stdClass;
 
 class SearchEngine implements SearchInterface
 {
-    /** @var SearchResultCombinerInterface */
+    /** @var SearchResultFormatterInterface */
     private $searchResultCombiner;
     /** @var PageRepository */
     private $pageRepo;
@@ -23,7 +23,7 @@ class SearchEngine implements SearchInterface
     private $postRepo;
 
     public function __construct(
-        SearchResultCombinerInterface $searchResultCombiner,
+        SearchResultFormatterInterface $searchResultCombiner,
         PageRepository $pageRepository,
         PostRepository $postRepository
     )
@@ -42,18 +42,68 @@ class SearchEngine implements SearchInterface
         if (null === $searchRequest || '' === $searchRequest) {
             return new Paginator([]);
         }
-        $pagesEntries = $this->pageRepo->search($searchRequest)->get();
-        $postsEntries = $this->postRepo->search($searchRequest)->get();
 
-        $searchResults = $this->searchResultCombiner->get(
-            $this->combineFromModel($pagesEntries, $postsEntries),
-            $searchRequest,
-            14
-        );
+        $pagesCount = $this->pageRepo->countByNeedle($searchRequest)->total;
+        $postsCount = $this->postRepo->countByNeedle($searchRequest)->total;
 
-        return new Paginator($searchResults);
+        $paginator = new Paginator([], $pagesCount + $postsCount);
+
+        $searchResults = $this->getSearchResults($searchRequest, $pagesCount, $postsCount, $paginator->getPaginationLength());
+
+        $formattedSearchResults = $this->searchResultCombiner->get($searchResults, $searchRequest);
+
+        return $paginator->setItems($formattedSearchResults);
     }
 
+    private function getSearchResults(string $needle, int $pages, int $posts, int $paginationPage)
+    {
+        $offset = ($paginationPage - 1) * 10;
+        if (!$pages && $posts) {
+            return $this->combineFromStd(
+                [],
+                $this->postRepo->searchLikeContentOrTitle($needle, $offset, 10)
+            );
+        }
+        if (!$posts && $pages) {
+            return $this->combineFromStd(
+                $this->pageRepo->searchLikeContentOrTitle($needle, $offset, 10),
+                []
+            );
+        }
+        if (0 === $offset) {
+            return $this->combineFromStd(
+                $this->postRepo->searchLikeContentOrTitle($needle, 0, 10),
+                $this->pageRepo->searchLikeContentOrTitle($needle, 0, 10)
+            );
+        }
+        if ($pages >= $offset + 10) {
+            return $this->combineFromStd(
+                $this->pageRepo->searchLikeContentOrTitle($needle, $offset, 10),
+                []
+            );
+        }
+
+        $pagesOffset = $pages - $offset;
+        $postsOffset = 10 - $pagesOffset;
+
+        if ($pagesOffset < 0) {
+            $postsOffset = $offset - $pages;
+        }
+
+        return $this->combineFromStd(
+            $this->postRepo->searchLikeContentOrTitle($needle, $postsOffset, 10),
+            $this->pageRepo->searchLikeContentOrTitle($needle, $pagesOffset, 10)
+        );
+    }
+
+    ///     3 page - offset 20
+    ///     12 pages
+    ///     30 posts
+    ///
+    ///     1page: 10 pages(0, 10) 0 posts
+    ///     2page: 2(10, 12) pages 8(0, 8) posts
+    ///     3page: 0 pages 10(8, 18) posts
+    ///
 
     /**
      * @param string $searchRequest
@@ -65,14 +115,22 @@ class SearchEngine implements SearchInterface
         if (null === $searchRequest || '' === $searchRequest) {
             return [];
         }
-//        !!! IMPORTANT SHIT !!!
-//        It needs creating fulltext index for title and content fields.
+
+        $result = $this->getCombinedSearchResult($searchRequest);
+
+        return array_slice($result, 0, $limit);
+    }
+
+    /**
+     * @param string $searchRequest
+     * @return array
+     */
+    private function getCombinedSearchResult(string $searchRequest): array
+    {
         $pagesContentTitleData = $this->pageRepo->searchLikeContentOrTitle($searchRequest);
         $postsContentTitleData = $this->postRepo->searchLikeContentOrTitle($searchRequest);
 
-        $resData = $this->combineFromStd($pagesContentTitleData, $postsContentTitleData);
-
-        return array_slice($resData, 0, $limit);
+        return $this->combineFromStd($pagesContentTitleData, $postsContentTitleData);
     }
 
     /**
@@ -98,37 +156,6 @@ class SearchEngine implements SearchInterface
                 PostModel::class,
                 $postsEntry->content,
                 $postsEntry->title
-            );
-        }
-
-        return $resultArray ?? [];
-    }
-
-    /**
-     * @param iterable<PageModel> $pages
-     * @param iterable<PostModel> $posts
-     * @return array<SearchEntry>
-     */
-    private function combineFromModel(iterable $pages, iterable $posts): array
-    {
-        /** @var PageModel $pagesEntry */
-        foreach ($pages as $pagesEntry) {
-            $resultArray[] = SearchEntry::newInstance(
-                $pagesEntry->getId(),
-                $pagesEntry->getPath(),
-                PageModel::class,
-                $pagesEntry->content(),
-                $pagesEntry->getTitle()
-            );
-        }
-        /** @var PostModel $postsEntry */
-        foreach ($posts as $postsEntry) {
-            $resultArray[] = SearchEntry::newInstance(
-                $postsEntry->getId(),
-                PostModel::URL_SLUG . $postsEntry->getSlug(),
-                PostModel::class,
-                $postsEntry->content(),
-                $postsEntry->getTitle()
             );
         }
 
