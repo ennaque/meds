@@ -99,9 +99,9 @@ class Seeder11 extends Seeder
     </div>
     <div>
         <p style="padding-bottom: 7px">
-            <span style="color: red">Call центр (единый центр телефонных звонков)</span>
-            <span style="color: red">8 (495) 150-20-14</span>
-            <span style="color: red">8 (800) 550-50-30</span>
+            <p><span style="color: red">Call центр (единый центр телефонных звонков)</span></p>
+            <p><span style="color: red">8 (495) 150-20-14</span></p>
+            <p><span style="color: red">8 (800) 550-50-30</span></p>
             <b>
                 <p style="padding-bottom: 7px">
                     <p>Регистратура Детской поликлиники №2</p>
@@ -126,7 +126,7 @@ class Seeder11 extends Seeder
             </b>
         </p>
         <p style="padding-bottom: 7px">
-            <b>Детская поликлиника №2</b> расположена по адресу г. Красногорск, Ильинское шоссе, военный городок Павшино, д. 2В.
+            <b>Детская поликлиника №2</b> расположена по адресу г. Красногорск, Ильинское шоссе, военный городок Павшино, д. 2В.</b>
         </p>
     </div>
     <div style="text-align: center; padding-bottom: 20px; padding-top: 20px">
