@@ -195,7 +195,7 @@ class PostRepository extends EntryRepository implements PostRepositoryInterface
     public function countByNeedle(string $needle)
     {
         return DB::select('
-            SELECT COUNT(*) FROM `default_posts_posts`
+            SELECT COUNT(*) AS total FROM `default_posts_posts`
                 JOIN `default_posts_default_posts_translations`
                     ON `default_posts_default_posts_translations`.`entry_id` = `default_posts_posts`.`id`
                 JOIN `default_posts_posts_translations`

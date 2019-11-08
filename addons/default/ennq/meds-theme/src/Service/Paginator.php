@@ -5,11 +5,13 @@ namespace Ennq\MedsTheme\Service;
 
 
 use Countable;
+use Ennq\MedsTheme\Lib\PaginatorInterface;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Route;
 use function is_numeric;
 
-class Paginator
+class Paginator implements PaginatorInterface
 {
     public const PAGINATION_KEY = 'page';
 
@@ -35,9 +37,11 @@ class Paginator
         $this->total = $total ?? count($items);
     }
 
-    public function setItems($items): self
+    public function setItems($items): PaginatorInterface
     {
         $this->items = $items;
+
+        return $this;
     }
 
     /**
@@ -62,7 +66,7 @@ class Paginator
      */
     public function getCurrentPage(): string
     {
-        return $this->getPage($this->currentPage);
+        return $this->getPageByIndex($this->currentPage);
     }
 
     /**
@@ -79,7 +83,7 @@ class Paginator
     public function getNextPage(): ?string
     {
         if ($this->hasNextPage()) {
-            return $this->getPage($this->currentPage + 1);
+            return $this->getPageByIndex($this->currentPage + 1);
         }
 
         return null;
@@ -91,7 +95,7 @@ class Paginator
     public function getPreviousPage(): ?string
     {
         if ($this->hasPreviousPage()) {
-            return $this->getPage($this->currentPage - 1);
+            return $this->getPageByIndex($this->currentPage - 1);
         }
 
         return null;
@@ -110,7 +114,7 @@ class Paginator
      */
     public function getFirstPage(): string
     {
-        return $this->getPage(1);
+        return $this->getPageByIndex(1);
     }
 
     /**
@@ -118,7 +122,7 @@ class Paginator
      */
     public function getLastPage(): string
     {
-        return $this->getPage($this->getPaginationLength());
+        return $this->getPageByIndex($this->getPaginationLength());
     }
 
     /**
@@ -126,7 +130,15 @@ class Paginator
      */
     public function getPaginatedItems(): array
     {
-        return array_slice((array)$this->items, ($this->currentPage - 1) * 5, $this->perPage);
+        return array_slice((array)$this->items, ($this->currentPage - 1) * 10, $this->perPage);
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllItems(): array
+    {
+        return $this->items;
     }
 
     /**
@@ -160,18 +172,56 @@ class Paginator
             return null;
         }
 
-        return $this->getPage($offset);
+        return $this->getPageByIndex($offset);
+    }
+
+    public function getPerPage(): int
+    {
+        return $this->perPage;
     }
 
     /**
      * @param int $page
      * @return string
      */
-    protected function getPage(int $page): string
+    protected function getPageByIndex(int $page): string
     {
         $parameters = Input::get();
         $parameters[self::PAGINATION_KEY] = $page;
 
         return route(Route::currentRouteName(), $parameters);
+    }
+
+    public function __toString()
+    {
+        $str = json_encode($this->getPaginatedItems(), JSON_UNESCAPED_UNICODE);
+
+        if (!is_string($str)) {
+            throw new \InvalidArgumentException('something went wrong');
+        }
+
+        return $str;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return $this->__toString();
+    }
+
+    /**
+     * Get the instance as an array.
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return $this->getAllItems();
     }
 }

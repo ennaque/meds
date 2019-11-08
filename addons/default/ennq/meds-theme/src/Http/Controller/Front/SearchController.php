@@ -37,29 +37,31 @@ class SearchController extends PublicController
      */
     public function index(Request $request)//: View
     {
-//        dump($this->pr->countAll('TEST')->total);
-//        return;
-
         $paginator = $this->search->paginate($request->get(self::SEARCH_QUERY));
 
         return view('theme::front/search_result', [
-            'entities' => $paginator->getPaginatedItems(),
             'query' => $request->get('query'),
-            'pag' => $paginator
+            'paginator' => $paginator
         ]);
     }
 
     public function asyncSearch(Request $request): View
     {
-        $searchResult = $this->search->search($request->get(self::SEARCH_QUERY));
-
-        $json = json_encode($searchResult, JSON_UNESCAPED_UNICODE);
+        try {
+            $paginator = $this->search->paginate($request->get(self::SEARCH_QUERY));
+            $json = json_encode($paginator, JSON_UNESCAPED_UNICODE);
+        } catch (\Exception $e) {
+            return view('theme::front/api', [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
+            ]);
+        }
 
         return view('theme::front/api', [
             'code' => 200,
             'message' => 'OK',
-            'list' => 1,
-            'listof' => 1,
+            'list' => $paginator->getCurrentPageIndex(),
+            'listof' => $paginator->getPaginationLength(),
             'data' => $json
         ]);
     }

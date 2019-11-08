@@ -9,7 +9,7 @@
             Поиск не дал результатов.
         {% endif %}
         {% if entities is not empty %}
-                {% for entity in entities %}
+                {% for entity in paginator.getAllItems() %}
                     <div class="search-entry">
                         <a href="{{ entity.link }}" class="search-entry-link">
                             {{ entity.title }}
@@ -21,6 +21,6 @@
                     </div>
                 {% endfor %}
         {% endif %}
-        {{ pag.render() | raw }}
+        {{ paginator.render() | raw }}
     </div>
 {% endblock %}

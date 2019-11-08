@@ -20,5 +20,5 @@ interface SearchInterface
      * @param string $request
      * @return Paginator
      */
-    public function paginate(string $request): Paginator;
+    public function paginate(string $request): PaginatorInterface;
 }

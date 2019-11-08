@@ -8,6 +8,7 @@ use Anomaly\PagesModule\Page\PageModel;
 use Anomaly\PagesModule\Page\PageRepository;
 use Anomaly\PostsModule\Post\PostModel;
 use Anomaly\PostsModule\Post\PostRepository;
+use Ennq\MedsTheme\Lib\PaginatorInterface;
 use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Lib\SearchResultFormatterInterface;
@@ -16,19 +17,18 @@ use stdClass;
 class SearchEngine implements SearchInterface
 {
     /** @var SearchResultFormatterInterface */
-    private $searchResultCombiner;
+    private $searchResultFormatter;
     /** @var PageRepository */
     private $pageRepo;
     /** @var PostRepository */
     private $postRepo;
 
     public function __construct(
-        SearchResultFormatterInterface $searchResultCombiner,
+        SearchResultFormatterInterface $searchResultFormatter,
         PageRepository $pageRepository,
         PostRepository $postRepository
-    )
-    {
-        $this->searchResultCombiner = $searchResultCombiner;
+    ) {
+        $this->searchResultFormatter = $searchResultFormatter;
         $this->pageRepo = $pageRepository;
         $this->postRepo = $postRepository;
     }
@@ -37,7 +37,7 @@ class SearchEngine implements SearchInterface
      * @param string $searchRequest
      * @return Paginator<SearchEntry>
      */
-    public function paginate(string $searchRequest = null): Paginator
+    public function paginate(string $searchRequest = null): PaginatorInterface
     {
         if (null === $searchRequest || '' === $searchRequest) {
             return new Paginator([]);
@@ -48,62 +48,73 @@ class SearchEngine implements SearchInterface
 
         $paginator = new Paginator([], $pagesCount + $postsCount);
 
-        $searchResults = $this->getSearchResults($searchRequest, $pagesCount, $postsCount, $paginator->getPaginationLength());
+        $searchResults = $this->getCombinedSearchResult(
+            $searchRequest,
+            $pagesCount,
+            $postsCount,
+            $paginator->getCurrentPageIndex(),
+            $paginator->getPerPage()
+        );
 
-        $formattedSearchResults = $this->searchResultCombiner->get($searchResults, $searchRequest);
+//        $formattedSearchResults = $this->$searchResultFormatter->get($searchResults, $searchRequest);
 
-        return $paginator->setItems($formattedSearchResults);
+        return $paginator->setItems($searchResults);
     }
 
-    private function getSearchResults(string $needle, int $pages, int $posts, int $paginationPage)
+    /**
+     * @param string $needle
+     * @param int $pages
+     * @param int $posts
+     * @param int $paginationPage
+     * @param int $perPage
+     * @return array
+     */
+    private function getCombinedSearchResult(
+        string $needle,
+        int $pages,
+        int $posts,
+        int $paginationPage,
+        int $perPage
+    ): array
     {
-        $offset = ($paginationPage - 1) * 10;
+        $offset = ($paginationPage - 1) * $perPage;
+
         if (!$pages && $posts) {
             return $this->combineFromStd(
                 [],
-                $this->postRepo->searchLikeContentOrTitle($needle, $offset, 10)
+                $this->postRepo->searchLikeContentOrTitle($needle, $offset, $perPage)
             );
         }
         if (!$posts && $pages) {
             return $this->combineFromStd(
-                $this->pageRepo->searchLikeContentOrTitle($needle, $offset, 10),
+                $this->pageRepo->searchLikeContentOrTitle($needle, $offset, $perPage),
                 []
             );
         }
         if (0 === $offset) {
             return $this->combineFromStd(
-                $this->postRepo->searchLikeContentOrTitle($needle, 0, 10),
-                $this->pageRepo->searchLikeContentOrTitle($needle, 0, 10)
-            );
-        }
-        if ($pages >= $offset + 10) {
-            return $this->combineFromStd(
-                $this->pageRepo->searchLikeContentOrTitle($needle, $offset, 10),
+                $this->pageRepo->searchLikeContentOrTitle($needle, 0, $perPage),
                 []
             );
         }
-
-        $pagesOffset = $pages - $offset;
-        $postsOffset = 10 - $pagesOffset;
-
-        if ($pagesOffset < 0) {
-            $postsOffset = $offset - $pages;
+        if ($pages >= $offset + $perPage) {
+            return $this->combineFromStd(
+                $this->pageRepo->searchLikeContentOrTitle($needle, $offset, $perPage),
+                []
+            );
+        }
+        if (($pagesRest = ($pages - $offset)) > 0) {
+            return $this->combineFromStd(
+                $this->pageRepo->searchLikeContentOrTitle($needle, $offset, $pagesRest),
+                $this->postRepo->searchLikeContentOrTitle($needle, 0, $perPage - $pagesRest)
+            );
         }
 
         return $this->combineFromStd(
-            $this->postRepo->searchLikeContentOrTitle($needle, $postsOffset, 10),
-            $this->pageRepo->searchLikeContentOrTitle($needle, $pagesOffset, 10)
+            [],
+            $this->postRepo->searchLikeContentOrTitle($needle, $offset - $pages, $perPage)
         );
     }
-
-    ///     3 page - offset 20
-    ///     12 pages
-    ///     30 posts
-    ///
-    ///     1page: 10 pages(0, 10) 0 posts
-    ///     2page: 2(10, 12) pages 8(0, 8) posts
-    ///     3page: 0 pages 10(8, 18) posts
-    ///
 
     /**
      * @param string $searchRequest
@@ -116,16 +127,29 @@ class SearchEngine implements SearchInterface
             return [];
         }
 
-        $result = $this->getCombinedSearchResult($searchRequest);
+        $pagesCount = $this->pageRepo->countByNeedle($searchRequest)->total;
+        $postsCount = $this->postRepo->countByNeedle($searchRequest)->total;
 
-        return array_slice($result, 0, $limit);
+        $paginator = new Paginator([], $pagesCount + $postsCount);
+
+        $searchResults = $this->getCombinedSearchResult(
+            $searchRequest,
+            $pagesCount,
+            $postsCount,
+            $paginator->getCurrentPageIndex(),
+            $paginator->getPerPage()
+        );
+
+//        $formattedSearchResults = $this->$searchResultFormatter->get($searchResults, $searchRequest);
+
+        return $paginator->setItems($searchResults)->toArray();
     }
 
     /**
      * @param string $searchRequest
      * @return array
      */
-    private function getCombinedSearchResult(string $searchRequest): array
+    private function getSearchResult(string $searchRequest): array
     {
         $pagesContentTitleData = $this->pageRepo->searchLikeContentOrTitle($searchRequest);
         $postsContentTitleData = $this->postRepo->searchLikeContentOrTitle($searchRequest);
