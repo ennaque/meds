@@ -40,10 +40,12 @@ class MedsThemeSeeder extends Seeder
         $this->truncate();
 
         $this->call([
+            Seeder2::class,
             Seeder4::class,
             Seeder5::class,
             Seeder6::class,
             Seeder7::class,
+            Seeder8::class,
             Seeder10::class,
             Seeder11::class,
             Seeder12::class,
