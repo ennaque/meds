@@ -65,23 +65,23 @@ class Seeder3 extends Seeder
     private function getContent(): string
     {
         return
-            "<div>
-                <div class='second-title'>
+            '<div>
+                <div class="second-title">
                     <h2>
                         Главный врач
                     </h2>
                 </div>
                 <div>
-                    <img src='/app/default/files-module/local/images/gv1_3.jpg' width='400'>
+                    <img src="/app/default/files-module/local/images/gv1_3.jpg" width="800px">
                 </div>
                 <div>
-                    <p style='padding-bottom: 7px; font-weight: bold'>
+                    <p style="padding-bottom: 7px; font-weight: bold">
                         График приема посетителей:
                     </p>
-                    <p style='padding-bottom: 7px'>
+                    <p style="padding-bottom: 7px">
                         Понедельник 15.00-17.00
                     </p>
                 </div>    
-            </div>";
+            </div>';
     }
 }

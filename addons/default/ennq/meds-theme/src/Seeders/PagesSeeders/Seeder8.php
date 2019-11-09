@@ -65,7 +65,7 @@ class Seeder8 extends Seeder
     private function getContent(): string
     {
         return '
-        <div class='second-title'>
+        <div class="second-title">
         <h2>
         УПРАВЛЕНИЕ КООРДИНАЦИИ ДЕЯТЕЛЬНОСТИ МЕДИЦИНСКИХ И ФАРМАЦЕВТИЧЕСКИХ ОРГАНИЗАЦИЙ №9
         МИНИСТЕРСТВА ЗДРАВООХРАНЕНИЯ МОСКОВСКОЙ ОБЛАСТИ
