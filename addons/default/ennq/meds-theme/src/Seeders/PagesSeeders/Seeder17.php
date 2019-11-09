@@ -69,17 +69,6 @@ class Seeder17 extends Seeder
         return
 '
 <div>
-    <h1>
-        СТРАНИЦА НАХОДИТСЯ В РАЗРАБОТКЕ
-    </h1>
-    <div>
-        <p style="padding-bottom: 7px">
-            <img src="https://downloader.disk.yandex.ru/preview/deb2d4bb7d678e6c43724a596a1c28c4607a35beb70e226a97ed0d7cb0266688/5dbe456b/E9EwU3JaIYg3fpJ8vF224ZlWjnpyd8qh2TqJRweU0IZCiYXeMNus8bkSUJccKGKJxDYtVZnT0tZFOYz59jPrTQ==?uid=0&filename=1444707235.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&owner_uid=110934414&size=2048x2048" class="resizeable" width="800px">
-        </p>
-    </div>
-
-    <br><br><br><br>
-
     <div>
         <p style="padding-bottom: 7px">
             <h3>ГБУЗ МО «КГБ № 2» требуются:</h3>
