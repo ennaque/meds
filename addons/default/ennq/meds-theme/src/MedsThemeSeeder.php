@@ -23,6 +23,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder13;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder14;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder17;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder18;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder21;
 
 use Illuminate\Support\Facades\DB;
 
@@ -62,7 +63,8 @@ class MedsThemeSeeder extends Seeder
             Seeder13::class,
             Seeder14::class,
             Seeder17::class,
-            Seeder18::class
+            Seeder18::class,
+            Seeder21::class,
         ]);
     }
 
