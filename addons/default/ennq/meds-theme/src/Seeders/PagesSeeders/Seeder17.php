@@ -121,7 +121,7 @@ class Seeder17 extends Seeder
             </p>
         </p>
         <p style="padding-bottom: 7px">
-            <b>Взрослая поликлиника №2 расположена по адресу г. Красногорск, Ильинское шоссе, военный городок "Павшино", д. 2В.
+            <b>Взрослая поликлиника №2</b> расположена по адресу г. Красногорск, Ильинское шоссе, военный городок "Павшино", д. 2В.
         </p>
     </div>
     <div style="text-align: center; padding-bottom: 20px; padding-top: 20px">
@@ -138,7 +138,7 @@ class Seeder17 extends Seeder
     </div>
     <div>
         <h3 style="padding-bottom: 15px; padding-top: 15px">
-            Услуги оказываемые во Взрослой поликлинике №2:
+            Услуги, оказываемые во Взрослой поликлинике №2:
         </h3>
         <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
