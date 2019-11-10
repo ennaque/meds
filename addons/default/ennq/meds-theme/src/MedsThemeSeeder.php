@@ -25,6 +25,8 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder17;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder18;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder21;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder22;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder24;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder25;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder26;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder27;
 
@@ -69,8 +71,10 @@ class MedsThemeSeeder extends Seeder
             Seeder18::class,
             Seeder21::class,
             Seeder22::class,
+            Seeder24::class,
+            Seeder25::class,
             Seeder26::class,
-            Seeder27::class,
+            Seeder27::class
         ]);
     }
 
