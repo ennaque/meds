@@ -23,19 +23,18 @@ class SearchController extends PublicController
 
     /**@var SearchInterface */
     private $search;
-    private $pr;
-    public function __construct(SearchInterface $search, PageRepository $pr)
+
+    public function __construct(SearchInterface $search)
     {
         parent::__construct();
         $this->search = $search;
-        $this->pr = $pr;
     }
 
     /**
      * @param Request $request
      * @return View
      */
-    public function index(Request $request)//: View
+    public function index(Request $request): View
     {
         $paginator = $this->search->paginate($request->get(self::SEARCH_QUERY));
 
@@ -58,10 +57,10 @@ class SearchController extends PublicController
         }
 
         return view('theme::front/api', [
-            'code' => 200,
+            'code' => '200',
             'message' => 'OK',
-            'list' => $paginator->getCurrentPageIndex(),
-            'listof' => $paginator->getPaginationLength(),
+            'list' => (string)$paginator->getCurrentPageIndex(),
+            'listof' => (string)$paginator->getPaginationLength(),
             'data' => $json
         ]);
     }

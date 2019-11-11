@@ -56,9 +56,9 @@ class SearchEngine implements SearchInterface
             $paginator->getPerPage()
         );
 
-//        $formattedSearchResults = $this->$searchResultFormatter->get($searchResults, $searchRequest);
+        $formattedSearchResults = $this->searchResultFormatter->get($searchResults, $searchRequest);
 
-        return $paginator->setItems($searchResults);
+        return $paginator->setItems($formattedSearchResults);
     }
 
     /**
@@ -114,47 +114,6 @@ class SearchEngine implements SearchInterface
             [],
             $this->postRepo->searchLikeContentOrTitle($needle, $offset - $pages, $perPage)
         );
-    }
-
-    /**
-     * @param string $searchRequest
-     * @param int|null $limit
-     * @return array<SearchEntry>
-     */
-    public function search(string $searchRequest, ?int $limit = 10): array
-    {
-        if (null === $searchRequest || '' === $searchRequest) {
-            return [];
-        }
-
-        $pagesCount = $this->pageRepo->countByNeedle($searchRequest)->total;
-        $postsCount = $this->postRepo->countByNeedle($searchRequest)->total;
-
-        $paginator = new Paginator([], $pagesCount + $postsCount);
-
-        $searchResults = $this->getCombinedSearchResult(
-            $searchRequest,
-            $pagesCount,
-            $postsCount,
-            $paginator->getCurrentPageIndex(),
-            $paginator->getPerPage()
-        );
-
-//        $formattedSearchResults = $this->$searchResultFormatter->get($searchResults, $searchRequest);
-
-        return $paginator->setItems($searchResults)->toArray();
-    }
-
-    /**
-     * @param string $searchRequest
-     * @return array
-     */
-    private function getSearchResult(string $searchRequest): array
-    {
-        $pagesContentTitleData = $this->pageRepo->searchLikeContentOrTitle($searchRequest);
-        $postsContentTitleData = $this->postRepo->searchLikeContentOrTitle($searchRequest);
-
-        return $this->combineFromStd($pagesContentTitleData, $postsContentTitleData);
     }
 
     /**
