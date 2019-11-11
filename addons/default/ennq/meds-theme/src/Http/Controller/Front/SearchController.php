@@ -2,20 +2,11 @@
 
 namespace Ennq\MedsTheme\Http\Controller\Front;
 
-use Anomaly\PagesModule\Page\PageModel;
-use Anomaly\PagesModule\Page\PageRepository;
-use Anomaly\PostsModule\Post\PostModel;
+
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 use Ennq\MedsTheme\Lib\SearchInterface;
-use Ennq\MedsTheme\Service\Paginator;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class SearchController extends PublicController
 {
@@ -59,8 +50,8 @@ class SearchController extends PublicController
         return view('theme::front/api', [
             'code' => '200',
             'message' => 'OK',
-            'list' => (string)$paginator->getCurrentPageIndex(),
-            'listof' => (string)$paginator->getPaginationLength(),
+            'page' => (string)$paginator->getCurrentPageIndex(),
+            'pageof' => (string)$paginator->getPaginationLength(),
             'data' => $json
         ]);
     }

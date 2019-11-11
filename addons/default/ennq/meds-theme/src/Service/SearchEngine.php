@@ -12,6 +12,7 @@ use Ennq\MedsTheme\Lib\PaginatorInterface;
 use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Lib\SearchResultFormatterInterface;
+use Illuminate\Support\Facades\Redis;
 use stdClass;
 
 class SearchEngine implements SearchInterface
@@ -39,14 +40,23 @@ class SearchEngine implements SearchInterface
      */
     public function paginate(string $searchRequest = null): PaginatorInterface
     {
+        $paginator = new Paginator();
+
         if (null === $searchRequest || '' === $searchRequest) {
-            return new Paginator([]);
+            return $paginator->setItems([]);
+        }
+
+        if (env('IS_REDIS_CONFIGURED', false)) {
+            $data = Redis::get($searchRequest . '__' . $paginator->getCurrentPageIndex());
+            if (null !== $data) {
+                return unserialize($data);
+            }
         }
 
         $pagesCount = $this->pageRepo->countByNeedle($searchRequest)->total;
         $postsCount = $this->postRepo->countByNeedle($searchRequest)->total;
 
-        $paginator = new Paginator([], $pagesCount + $postsCount);
+        $paginator->setTotal($pagesCount + $postsCount);
 
         $searchResults = $this->getCombinedSearchResult(
             $searchRequest,
@@ -57,8 +67,13 @@ class SearchEngine implements SearchInterface
         );
 
         $formattedSearchResults = $this->searchResultFormatter->get($searchResults, $searchRequest);
+        $paginator->setItems($formattedSearchResults);
 
-        return $paginator->setItems($formattedSearchResults);
+        if (env('IS_REDIS_CONFIGURED', false) && 0 !== $paginator->getTotal()) {
+            Redis::set($searchRequest . '__' . $paginator->getCurrentPageIndex(), serialize($paginator));
+        }
+
+        return $paginator;
     }
 
     /**

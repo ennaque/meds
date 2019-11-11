@@ -52,6 +52,13 @@ class Paginator implements PaginatorInterface
         return $this->total;
     }
 
+    public function setTotal(int $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
     /**
      * @return bool
      */
