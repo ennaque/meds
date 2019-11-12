@@ -101,7 +101,10 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      */
     protected $bindings = [
         'Ennq\MedsTheme\Lib\SearchResultFormatterInterface' => 'Ennq\MedsTheme\Service\SearchResultFormatter',
-        'Ennq\MedsTheme\Lib\SearchInterface' => 'Ennq\MedsTheme\Service\SearchEngine'
+        'Ennq\MedsTheme\Lib\SearchInterface' => 'Ennq\MedsTheme\Service\SearchEngine',
+        'Ennq\MedsTheme\Lib\MedsPostRepositoryInterface' => 'Ennq\MedsTheme\Service\MedsPostRepository',
+        'Ennq\MedsTheme\Lib\MedsPageRepositoryInterface' => 'Ennq\MedsTheme\Service\MedsPageRepository',
+        'Psr\SimpleCache\CacheInterface' => 'Ennq\MedsTheme\Service\Cache'
     ];
 
     /**

@@ -52,6 +52,7 @@ class LoadDisk
         FilesystemManager $filesystem,
         ConfigurationRepositoryInterface $configuration
     ) {
+
         $private = $configuration->value(
             'anomaly.extension.local_storage_adapter::private',
             $this->disk->getSlug(),

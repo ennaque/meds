@@ -39,6 +39,13 @@ class RelationshipFieldType extends FieldType
      * @var null|string
      */
     protected $inputView = null;
+    
+    /**
+     * The input class.
+     *
+     * @var null
+     */
+    protected $class = null;
 
     /**
      * The filter view.
@@ -273,7 +280,11 @@ class RelationshipFieldType extends FieldType
             return $class;
         }
 
-        return $this->config('mode') == 'dropdown' ? 'custom-select form-control' : 'form-control';
+        if ($this->config('mode') == 'dropdown') {
+            return 'custom-select form-control';
+        }
+
+        return 'form-control';
     }
 
     /**

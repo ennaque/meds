@@ -8,11 +8,14 @@ use Anomaly\PagesModule\Page\PageModel;
 use Anomaly\PagesModule\Page\PageRepository;
 use Anomaly\PostsModule\Post\PostModel;
 use Anomaly\PostsModule\Post\PostRepository;
+use Ennq\MedsTheme\Lib\MedsPageRepositoryInterface;
+use Ennq\MedsTheme\Lib\MedsPostRepositoryInterface;
 use Ennq\MedsTheme\Lib\PaginatorInterface;
 use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Lib\SearchResultFormatterInterface;
-use Illuminate\Support\Facades\Redis;
+use Psr\SimpleCache\CacheInterface;
+use Ennq\MedsTheme\Lib\InvalidArgumentException;
 use stdClass;
 
 class SearchEngine implements SearchInterface
@@ -23,20 +26,25 @@ class SearchEngine implements SearchInterface
     private $pageRepo;
     /** @var PostRepository */
     private $postRepo;
+    /** @var Cache */
+    private $cache;
 
     public function __construct(
         SearchResultFormatterInterface $searchResultFormatter,
-        PageRepository $pageRepository,
-        PostRepository $postRepository
+        MedsPageRepositoryInterface $pageRepository,
+        MedsPostRepositoryInterface $postRepository,
+        CacheInterface $cache
     ) {
         $this->searchResultFormatter = $searchResultFormatter;
         $this->pageRepo = $pageRepository;
         $this->postRepo = $postRepository;
+        $this->cache = $cache;
     }
 
     /**
      * @param string $searchRequest
      * @return Paginator<SearchEntry>
+     * @throws InvalidArgumentException
      */
     public function paginate(string $searchRequest = null): PaginatorInterface
     {
@@ -46,11 +54,9 @@ class SearchEngine implements SearchInterface
             return $paginator->setItems([]);
         }
 
-        if (env('IS_REDIS_CONFIGURED', false)) {
-            $data = Redis::get($searchRequest . '__' . $paginator->getCurrentPageIndex());
-            if (null !== $data) {
-                return unserialize($data);
-            }
+        $data = $this->cache->get($searchRequest . '__' . $paginator->getCurrentPageIndex());
+        if (null !== $data) {
+            return unserialize($data, [PaginatorInterface::class]);
         }
 
         $pagesCount = $this->pageRepo->countByNeedle($searchRequest)->total;
@@ -69,8 +75,8 @@ class SearchEngine implements SearchInterface
         $formattedSearchResults = $this->searchResultFormatter->get($searchResults, $searchRequest);
         $paginator->setItems($formattedSearchResults);
 
-        if (env('IS_REDIS_CONFIGURED', false) && 0 !== $paginator->getTotal()) {
-            Redis::set($searchRequest . '__' . $paginator->getCurrentPageIndex(), serialize($paginator));
+        if (0 !== $paginator->getTotal()) {
+            $this->cache->set($searchRequest . '__' . $paginator->getCurrentPageIndex(), serialize($paginator));
         }
 
         return $paginator;
@@ -150,7 +156,7 @@ class SearchEngine implements SearchInterface
         foreach ($posts as $postsEntry) {
             $resultArray[] = SearchEntry::newInstance(
                 $postsEntry->id,
-                PostModel::URL_SLUG . $postsEntry->slug,
+                MedsPostRepository::URL_SLUG . $postsEntry->slug,
                 PostModel::class,
                 $postsEntry->content,
                 $postsEntry->title

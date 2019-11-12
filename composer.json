@@ -82,7 +82,8 @@
         "anomaly/wysiwyg_block-extension": "~1.0.0",
         "pyrocms/starter-theme": "~1.0.0",
         "pyrocms/accelerant-theme": "~1.1.0",
-        "ext-json": "*"
+        "ext-json": "*",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -112,7 +113,6 @@
             "php artisan cache:clear",
             "php artisan httpcache:clear",
             "php artisan route:clear",
-            "php artisan storage:link",
             "php artisan twig:clear",
             "php artisan view:clear"
         ]

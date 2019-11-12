@@ -91,7 +91,7 @@ class DatetimeFieldType extends FieldType
      * Create a new DatetimeFieldType instance.
      *
      * @param DatetimeConverter $converter
-     * @param Repository        $configuration
+     * @param Repository $configuration
      */
     public function __construct(DatetimeConverter $converter, Repository $configuration)
     {
@@ -217,7 +217,7 @@ class DatetimeFieldType extends FieldType
         }
 
         $value = (new Carbon())->createFromFormat(
-            $this->getPostFormat(),
+            $this->getInputFormat(),
             $value,
             array_get($this->getConfig(), 'timezone')
         );
@@ -277,21 +277,6 @@ class DatetimeFieldType extends FieldType
         }
 
         throw new \Exception('Storage format can not be determined.');
-    }
-
-    /**
-     * Get the expected post
-     * format for validation.
-     *
-     * @return string
-     */
-    public function getPostFormat()
-    {
-        if ($this->config('picker')) {
-            return str_replace(':s', '', $this->getStorageFormat());
-        }
-
-        return $this->getDatetimeFormat();
     }
 
     /**
