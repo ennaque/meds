@@ -22,11 +22,11 @@ class SearchEngine implements SearchInterface
 {
     /** @var SearchResultFormatterInterface */
     private $searchResultFormatter;
-    /** @var PageRepository */
+    /** @var MedsPageRepositoryInterface */
     private $pageRepo;
-    /** @var PostRepository */
+    /** @var MedsPostRepositoryInterface */
     private $postRepo;
-    /** @var Cache */
+    /** @var CacheInterface */
     private $cache;
 
     public function __construct(
@@ -44,7 +44,7 @@ class SearchEngine implements SearchInterface
     /**
      * @param string $searchRequest
      * @return Paginator<SearchEntry>
-     * @throws InvalidArgumentException
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function paginate(string $searchRequest = null): PaginatorInterface
     {
@@ -54,7 +54,7 @@ class SearchEngine implements SearchInterface
             return $paginator->setItems([]);
         }
 
-        $data = $this->cache->get($searchRequest . '__' . $paginator->getCurrentPageIndex());
+        $data = $this->cache->get($this->getCacheKey($searchRequest, $paginator->getCurrentPageIndex()));
         if (null !== $data) {
             return unserialize($data, [PaginatorInterface::class]);
         }
@@ -76,7 +76,10 @@ class SearchEngine implements SearchInterface
         $paginator->setItems($formattedSearchResults);
 
         if (0 !== $paginator->getTotal()) {
-            $this->cache->set($searchRequest . '__' . $paginator->getCurrentPageIndex(), serialize($paginator));
+            $this->cache->set(
+                $this->getCacheKey($searchRequest, $paginator->getCurrentPageIndex()),
+                serialize($paginator)
+            );
         }
 
         return $paginator;
@@ -164,5 +167,15 @@ class SearchEngine implements SearchInterface
         }
 
         return $resultArray ?? [];
+    }
+
+    /**
+     * @param string $key
+     * @param int $page
+     * @return string
+     */
+    private function getCacheKey(string $key, int $page): string
+    {
+        return $key . '__' . (string)$page;
     }
 }

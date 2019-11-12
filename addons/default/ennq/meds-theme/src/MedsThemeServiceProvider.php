@@ -43,8 +43,16 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $routes = [
-        'search' => ['uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@index', 'verb' => 'get', 'as' => 'search'],
-        'async-search' => ['uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch', 'verb' => 'get', 'as' => 'async-search']
+        'search' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@index',
+            'verb' => 'get',
+            'as' => 'search'
+        ],
+        'async-search' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch',
+            'verb' => 'get',
+            'as' => 'async-search'
+        ]
     ];
 
     /**

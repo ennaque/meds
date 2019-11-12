@@ -11,8 +11,7 @@ use Psr\SimpleCache\CacheInterface;
 
 class Cache implements CacheInterface
 {
-
-    public const SEARCH_CACHE_ENV = 'SEARCH_CACHE';
+    private const SEARCH_CACHE_ENV = 'SEARCH_CACHE';
 
     /**
      * Fetches a value from the cache.
@@ -161,7 +160,14 @@ class Cache implements CacheInterface
      */
     public function deleteMultiple($keys)
     {
-        return false;
+        if (!env(self::SEARCH_CACHE_ENV, false)) {
+            return false;
+        }
+        if (!$keys instanceof Arrayable) {
+            throw new InvalidArgumentException('key var must implements Arrayable');
+        }
+
+        return Redis::del(...$keys);
     }
 
     /**
