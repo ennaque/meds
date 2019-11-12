@@ -55,7 +55,7 @@ class SearchEngine implements SearchInterface
         }
 
         $data = $this->cache->get($this->getCacheKey($searchRequest, $paginator->getCurrentPageIndex()));
-        if (null !== $data) {
+        if (null !== $data ?? false !== $data) {
             return unserialize($data, [PaginatorInterface::class]);
         }
 
