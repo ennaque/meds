@@ -15,29 +15,15 @@
         //http://www.runningcoder.org/jquerytypeahead/demo/
         //http://www.runningcoder.org/jquerytypeahead/
         $('#typeahead_search').typeahead({
-            // order:"asc",
-            // asyncResult: true,
-            // loadingAnimation: true,
-            source: function (query, process) {
-                return $.ajax({
-                    //TODO:fix send request
-                    url: "/async-search",
-                        // $('#typeahead_search').data('link'),
-                    type: 'GET',
-                    data: { query: query },
-                    // dataType: 'json',
-                    success: function (result) {
-
-                        var resultList = result.map(function (item) {
-                            //<div>
-                            var aItem = { title: item.title, content: item.content, link: item.link };
-                            return JSON.stringify(aItem);
-                        });
-
-                        return process(resultList);
-
+            href: "{{SearchEntry.link}}",
+            template: "{{SearchEntry.title}} <small style='color:#999;'>{{SearchEntry.content}}</small>",
+            source: {
+                SearchEntry: {
+                    ajax:{
+                        url: "/async-search",
+                        path: "SearchEntry.title"
                     }
-                });
+                }
             },
         });
     });
