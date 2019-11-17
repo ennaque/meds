@@ -47,7 +47,7 @@ class Seeder38 extends Seeder
         $this->pages->create(
             [
                 'ru'           => [
-                    'title' => 'Галоингаляции ',
+                    'title' => 'Галоингаляции',
                 ],
                 'slug'         => '/haloingulations',
                 'entry'        => $type->getEntryModel()->create(
