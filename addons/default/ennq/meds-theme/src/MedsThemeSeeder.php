@@ -31,6 +31,8 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder26;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder27;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder28;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder29;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder32;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder33;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder34;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder35;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder36;
@@ -84,6 +86,8 @@ class MedsThemeSeeder extends Seeder
             Seeder27::class,
             Seeder28::class,
             Seeder29::class,
+            Seeder32::class,
+            Seeder33::class,
             Seeder34::class,
             Seeder35::class,
             Seeder36::class,
