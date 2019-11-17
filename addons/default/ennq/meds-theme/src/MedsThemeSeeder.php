@@ -29,6 +29,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder24;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder25;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder26;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder27;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder38;
 
 use Illuminate\Support\Facades\DB;
 
@@ -74,7 +75,8 @@ class MedsThemeSeeder extends Seeder
             Seeder24::class,
             Seeder25::class,
             Seeder26::class,
-            Seeder27::class
+            Seeder27::class,
+            Seeder38::class,
         ]);
     }
 
