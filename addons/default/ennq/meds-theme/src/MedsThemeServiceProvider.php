@@ -43,8 +43,16 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $routes = [
-        'search' => ['uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@index', 'verb' => 'get', 'as' => 'search'],
-        'async-search' => ['uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch', 'verb' => 'get', 'as' => 'async-search']
+        'search' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@index',
+            'verb' => 'get',
+            'as' => 'search'
+        ],
+        'async-search' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch',
+            'verb' => 'get',
+            'as' => 'async-search'
+        ]
     ];
 
     /**
@@ -101,7 +109,10 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      */
     protected $bindings = [
         'Ennq\MedsTheme\Lib\SearchResultFormatterInterface' => 'Ennq\MedsTheme\Service\SearchResultFormatter',
-        'Ennq\MedsTheme\Lib\SearchInterface' => 'Ennq\MedsTheme\Service\SearchEngine'
+        'Ennq\MedsTheme\Lib\SearchInterface' => 'Ennq\MedsTheme\Service\SearchEngine',
+        'Ennq\MedsTheme\Lib\MedsPostRepositoryInterface' => 'Ennq\MedsTheme\Service\MedsPostRepository',
+        'Ennq\MedsTheme\Lib\MedsPageRepositoryInterface' => 'Ennq\MedsTheme\Service\MedsPageRepository',
+        'Psr\SimpleCache\CacheInterface' => 'Ennq\MedsTheme\Service\Cache'
     ];
 
     /**

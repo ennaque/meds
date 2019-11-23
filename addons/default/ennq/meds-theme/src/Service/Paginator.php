@@ -45,6 +45,21 @@ class Paginator implements PaginatorInterface
     }
 
     /**
+     * @return int
+     */
+    public function getTotal(): int
+    {
+        return $this->total;
+    }
+
+    public function setTotal(int $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function hasNextPage(): bool
@@ -194,7 +209,7 @@ class Paginator implements PaginatorInterface
 
     public function __toString()
     {
-        $str = json_encode($this->getPaginatedItems(), JSON_UNESCAPED_UNICODE);
+        $str = json_encode($this->getAllItems(), JSON_UNESCAPED_UNICODE);
 
         if (!is_string($str)) {
             throw new \InvalidArgumentException('something went wrong');
@@ -212,7 +227,7 @@ class Paginator implements PaginatorInterface
      */
     public function jsonSerialize()
     {
-        return $this->__toString();
+        return (string)$this;
     }
 
     /**

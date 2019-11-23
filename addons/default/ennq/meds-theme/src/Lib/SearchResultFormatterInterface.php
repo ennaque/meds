@@ -5,6 +5,9 @@ namespace Ennq\MedsTheme\Lib;
 interface SearchResultFormatterInterface
 {
     /**
+     * Formats SearchEntry::getContent() by deleting all html tags and specific symbols, adds bold style for
+     * search needle
+     *
      * @param array<SearchEntry> $data
      * @param string $needle
      * @param int $num

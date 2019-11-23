@@ -8,45 +8,61 @@ use Anomaly\PagesModule\Page\PageModel;
 use Anomaly\PagesModule\Page\PageRepository;
 use Anomaly\PostsModule\Post\PostModel;
 use Anomaly\PostsModule\Post\PostRepository;
+use Ennq\MedsTheme\Lib\MedsPageRepositoryInterface;
+use Ennq\MedsTheme\Lib\MedsPostRepositoryInterface;
 use Ennq\MedsTheme\Lib\PaginatorInterface;
 use Ennq\MedsTheme\Lib\SearchEntry;
 use Ennq\MedsTheme\Lib\SearchInterface;
 use Ennq\MedsTheme\Lib\SearchResultFormatterInterface;
+use Psr\SimpleCache\CacheInterface;
+use Ennq\MedsTheme\Lib\InvalidArgumentException;
 use stdClass;
 
 class SearchEngine implements SearchInterface
 {
     /** @var SearchResultFormatterInterface */
     private $searchResultFormatter;
-    /** @var PageRepository */
+    /** @var MedsPageRepositoryInterface */
     private $pageRepo;
-    /** @var PostRepository */
+    /** @var MedsPostRepositoryInterface */
     private $postRepo;
+    /** @var CacheInterface */
+    private $cache;
 
     public function __construct(
         SearchResultFormatterInterface $searchResultFormatter,
-        PageRepository $pageRepository,
-        PostRepository $postRepository
+        MedsPageRepositoryInterface $pageRepository,
+        MedsPostRepositoryInterface $postRepository,
+        CacheInterface $cache
     ) {
         $this->searchResultFormatter = $searchResultFormatter;
         $this->pageRepo = $pageRepository;
         $this->postRepo = $postRepository;
+        $this->cache = $cache;
     }
 
     /**
      * @param string $searchRequest
      * @return Paginator<SearchEntry>
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function paginate(string $searchRequest = null): PaginatorInterface
     {
+        $paginator = new Paginator();
+
         if (null === $searchRequest || '' === $searchRequest) {
-            return new Paginator([]);
+            return $paginator->setItems([]);
+        }
+
+        $data = $this->cache->get($this->getCacheKey($searchRequest, $paginator->getCurrentPageIndex()));
+        if (null !== $data ?? false !== $data) {
+            return unserialize($data, [PaginatorInterface::class]);
         }
 
         $pagesCount = $this->pageRepo->countByNeedle($searchRequest)->total;
         $postsCount = $this->postRepo->countByNeedle($searchRequest)->total;
 
-        $paginator = new Paginator([], $pagesCount + $postsCount);
+        $paginator->setTotal($pagesCount + $postsCount);
 
         $searchResults = $this->getCombinedSearchResult(
             $searchRequest,
@@ -56,9 +72,17 @@ class SearchEngine implements SearchInterface
             $paginator->getPerPage()
         );
 
-//        $formattedSearchResults = $this->$searchResultFormatter->get($searchResults, $searchRequest);
+        $formattedSearchResults = $this->searchResultFormatter->get($searchResults, $searchRequest);
+        $paginator->setItems($formattedSearchResults);
 
-        return $paginator->setItems($searchResults);
+        if (0 !== $paginator->getTotal()) {
+            $this->cache->set(
+                $this->getCacheKey($searchRequest, $paginator->getCurrentPageIndex()),
+                serialize($paginator)
+            );
+        }
+
+        return $paginator;
     }
 
     /**
@@ -117,47 +141,6 @@ class SearchEngine implements SearchInterface
     }
 
     /**
-     * @param string $searchRequest
-     * @param int|null $limit
-     * @return array<SearchEntry>
-     */
-    public function search(string $searchRequest, ?int $limit = 10): array
-    {
-        if (null === $searchRequest || '' === $searchRequest) {
-            return [];
-        }
-
-        $pagesCount = $this->pageRepo->countByNeedle($searchRequest)->total;
-        $postsCount = $this->postRepo->countByNeedle($searchRequest)->total;
-
-        $paginator = new Paginator([], $pagesCount + $postsCount);
-
-        $searchResults = $this->getCombinedSearchResult(
-            $searchRequest,
-            $pagesCount,
-            $postsCount,
-            $paginator->getCurrentPageIndex(),
-            $paginator->getPerPage()
-        );
-
-//        $formattedSearchResults = $this->$searchResultFormatter->get($searchResults, $searchRequest);
-
-        return $paginator->setItems($searchResults)->toArray();
-    }
-
-    /**
-     * @param string $searchRequest
-     * @return array
-     */
-    private function getSearchResult(string $searchRequest): array
-    {
-        $pagesContentTitleData = $this->pageRepo->searchLikeContentOrTitle($searchRequest);
-        $postsContentTitleData = $this->postRepo->searchLikeContentOrTitle($searchRequest);
-
-        return $this->combineFromStd($pagesContentTitleData, $postsContentTitleData);
-    }
-
-    /**
      * @param iterable<StdClass> $pages
      * @param iterable<StdClass> $posts
      * @return array<SearchEntry>
@@ -176,7 +159,7 @@ class SearchEngine implements SearchInterface
         foreach ($posts as $postsEntry) {
             $resultArray[] = SearchEntry::newInstance(
                 $postsEntry->id,
-                PostModel::URL_SLUG . $postsEntry->slug,
+                MedsPostRepository::URL_SLUG . $postsEntry->slug,
                 PostModel::class,
                 $postsEntry->content,
                 $postsEntry->title
@@ -184,5 +167,15 @@ class SearchEngine implements SearchInterface
         }
 
         return $resultArray ?? [];
+    }
+
+    /**
+     * @param string $key
+     * @param int $page
+     * @return string
+     */
+    private function getCacheKey(string $key, int $page): string
+    {
+        return $key . '__' . (string)$page;
     }
 }

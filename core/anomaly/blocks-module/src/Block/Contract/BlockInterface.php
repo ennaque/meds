@@ -17,9 +17,10 @@ interface BlockInterface extends EntryInterface
     /**
      * Return the rendered block.
      *
+     * @param array $payload
      * @return string
      */
-    public function render();
+    public function render(array $payload = []);
 
     /**
      * Get the extension.

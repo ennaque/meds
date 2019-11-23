@@ -5,21 +5,20 @@
         <h2 class="search-result-title">
             Результа поиска "{{ query }}":
         </h2>
-        {% if entities is empty %}
+        {% if paginator.getAllItems() is empty %}
             Поиск не дал результатов.
-        {% endif %}
-        {% if entities is not empty %}
-                {% for entity in paginator.getAllItems() %}
-                    <div class="search-entry">
-                        <a href="{{ entity.link }}" class="search-entry-link">
-                            {{ entity.title }}
-                        </a>
-                        {{ entity.getPath() }}
-                        <div class="search-entry-content">
-                            {{ entity.content() | raw }}
-                        </div>
+        {% else %}
+            {% for entity in paginator.getAllItems() %}
+                <div class="search-entry">
+                    <a href="{{ entity.link }}" class="search-entry-link">
+                        {{ entity.title }}
+                    </a>
+                    {{ entity.getPath() }}
+                    <div class="search-entry-content">
+                        {{ entity.content() | raw }}
                     </div>
-                {% endfor %}
+                </div>
+            {% endfor %}
         {% endif %}
         {{ paginator.render() | raw }}
     </div>
