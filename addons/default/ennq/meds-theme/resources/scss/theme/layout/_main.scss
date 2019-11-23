@@ -13,6 +13,11 @@
     max-width: 400px;
 }
 
+.navbar-nav .menu_elem:first-child {
+    //pointer-events: none;
+    //cursor: pointer;
+}
+
 .logo_section {
     background: #e9f4f6;
     //background: black;

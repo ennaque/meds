@@ -8,6 +8,10 @@ use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MainSeeder29;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\OldSubdivision1720;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\YoungSubdivisionSeeder1016;
+use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder2;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder3;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
@@ -46,9 +50,12 @@ class MedsThemeSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->truncate();
+        $this->truncatePages();
+        $this->truncateMeu();
 
         $this->call([
+            MenuSeeder::class,
+            MainSeeder29::class,
             Seeder2::class,
             Seeder3::class,
             Seeder4::class,
@@ -57,18 +64,27 @@ class MedsThemeSeeder extends Seeder
             Seeder7::class,
             Seeder8::class,
             Seeder9::class,
+            YoungSubdivisionSeeder1016::class,
             Seeder10::class,
             Seeder11::class,
             Seeder12::class,
             Seeder13::class,
             Seeder14::class,
+            OldSubdivision1720::class,
             Seeder17::class,
             Seeder18::class,
             Seeder21::class,
         ]);
     }
 
-    private function truncate(): void
+    private function truncateMeu(): void
+    {
+        DB::table('navigation_menus')->truncate();
+        DB::table('navigation_links')->truncate();
+        DB::table('navigation_menus_translations')->truncate();
+    }
+
+    private function truncatePages(): void
     {
         DB::statement('ALTER TABLE default_pages_default_pages_translations MODIFY content MEDIUMTEXT;');
         DB::table('pages_default_pages')->truncate();

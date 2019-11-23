@@ -42,7 +42,13 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      *
      * @type array|null
      */
-    protected $routes = [];
+    protected $routes = [
+        'test' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\TestController@test',
+            'verb' => 'get',
+            'as' => 'search'
+        ],
+    ];
 
     /**
      * The addon middleware.

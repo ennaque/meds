@@ -7,13 +7,20 @@
         {{ link.children.isEmpty() ? '' : (options.dropdown_class ?: 'dropdown') }}
         {{ link.active ? options.get('active_class', 'active') }}
         {{ link.current ? options.get('selected_class', options.get('current_class', 'selected')) }}
-        {{ options.item_class }}
+        {{ link.children.isEmpty() ? '' : options.item_class }}
         {{ link.class }}">
 
         <a
                 href="{{ link.url }}"
                 target="{{ link.target }}"
-                class="{{ depth > 1 ? options.child_link_class ?: options.link_class : options.link_class }} {{ link.children.count() ? options.get('link_class_dropdown') }}"
+                {% if not link.children.isEmpty() %}
+                    class="{{ depth > 1 ? options.child_link_class ?: options.link_class : options.link_class }} {{ link.children.count() ? options.get('link_class_dropdown') }}"
+                {% else %}
+                    class="dropdown-item"
+                {% endif %}
+                {% if not link.children.isEmpty() %}
+                    id="{{ link.url }}"
+                {% endif %}
                 {{ html_attributes(options.get('link_attributes', [])) }}
                 {% if link.children.count() %}
                     {{ html_attributes(options.get('link_attributes_dropdown', [])) }}
@@ -33,7 +40,9 @@
                     </{{ options.get('dropdown_toggle') }}>
                 {% endif %}
 
-                <{{ options.child_list_tag ?: options.list_tag ?: 'ul' }} class="{{ options.child_list_class }}">
+                <{{ options.child_list_tag ?: options.list_tag ?: 'ul' }} class="{{ options.child_list_class }}"
+                aria-labelledby="{{ link.url }}"
+                >
                 {{ self.links(link.children, collection, options, depth+1) }}
                 </{{ options.child_list_tag ?: options.list_tag ?: 'ul' }}>
             {% endif %}

@@ -2,67 +2,33 @@
 
 namespace  Ennq\MedsTheme\Seeders\PagesSeeders;
 
-use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
-use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
-use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
-class Seeder2 extends Seeder
+
+use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
+use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
+
+class Seeder2 extends BaseSeeder
 {
-    /**
-     * The page repository.
-     *
-     * @var PageRepositoryInterface
-     */
-    protected $pages;
 
-    /**
-     * The types repository.
-     *
-     * @var TypeRepositoryInterface
-     */
-    protected $types;
+    public const PAGE_SLUG = '/contacts';
+    public const PAGE_TITLE = 'Должностные лица';
 
-    /**
-     * Create a new PageSeeder instance.
-     *
-     * @param PageRepositoryInterface $pages
-     * @param TypeRepositoryInterface $types
-     */
-    public function __construct(PageRepositoryInterface $pages, TypeRepositoryInterface $types)
+    public static function getParentSlug(): ?string
     {
-        parent::__construct();
-        $this->pages = $pages;
-        $this->types = $types;
+        return MenuSeeder::SLUG_MAIN;
     }
 
-    /**
-     * Run the seeder.
-     */
-    public function run(): void
+    public static function getTitle(): string
     {
-        $type = $this->types->findBySlug('default');
-        $content = $this->getContent();
-        $this->pages->create(
-            [
-                'ru'           => [
-                    'title' => 'Должностные лица',
-                ],
-                'slug'         => '/contacts',
-                'entry'        => $type->getEntryModel()->create(
-                    [
-                        'ru' => [
-                            'content' => $content,
-                        ]
-                    ]
-                ),
-                'type'         => $type,
-                'enabled'      => true,
-                'theme_layout' => 'theme::layouts/default.twig',
-            ]
-        )->allowedRoles()->sync([]);
+        return self::PAGE_TITLE;
     }
 
-    private function getContent(): string
+    public static function getSlug(): string
+    {
+        return self::PAGE_SLUG;
+    }
+
+    protected function getContent(): string
     {
         return '
             <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">

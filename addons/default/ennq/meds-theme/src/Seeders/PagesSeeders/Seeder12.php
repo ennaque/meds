@@ -4,67 +4,30 @@
 namespace Ennq\MedsTheme\Seeders\PagesSeeders;
 
 
-use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
-use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
-use Anomaly\Streams\Platform\Database\Seeder\Seeder;
+use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
+use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 
-class Seeder12 extends Seeder
+class Seeder12 extends BaseSeeder
 {
-    /**
-     * The page repository.
-     *
-     * @var PageRepositoryInterface
-     */
-    protected $pages;
 
-    /**
-     * The types repository.
-     *
-     * @var TypeRepositoryInterface
-     */
-    protected $types;
+    public const PAGE_SLUG = '/young-clinic3';
 
-    /**
-     * Create a new PageSeeder instance.
-     *
-     * @param PageRepositoryInterface $pages
-     * @param TypeRepositoryInterface $types
-     */
-    public function __construct(PageRepositoryInterface $pages, TypeRepositoryInterface $types)
+    public static function getTitle(): string
     {
-        parent::__construct();
-        $this->pages = $pages;
-        $this->types = $types;
+        return 'Детская поликлиника №3';
     }
 
-    /**
-     * Run the seeder.
-     */
-    public function run(): void
+    public static function getSlug(): string
     {
-        $type = $this->types->findBySlug('default');
-        $content = $this->getContent();
-        $this->pages->create(
-            [
-                'ru'           => [
-                    'title' => 'Еединый центр телефонных звонков',
-                ],
-                'slug'         => '/p12',
-                'entry'        => $type->getEntryModel()->create(
-                    [
-                        'ru' => [
-                            'content' => $content,
-                        ]
-                    ]
-                ),
-                'type'         => $type,
-                'enabled'      => true,
-                'theme_layout' => 'theme::layouts/default.twig',
-            ]
-        )->allowedRoles()->sync([]);
+        return self::PAGE_SLUG;
     }
 
-    private function getContent(): string
+    public static function getParentSlug(): ?string
+    {
+        return MenuSeeder::SLUG_YOUNG_SUBDIVISION;
+    }
+
+    protected function getContent(): string
     {
         return "
             <h3>
