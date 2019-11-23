@@ -27,7 +27,7 @@ class Seeder21 extends BaseSeeder
 
     public static function getParentSlug(): ?string
     {
-        return MenuSeeder::SLUG_OLD_SUBDIVISION;
+        return MenuSeeder::SLUG_DISPENSARY;
     }
 
     protected function getContent(): string

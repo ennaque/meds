@@ -7,64 +7,28 @@ namespace Ennq\MedsTheme\Seeders\PagesSeeders;
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
+use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
+use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 
-class Seeder25 extends Seeder
+class Seeder25 extends BaseSeeder
 {
-    /**
-     * The page repository.
-     *
-     * @var PageRepositoryInterface
-     */
-    protected $pages;
 
-    /**
-     * The types repository.
-     *
-     * @var TypeRepositoryInterface
-     */
-    protected $types;
-
-    /**
-     * Create a new PageSeeder instance.
-     *
-     * @param PageRepositoryInterface $pages
-     * @param TypeRepositoryInterface $types
-     */
-    public function __construct(PageRepositoryInterface $pages, TypeRepositoryInterface $types)
+    public static function getTitle(): string
     {
-        parent::__construct();
-        $this->pages = $pages;
-        $this->types = $types;
+        return 'Архангельская амбулатория';
     }
 
-    /**
-     * Run the seeder.
-     */
-    public function run()
+    public static function getSlug(): string
     {
-        $type = $this->types->findBySlug('default');
-        $content = $this->getContent();
-        $this->pages->create(
-            [
-                'ru'           => [
-                    'title' => 'Архангельская амбулатория',
-                ],
-                'slug'         => '/p25',
-                'entry'        => $type->getEntryModel()->create(
-                    [
-                        'ru' => [
-                            'content' => $content,
-                        ]
-                    ]
-                ),
-                'type'         => $type,
-                'enabled'      => true,
-                'theme_layout' => 'theme::layouts/default.twig',
-            ]
-        )->allowedRoles()->sync([]);
+        return '/achangel-disp';
     }
 
-    private function getContent(): string
+    public static function getParentSlug(): ?string
+    {
+        return MenuSeeder::SLUG_MAPPING;
+    }
+
+    protected function getContent(): string
     {
         return
 '

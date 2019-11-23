@@ -8,8 +8,12 @@ use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\CdiaglSeeder2831;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\DispensarySeeder2122;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MainSeeder29;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MappingSeeder2427;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\OldSubdivision1720;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PhysterSeeder3238;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\YoungSubdivisionSeeder1016;
 use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder2;
@@ -91,14 +95,18 @@ class MedsThemeSeeder extends Seeder
             OldSubdivision1720::class,
             Seeder17::class,
             Seeder18::class,
+            DispensarySeeder2122::class,
             Seeder21::class,
             Seeder22::class,
+            MappingSeeder2427::class,
             Seeder24::class,
             Seeder25::class,
             Seeder26::class,
             Seeder27::class,
+            CdiaglSeeder2831::class,
             Seeder28::class,
             Seeder29::class,
+            PhysterSeeder3238::class,
             Seeder32::class,
             Seeder33::class,
             Seeder34::class,
@@ -106,10 +114,10 @@ class MedsThemeSeeder extends Seeder
             Seeder36::class,
             Seeder37::class,
             Seeder38::class,
-            Seeder44::class,
-            Seeder45::class,
-            Seeder50::class,
-            Seeder51::class,
+            Seeder44::class,//TODO
+            Seeder45::class,//TODO
+            Seeder50::class,//TODO
+            Seeder51::class,//TODO
         ]);
     }
 
