@@ -1,6 +1,6 @@
 (function (window, document) {
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#meds-table').DataTable({
             responsive: true,
             ordering: false,
@@ -12,19 +12,19 @@
             "bAutoWidth": true
         });
 
-        //http://www.runningcoder.org/jquerytypeahead/demo/
-        //http://www.runningcoder.org/jquerytypeahead/
         $('#typeahead_search').typeahead({
-            href: "{{SearchEntry.link}}",
-            template: "{{SearchEntry.title}} <small style='color:#999;'>{{SearchEntry.content}}</small>",
+            href: "{{SearchEntry.data.link}}",
+            template: "{{SearchEntry.data.title}} <small style='color:#999;'>{{SearchEntry.data.content}}</small>",
             source: {
                 SearchEntry: {
-                    ajax:{
+                    ajax: {
                         url: "/async-search",
-                        path: "SearchEntry.title"
+                        path: "SearchEntry.data.title"
                     }
                 }
             },
+            cancelButton: false,
+            minLength: 3
         });
     });
 
