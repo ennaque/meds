@@ -103,7 +103,9 @@ class Seeder10 extends BaseSeeder
         </a>
     </div>
     <div>
-        <h3 style="padding-bottom: 15px; padding-top: 15px">Услуги оказываемые в Детской поликлинике №1:</h3>
+        <h3 style="padding-bottom: 15px; padding-top: 15px">
+            Услуги, оказываемые в Детской поликлинике №1:
+        </h3>
         <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
                 <tr>

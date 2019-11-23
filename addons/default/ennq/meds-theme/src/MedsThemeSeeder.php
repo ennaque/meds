@@ -28,6 +28,24 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder14;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder17;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder18;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder21;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder22;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder24;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder25;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder26;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder27;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder28;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder29;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder32;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder33;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder34;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder35;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder36;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder37;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder38;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder44;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder45;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder50;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
 
 use Illuminate\Support\Facades\DB;
 
@@ -74,6 +92,24 @@ class MedsThemeSeeder extends Seeder
             Seeder17::class,
             Seeder18::class,
             Seeder21::class,
+            Seeder22::class,
+            Seeder24::class,
+            Seeder25::class,
+            Seeder26::class,
+            Seeder27::class,
+            Seeder28::class,
+            Seeder29::class,
+            Seeder32::class,
+            Seeder33::class,
+            Seeder34::class,
+            Seeder35::class,
+            Seeder36::class,
+            Seeder37::class,
+            Seeder38::class,
+            Seeder44::class,
+            Seeder45::class,
+            Seeder50::class,
+            Seeder51::class,
         ]);
     }
 

@@ -37,7 +37,7 @@ class Seeder3 extends BaseSeeder
                     </h2>
                 </div>
                 <div>
-                    <img src="/app/default/files-module/local/images/gv1_3.jpg" width="800px">
+                    <img src="/app/default/files-module/local/images/gv1_3.jpg" class="resizeable" width="800px">
                 </div>
                 <div>
                     <p style="padding-bottom: 7px; font-weight: bold">
