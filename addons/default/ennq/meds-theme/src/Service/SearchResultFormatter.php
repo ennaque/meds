@@ -12,14 +12,26 @@ class SearchResultFormatter implements SearchResultFormatterInterface
      * @param array<SearchEntry> $data
      * @param string $needle
      * @param int $num
+     * @param bool $isCaseSensitive
      * @return array<string>
      */
-    public function get(array $data, string $needle, int $num = 20): array
+    public function get(array $data, string $needle, int $num = 20, bool $isCaseSensitive = False): array
     {
         $result = [];
         foreach ($data as $iValue) {
             $content = $this->extractContent($iValue);
-            $entriesPositions = $this->findNeedleEntries($content, $needle, $num);
+
+            $targetContent = "";
+            $targetNeedle = "";
+            if ($isCaseSensitive === True) {
+                $targetContent = $content;
+                $targetNeedle = $needle;
+            } else {
+                $targetContent = strtolower($content);
+                $targetNeedle = strtolower($needle);
+            }
+
+            $entriesPositions = $this->findNeedleEntries($targetContent, $targetNeedle, $num);
             if (count($entriesPositions) > 0) {
                 $needleEntries = $this->extractNeedleEntries($content, $needle, $entriesPositions);
                 $iValue->setContent($needleEntries[0]);
@@ -93,6 +105,7 @@ class SearchResultFormatter implements SearchResultFormatterInterface
         $result[0] = '';
         $ri = 0;
         $cutLength = 60;
+        $needleLength = strlen($needle);
 
         foreach ($entriesPositions as $i => $iValue) {
             /* PROCESSING THE SUBSTRING BEFORE THE NEEDLE ENTRY INCLUDING NEEDLE */
@@ -105,7 +118,7 @@ class SearchResultFormatter implements SearchResultFormatterInterface
                     $length = $iValue;
                 }
             } else {
-                $previousPosition = $entriesPositions[$i - 1] + strlen($needle);
+                $previousPosition = $entriesPositions[$i - 1] + $needleLength;
                 $distance = $iValue - $previousPosition;
                 if ($distance >= $cutLength * 2) {
                     $from = $iValue - $cutLength;
@@ -116,23 +129,23 @@ class SearchResultFormatter implements SearchResultFormatterInterface
                 }
             }
             $result[$ri] .= substr($content, $from, $length);
-            $result[$ri] .= '<b>' . $needle . '</b>';
+            $result[$ri] .= '<b>' . substr($content, $iValue, $needleLength) . '</b>';
             /* PROCESSING THE SUBSTING PLACED AFTER THE NEEDLE ENTRY */
             if ($i < (count($entriesPositions) - 1)) {
-                if (($entriesPositions[$i + 1] - $iValue + strlen($needle)) >= ($cutLength * 2)) {// if the next entry is far enough (double distance from current one), ...
+                if (($entriesPositions[$i + 1] - $iValue + $needleLength) >= ($cutLength * 2)) {// if the next entry is far enough (double distance from current one), ...
                     // ...then copy $cutLength symbols after the needle to the result ...
-                    $result[$ri] .= substr($content, $iValue + strlen($needle), $cutLength);
+                    $result[$ri] .= substr($content, $iValue + $needleLength, $cutLength);
                     ++$ri; // ...and go over towards the next result string
                     $result[$ri] = '';
                 }
                 // otherwise -- do nothing: the next needle entry will be added to the current result string in the next loop iteration
             } else { // the last needle entry
-                if ((strlen($content) - $iValue + strlen($needle)) >= $cutLength) {
+                if ((strlen($content) - $iValue + $needleLength) >= $cutLength) {
                     $length = $cutLength;
                 } else {
-                    $length = strlen($content) - $iValue + strlen($needle);
+                    $length = strlen($content) - $iValue + $needleLength;
                 }
-                $result[$ri] .= substr($content, $iValue + strlen($needle), $length);
+                $result[$ri] .= substr($content, $iValue + $needleLength, $length);
             }
         }
         foreach ($result as $i => $iValue) {
