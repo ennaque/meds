@@ -13,18 +13,25 @@
         });
 
         $('#typeahead_search').typeahead({
+            cancelButton: false,
+            minLength: 3,
+            delay: 500,
+            dynamic:true,
             href: "{{SearchEntry.data.link}}",
             template: "{{SearchEntry.data.title}} <small style='color:#999;'>{{SearchEntry.data.content}}</small>",
             source: {
                 SearchEntry: {
-                    ajax: {
-                        url: "/async-search",
-                        path: "SearchEntry.data.title"
+                    ajax: function (query) {
+                        return {
+                            url: "/async-search",
+                            data: {
+                                query: query
+                            },
+                            path: "SearchEntry.data.title"
+                        }
                     }
                 }
             },
-            cancelButton: false,
-            minLength: 3
         });
     });
 
