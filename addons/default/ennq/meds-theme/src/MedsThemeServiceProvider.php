@@ -1,7 +1,9 @@
 <?php namespace Ennq\MedsTheme;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Entry\Event\EntryWasUpdated;
 use Ennq\MedsTheme\Command\ImageMigrationCommand;
+use Ennq\MedsTheme\Listeners\ContentUpdateListener;
 use Illuminate\Routing\Router;
 
 class MedsThemeServiceProvider extends AddonServiceProvider
@@ -88,9 +90,9 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $listeners = [
-        //Ennq\MedsTheme\Event\ExampleEvent::class => [
-        //    Ennq\MedsTheme\Listener\ExampleListener::class,
-        //],
+        EntryWasUpdated::class => [
+            ContentUpdateListener::class
+        ]
     ];
 
     /**
