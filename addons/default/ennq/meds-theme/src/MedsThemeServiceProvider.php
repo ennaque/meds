@@ -3,6 +3,7 @@
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Entry\Event\EntryWasUpdated;
 use Ennq\MedsTheme\Command\ImageMigrationCommand;
+use Ennq\MedsTheme\Command\CacheCleanCommand;
 use Ennq\MedsTheme\Listeners\ContentUpdateListener;
 use Illuminate\Routing\Router;
 
@@ -22,7 +23,8 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $commands = [
-        ImageMigrationCommand::class
+        ImageMigrationCommand::class,
+        CacheCleanCommand::class
     ];
 
     /**
@@ -54,7 +56,7 @@ class MedsThemeServiceProvider extends AddonServiceProvider
             'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch',
             'verb' => 'get',
             'as' => 'async-search'
-        ]
+        ]CacheCleanCommand::class
     ];
 
     /**
