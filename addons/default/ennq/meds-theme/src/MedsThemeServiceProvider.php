@@ -56,7 +56,7 @@ class MedsThemeServiceProvider extends AddonServiceProvider
             'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch',
             'verb' => 'get',
             'as' => 'async-search'
-        ]CacheCleanCommand::class
+        ]
     ];
 
     /**
