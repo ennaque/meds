@@ -5,16 +5,16 @@ namespace Ennq\MedsTheme\Command;
 
 use Anomaly\Streams\Platform\Addon\Addon;
 use Illuminate\Console\Command;
-use Ennq\MedsTheme\Service\Cache as redisCache;
+use Ennq\MedsTheme\Service\Cache;
 
-class CacheCleanCommand extends Command
+class CacheClearCommand extends Command
 {
     /**
      * The command name.
      *
      * @var string
      */
-    protected $name = 'meds:cache:clean';
+    protected $name = 'meds:cache:clear';
 
     /**
      * The command description.
@@ -31,11 +31,12 @@ class CacheCleanCommand extends Command
      */
     public function handle(): void
     {
-        $cache = new redisCache();
+        $cache = Cache();
         $this->info('Cache cleaning...');
-        if ($cache->clear())
+        if ($cache->clear()){
             $this->info('OK');
-        else
-            $this->info('It looks like some shit has happened');
+        } else {
+            $this->info('FAIL');
+        }
     }
 }

@@ -3,7 +3,7 @@
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Entry\Event\EntryWasUpdated;
 use Ennq\MedsTheme\Command\ImageMigrationCommand;
-use Ennq\MedsTheme\Command\CacheCleanCommand;
+use Ennq\MedsTheme\Command\CacheClearCommand;
 use Ennq\MedsTheme\Listeners\ContentUpdateListener;
 use Illuminate\Routing\Router;
 
@@ -24,7 +24,7 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      */
     protected $commands = [
         ImageMigrationCommand::class,
-        CacheCleanCommand::class
+        CacheClearCommand::class
     ];
 
     /**
