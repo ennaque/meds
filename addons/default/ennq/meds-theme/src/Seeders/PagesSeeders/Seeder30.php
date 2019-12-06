@@ -4,13 +4,14 @@
 namespace Ennq\MedsTheme\Seeders\PagesSeeders;
 
 
+use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
+use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
+use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
 use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 
 class Seeder30 extends BaseSeeder
 {
-
-    public const PAGE_SLUG = '/p30';
 
     public static function getTitle(): string
     {
@@ -19,12 +20,12 @@ class Seeder30 extends BaseSeeder
 
     public static function getSlug(): string
     {
-        return self::PAGE_SLUG;
+        return '/cdiaglpatient';
     }
 
     public static function getParentSlug(): ?string
     {
-        return MenuSeeder::SLUG_OLD_SUBDIVISION;
+        return MenuSeeder::SLUG_CDIAGL;
     }
 
     protected function getContent(): string
@@ -92,7 +93,7 @@ class Seeder30 extends BaseSeeder
     </p>
     <p style="padding-bottom: 7px">
         <b>Особенности сбора мочи у маленьких детей.</b><br>
-        Для детей младше 2-х лет наиболее удобен сбор мочи в мочеприемники. Промывать область промежности перед приклеиванием мочеприемника следует только кипяченой водой. Использование антисептиков может привести к ложноотрицательным результатам. Мочеприемник следует снять как можно скорее после мочеиспускания; лучше всего менять его, если в течение 60-90 минут мочеиспускание не происходило. <b>Мочу собранную таким образом, перелить в контейнер</b>, закрыть крышку контейнера до упора. К контейнеру с мочой прикрепить направление. Собранную мочу доставить в лабораторию утром того же дня.<br>
+        Для детей младше 2-х лет наиболее удобен сбор мочи в мочеприемники. Промывать область промежности перед приклеиванием мочеприемника следует только кипяченой водой. Использование антисептиков может привести к ложноотрицательным результатам. Мочеприемник следует снять как можно скорее после мочеиспускания; лучше всего менять его, если в течение 60-90 минут мочеиспускание не происходило. <b>Мочу, собранную таким образом, перелить в контейнер</b>, закрыть крышку контейнера до упора. К контейнеру с мочой прикрепить направление. Собранную мочу доставить в лабораторию утром того же дня.<br>
         У детей старше 2-х лет сбор мочи производится сразу в контейнер в момент начала мочеиспускания. Для анализа подходит только первая утренняя моча. Перед сбором мочи нужно провести тщательный туалет половых органов ребенка. Мочу необходимо сдать на анализ в лабораторию  в течение полутора часов после ее сбора.
     </p>
     <p style="padding-bottom: 7px">

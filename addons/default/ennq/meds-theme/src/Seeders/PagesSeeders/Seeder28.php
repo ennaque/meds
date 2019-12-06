@@ -7,9 +7,10 @@ namespace Ennq\MedsTheme\Seeders\PagesSeeders;
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
+use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
 use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 
-class Seeder28 extends Seeder
+class Seeder28 extends BaseSeeder
 {
 
     public static function getTitle(): string

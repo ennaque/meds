@@ -35,6 +35,8 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder27;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder28;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder29;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder3;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder30;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder31;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder32;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder33;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder34;
@@ -207,8 +209,8 @@ class MenuSeeder extends Seeder
         return [
             Seeder28::class,
             Seeder29::class,
-//            Seeder30::class,
-//            Seeder31::class,
+            Seeder30::class,
+            Seeder31::class,
         ];
     }
 
