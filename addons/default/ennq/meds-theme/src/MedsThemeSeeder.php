@@ -15,6 +15,7 @@ use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MappingSeeder2427;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\OldSubdivision1720;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PhysterSeeder3238;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\YoungSubdivisionSeeder1016;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\DocumentSeeder5173;
 use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder2;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder3;
@@ -53,6 +54,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder44;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder45;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder50;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
 
 use Illuminate\Support\Facades\DB;
 
@@ -123,7 +125,9 @@ class MedsThemeSeeder extends Seeder
             Seeder44::class,//TODO
             Seeder45::class,//TODO
             Seeder50::class,//TODO
-            Seeder51::class,//TODO
+            DocumentSeeder5173::class,
+            Seeder51::class,
+            Seeder56::class,
         ]);
     }
 
