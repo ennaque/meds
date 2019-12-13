@@ -57,7 +57,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder54;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder55;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder58;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder59;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder60;
@@ -264,7 +264,7 @@ class MenuSeeder extends Seeder
 //            Seeder54::class,
 //            Seeder55::class,
             Seeder56::class,
-//            Seeder57::class,
+            Seeder57::class,
 //            Seeder58::class,
 //            Seeder59::class,
 //            Seeder60::class,

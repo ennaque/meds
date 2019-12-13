@@ -12,7 +12,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder54;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder55;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder58;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder59;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder60;
@@ -58,6 +58,11 @@ class DocumentSeeder5173 extends BaseSeeder
             <h4 style='padding-bottom: 10px'>
                 <a href='" . MenuSeeder::SLUG_DOCS . Seeder56::getSlug() . "'>
                     ". Seeder56::getTitle() . "
+                </a>
+            </h4>
+            <h4 style='padding-bottom: 10px'>
+                <a href='" . MenuSeeder::SLUG_DOCS . Seeder57::getSlug() . "'>
+                    ". Seeder57::getTitle() . "
                 </a>
             </h4>
         ";

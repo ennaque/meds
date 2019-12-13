@@ -55,6 +55,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder45;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder50;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
 
 use Illuminate\Support\Facades\DB;
 
@@ -128,6 +129,7 @@ class MedsThemeSeeder extends Seeder
             DocumentSeeder5173::class,
             Seeder51::class,
             Seeder56::class,
+            Seeder57::class,
         ]);
     }
 
