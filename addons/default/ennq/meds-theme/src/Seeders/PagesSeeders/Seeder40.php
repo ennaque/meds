@@ -4,13 +4,14 @@
 namespace Ennq\MedsTheme\Seeders\PagesSeeders;
 
 
+use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
+use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
+use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
 use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 
 class Seeder40 extends BaseSeeder
 {
-
-    public const PAGE_SLUG = '/p40';
 
     public static function getTitle(): string
     {
@@ -19,12 +20,12 @@ class Seeder40 extends BaseSeeder
 
     public static function getSlug(): string
     {
-        return self::PAGE_SLUG;
+        return '/infoforpatient';
     }
 
     public static function getParentSlug(): ?string
     {
-        return MenuSeeder::SLUG_OLD_SUBDIVISION;
+        return MenuSeeder::SLUG_PAYROLL;
     }
 
     protected function getContent(): string

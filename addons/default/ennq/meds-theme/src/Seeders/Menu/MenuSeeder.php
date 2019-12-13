@@ -18,6 +18,7 @@ use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MainSeeder29;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MappingSeeder2427;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\OldSubdivision1720;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PhysterSeeder3238;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PayrollSeeder4042;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\YoungSubdivisionSeeder1016;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder10;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder11;
@@ -46,6 +47,9 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder36;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder37;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder38;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder40;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder41;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder42;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder5;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder7;
@@ -134,7 +138,9 @@ class MenuSeeder extends Seeder
         $this->runSection($repository, $newMenu, MappingSeeder2427::class, $this->getMappingSection());
         $this->runSection($repository, $newMenu, CdiaglSeeder2831::class, $this->getCdiaglSection());
         $this->runSection($repository, $newMenu, PhysterSeeder3238::class, $this->getPhysterSection());
+        $this->runSection($repository, $newMenu, PayrollSeeder4042::class, $this->getPayrollSection());
         $this->runSection($repository, $newMenu, DocumentSeeder5173::class, $this->getPhysterSection());
+        PayrollSeeder4042
 
     }
 
@@ -252,6 +258,15 @@ class MenuSeeder extends Seeder
             Seeder36::class,
             Seeder37::class,
             Seeder38::class,
+        ];
+    }
+
+    private function getPayrollSection(): array
+    {
+        return [
+            Seeder40::class,
+            Seeder41::class,
+            Seeder42::class,
         ];
     }
 
