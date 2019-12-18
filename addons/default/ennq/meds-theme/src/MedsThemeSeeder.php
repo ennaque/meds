@@ -14,6 +14,9 @@ use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MainSeeder29;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MappingSeeder2427;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\OldSubdivision1720;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PhysterSeeder3238;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PayrollSeeder4042;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\FaqSeeder4346;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\ProfexamSeeder4748;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\YoungSubdivisionSeeder1016;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\DocumentSeeder5173;
 use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
@@ -50,8 +53,14 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder36;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder37;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder38;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder40;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder41;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder42;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder43;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder44;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder45;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder46;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder47;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder48;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder50;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
@@ -122,9 +131,19 @@ class MedsThemeSeeder extends Seeder
             Seeder36::class,
             Seeder37::class,
             Seeder38::class,
+            PayrollSeeder4042::class,
             Seeder40::class,
-            Seeder44::class,//TODO
-            Seeder45::class,//TODO
+            Seeder41::class,
+            Seeder42::class,
+            FaqSeeder4346::class,
+            Seeder43::class,
+            Seeder44::class,
+            Seeder45::class,
+            Seeder46::class,
+            ProfexamSeeder4748::class,
+            Seeder47::class,
+            Seeder48::class,
+
             Seeder50::class,//TODO
             DocumentSeeder5173::class,
             Seeder51::class,

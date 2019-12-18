@@ -38,7 +38,7 @@ class PayrollSeeder4042 extends BaseSeeder
             </h4>
             <h4 style='padding-bottom: 10px'>
                 <a href='" . MenuSeeder::SLUG_PAYROLL . Seeder41::getSlug() . "'>
-                    ". Seeder42::getTitle() ."
+                    ". Seeder41::getTitle() ."
                 </a>
             </h4>
             <h4 style='padding-bottom: 10px'>

@@ -34,22 +34,22 @@ class FaqSeeder4346 extends BaseSeeder
         return "
             <h4 style='padding-bottom: 10px'>
                 <a href='" . MenuSeeder::SLUG_FAQ . Seeder43::getSlug() . "'>
-                    ". Seeder40::getTitle() ."
+                    ". Seeder43::getTitle() ."
                 </a>
             </h4>
             <h4 style='padding-bottom: 10px'>
                 <a href='" . MenuSeeder::SLUG_FAQ . Seeder44::getSlug() . "'>
-                    ". Seeder42::getTitle() ."
+                    ". Seeder44::getTitle() ."
                 </a>
             </h4>
             <h4 style='padding-bottom: 10px'>
                 <a href='" . MenuSeeder::SLUG_FAQ . Seeder45::getSlug() . "'>
-                    ". Seeder42::getTitle() . "
+                    ". Seeder45::getTitle() . "
                 </a>
             </h4>
             <h4 style='padding-bottom: 10px'>
                 <a href='" . MenuSeeder::SLUG_FAQ . Seeder46::getSlug() . "'>
-                    ". Seeder42::getTitle() . "
+                    ". Seeder46::getTitle() . "
                 </a>
             </h4>
         ";
