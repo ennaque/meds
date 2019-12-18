@@ -19,6 +19,7 @@ use Ennq\MedsTheme\Seeders\DefinitionsSeeders\MappingSeeder2427;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\OldSubdivision1720;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PhysterSeeder3238;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\PayrollSeeder4042;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\FaqSeeder4346;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\YoungSubdivisionSeeder1016;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder10;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder11;
@@ -50,6 +51,10 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder40;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder41;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder42;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder43;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder44;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder45;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder46;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder5;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder7;
@@ -91,6 +96,8 @@ class MenuSeeder extends Seeder
     public const SLUG_MAPPING = '/mapping';
     public const SLUG_CDIAGL = '/cdiagl';
     public const SLUG_PHYSTER = '/physter';
+    public const SLUG_PAYROLL = '/payroll';
+    public const SLUG_FAQ = '/faq';
     public const SLUG_DOCS = '/docs';
 
     /**
@@ -139,6 +146,7 @@ class MenuSeeder extends Seeder
         $this->runSection($repository, $newMenu, CdiaglSeeder2831::class, $this->getCdiaglSection());
         $this->runSection($repository, $newMenu, PhysterSeeder3238::class, $this->getPhysterSection());
         $this->runSection($repository, $newMenu, PayrollSeeder4042::class, $this->getPayrollSection());
+        $this->runSection($repository, $newMenu, FaqSeeder4346::class, $this->getFaqSection());
         $this->runSection($repository, $newMenu, DocumentSeeder5173::class, $this->getPhysterSection());
 
     }
@@ -266,6 +274,16 @@ class MenuSeeder extends Seeder
             Seeder40::class,
             Seeder41::class,
             Seeder42::class,
+        ];
+    }
+
+    private function getFaqSection(): array
+    {
+        return [
+            Seeder43::class,
+            Seeder44::class,
+            Seeder45::class,
+            Seeder46::class,
         ];
     }
 
