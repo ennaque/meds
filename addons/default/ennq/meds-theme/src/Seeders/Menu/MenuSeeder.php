@@ -74,18 +74,18 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder59;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder60;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder61;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder62;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder63;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder62;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder63;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder64;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder65;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder66;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder67;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder68;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder69;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder68;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder69;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder70;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder71;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder72;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder73;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder72;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder73;
 
 
 
@@ -314,18 +314,18 @@ class MenuSeeder extends Seeder
 //            Seeder59::class,
 //            Seeder60::class,
 //            Seeder61::class,
-//            Seeder62::class,
-//            Seeder63::class,
+            Seeder62::class,
+            Seeder63::class,
 //            Seeder64::class,
 //            Seeder65::class,
 //            Seeder66::class,
 //            Seeder67::class,
-//            Seeder68::class,
-//            Seeder69::class,
+            Seeder68::class,
+            Seeder69::class,
 //            Seeder70::class,
 //            Seeder71::class,
-//            Seeder72::class,
-//            Seeder73::class,
+            Seeder72::class,
+            Seeder73::class,
 
         ];
     }

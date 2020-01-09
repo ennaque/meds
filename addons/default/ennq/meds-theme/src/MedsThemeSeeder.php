@@ -65,6 +65,12 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder50;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder62;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder63;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder68;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder69;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder72;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder73;
 
 use Illuminate\Support\Facades\DB;
 
@@ -149,6 +155,12 @@ class MedsThemeSeeder extends Seeder
             Seeder51::class,
             Seeder56::class,
             Seeder57::class,
+            Seeder62::class,
+            Seeder63::class,
+            Seeder68::class,
+            Seeder69::class,
+            Seeder72::class,
+            Seeder73::class,
         ]);
     }
 
