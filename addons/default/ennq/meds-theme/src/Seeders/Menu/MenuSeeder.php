@@ -152,7 +152,7 @@ class MenuSeeder extends Seeder
         $this->runSection($repository, $newMenu, PayrollSeeder4042::class, $this->getPayrollSection());
         $this->runSection($repository, $newMenu, FaqSeeder4346::class, $this->getFaqSection());
         $this->runSection($repository, $newMenu, ProfexamSeeder4748::class, $this->getFaqSection());
-        $this->runSection($repository, $newMenu, DocumentSeeder5173::class, $this->getPhysterSection());
+        $this->runSection($repository, $newMenu, DocumentSeeder5173::class, $this->getDocumentSection());
 
     }
 
