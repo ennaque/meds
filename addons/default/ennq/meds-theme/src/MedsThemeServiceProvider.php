@@ -1,7 +1,9 @@
 <?php namespace Ennq\MedsTheme;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Entry\Event\EntryWasUpdated;
 use Ennq\MedsTheme\Command\ImageMigrationCommand;
+use Ennq\MedsTheme\Listeners\ContentUpdateListener;
 use Illuminate\Routing\Router;
 
 class MedsThemeServiceProvider extends AddonServiceProvider
@@ -43,11 +45,16 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $routes = [
-        'test' => [
-            'uses' => 'Ennq\MedsTheme\Http\Controller\TestController@test',
+        'search' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@index',
             'verb' => 'get',
             'as' => 'search'
         ],
+        'async-search' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch',
+            'verb' => 'get',
+            'as' => 'async-search'
+        ]
     ];
 
     /**
@@ -83,9 +90,9 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $listeners = [
-        //Ennq\MedsTheme\Event\ExampleEvent::class => [
-        //    Ennq\MedsTheme\Listener\ExampleListener::class,
-        //],
+        EntryWasUpdated::class => [
+            ContentUpdateListener::class
+        ]
     ];
 
     /**
@@ -102,7 +109,13 @@ class MedsThemeServiceProvider extends AddonServiceProvider
      *
      * @type array|null
      */
-    protected $bindings = [];
+    protected $bindings = [
+        'Ennq\MedsTheme\Lib\SearchResultFormatterInterface' => 'Ennq\MedsTheme\Service\SearchResultFormatter',
+        'Ennq\MedsTheme\Lib\SearchInterface' => 'Ennq\MedsTheme\Service\SearchEngine',
+        'Ennq\MedsTheme\Lib\MedsPostRepositoryInterface' => 'Ennq\MedsTheme\Service\MedsPostRepository',
+        'Ennq\MedsTheme\Lib\MedsPageRepositoryInterface' => 'Ennq\MedsTheme\Service\MedsPageRepository',
+        'Psr\SimpleCache\CacheInterface' => 'Ennq\MedsTheme\Service\Cache'
+    ];
 
     /**
      * The addon singleton bindings.

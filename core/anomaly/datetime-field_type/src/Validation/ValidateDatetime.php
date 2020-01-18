@@ -18,22 +18,18 @@ class ValidateDatetime
      * Handle the validation.
      *
      * @param FormBuilder $builder
-     * @param               $attribute
-     * @param               $value
+     * @param $attribute
+     * @param $value
      * @return bool
      */
-    public function handle(FormBuilder $builder, $attribute, $value)
+    public function handle(DatetimeFieldType $fieldType, $value)
     {
-
         if (empty($value)) {
             return true;
         }
 
-        /* @var $fieldType DatetimeFieldType */
-        $fieldType = $builder->getFormFieldFromAttribute($attribute);
-
         try {
-            (new Carbon())->createFromFormat($fieldType->getPostFormat(), $value);
+            (new Carbon())->createFromFormat($fieldType->getInputFormat(), $value, $fieldType->configGet('timezone'));
         } catch (\Exception $e) {
             return false;
         }

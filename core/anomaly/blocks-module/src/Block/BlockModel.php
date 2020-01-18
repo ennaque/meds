@@ -65,13 +65,14 @@ class BlockModel extends BlocksBlocksEntryModel implements BlockInterface
     /**
      * Return the rendered block.
      *
+     * @param array $payload
      * @return string
      */
-    public function render()
+    public function render(array $payload = [])
     {
         $this->make();
 
-        return $this->dispatch(new RenderBlock($this));
+        return $this->dispatch(new RenderBlock($this, $payload));
     }
 
     /**

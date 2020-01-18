@@ -25,13 +25,21 @@ class RenderBlock
     protected $block;
 
     /**
+     * Additional view payload.
+     *
+     * @var array
+     */
+    protected $payload;
+
+    /**
      * Create a new RenderBlock instance.
      *
      * @param BlockInterface $block
      */
-    public function __construct(BlockInterface $block)
+    public function __construct(BlockInterface $block, array $payload = [])
     {
-        $this->block = $block;
+        $this->block   = $block;
+        $this->payload = $payload;
     }
 
     /**
@@ -51,10 +59,13 @@ class RenderBlock
 
         return $view->make(
             $extension->getWrapper(),
-            [
-                'block'   => $this->block,
-                'content' => $this->block->getContent(),
-            ]
+            array_merge(
+                [
+                    'block'   => $this->block,
+                    'content' => $this->block->getContent(),
+                ],
+                $this->payload
+            )
         )->render();
     }
 }

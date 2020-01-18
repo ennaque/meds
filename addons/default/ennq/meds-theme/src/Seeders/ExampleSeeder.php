@@ -48,49 +48,30 @@ class ExampleSeeder extends Seeder
      */
     public function run()
     {
-//        $this->pages->truncate();
-//
-//        $type = $this->types->findBySlug('default');
-//
-//        $test = $this->pages->create(
-//            [
-//                'en'           => [
-//                    'title' => 'ЕУЫЕЫУЕЫУЕ',
-//                ],
-//                'slug'         => 'testPageSlug1',
-//                'entry'        => $type->getEntryModel()->create(
-//                    [
-//                        'en' => [
-//                            'content' => '<h1>thytdh eh aerh </h1>',
-//                        ],
-//                    ]
-//                ),
-//                'type'         => $type,
-//                'enabled'      => true,
-//                'theme_layout' => 'theme::layouts/default.twig',
-//            ]
-//        );
-//
-//        $test->allowedRoles()->sync([]);
-//
-//        $this->pages->create(
-//            [
-//                'en'           => [
-//                    'title' => 'ЕУЫЕЫУЕЫУЕ',
-//                ],
-//                'slug'         => 'testPageSlug1_child',
-//                'entry'        => $type->getEntryModel()->create(
-//                    [
-//                        'en' => [
-//                            'content' => '<h1>dth sdth stdh sdtht sdthst sdhsthsdh sdh</h1> <div style="text-align: center"> test</div> ',
-//                        ],
-//                    ]
-//                ),
-//                'type'         => $type,
-//                'parent_id' => $test->getId(),
-//                'enabled'      => true,
-//                'theme_layout' => 'theme::layouts/default.twig',
-//            ]
-//        )->allowedRoles()->sync([]);
+        $this->pages->truncate();
+
+        $type = $this->types->findBySlug('default');
+
+
+        for ($i = 0; $i < 26; $i ++) {
+            $this->pages->create(
+                [
+                    'en'           => [
+                        'title' => 'ЕУЫЕЫУЕЫУЕ',
+                    ],
+                    'slug'         => 'testPageSlug' . $i,
+                    'entry'        => $type->getEntryModel()->create(
+                        [
+                            'en' => [
+                                'content' => '<h1>TEST LOOP TEST LOOP TEST LOOP TESTLOOP</h1> ',
+                            ],
+                        ]
+                    ),
+                    'type'         => $type,
+                    'enabled'      => true,
+                    'theme_layout' => 'theme::layouts/default.twig',
+                ]
+            )->allowedRoles()->sync([]);
+        }
     }
 }
