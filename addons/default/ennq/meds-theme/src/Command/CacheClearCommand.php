@@ -3,7 +3,6 @@
 namespace Ennq\MedsTheme\Command;
 
 
-use Anomaly\Streams\Platform\Addon\Addon;
 use Illuminate\Console\Command;
 use Ennq\MedsTheme\Service\Cache;
 
@@ -27,11 +26,11 @@ class CacheClearCommand extends Command
     /**
      * Handle the command.
      *
-     * @return bool True on success and false on failure.
+     * @param Cache $cache
+     * @return void True on success and false on failure.
      */
-    public function handle(): void
+    public function handle(Cache $cache): void
     {
-        $cache = Cache();
         $this->info('Cache cleaning...');
         if ($cache->clear()){
             $this->info('OK');
