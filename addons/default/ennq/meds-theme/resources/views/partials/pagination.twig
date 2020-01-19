@@ -1,0 +1,97 @@
+{% if paginator.getPaginationLength() and  paginator.getPaginationLength() != 1 %}
+    <nav class="text-center">
+        <ul class="pagination pagination-sm">
+            {% if paginator.hasPreviousPage() %}
+                <li class="pagination-link">
+                    <a href="{{ paginator.getPreviousPage }}">Назад</a>
+                </li>
+            {% endif %}
+            {% if paginator.getPaginationLength() < 6 %}
+                {% for num in 1..(paginator.getPaginationLength()) %}
+                    {% if num == paginator.getCurrentPageIndex() %}
+                        <li class="pagination-link active">
+                            <a href="{{ paginator.getPageByOffset(num) }}">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="pagination-link">
+                            <a href="{{ paginator.getPageByOffset(num) }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% elseif paginator.getCurrentPageIndex() < 4 and paginator.getCurrentPageIndex() < paginator.getPaginationLength() - 3 %}
+                {% for num in 1..4 %}
+                    {% if num == paginator.getCurrentPageIndex() %}
+                        <li class="pagination-link active">
+                            <a href="{{ paginator.getPageByOffset(num) }}">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="pagination-link">
+                            <a href="{{ paginator.getPageByOffset(num) }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="pagination-link">
+                    <a>...</a>
+                </li>
+                <li class="pagination-link">
+                    <a href="{{ paginator.getLastPage() }}">
+                        {{ paginator.getLastPageIndex() }}
+                    </a>
+                </li>
+            {% elseif paginator.getCurrentPageIndex() > paginator.getPaginationLength() - 3 %}
+                <li class="pagination-link">
+                    <a href="{{ paginator.getFirstPage() }}">1</a>
+                </li>
+                <li class="pagination-link">
+                    <a>...</a>
+                </li>
+                {% for num in (paginator.getPaginationLength() - 3)..(paginator.getPaginationLength()) %}
+                    {% if num == paginator.getCurrentPageIndex() %}
+                        <li class="pagination-link active">
+                            <a href="{{ paginator.getPageByOffset(num) }}">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="pagination-link">
+                            <a href="{{ paginator.getPageByOffset(num) }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <li class="pagination-link">
+                    <a href="{{ paginator.getFirstPage() }}">1</a>
+                </li>
+                <li class="pagination-link">
+                    <a>...</a>
+                </li>
+                <li class="pagination-link">
+                    <a href="{{ paginator.getPreviousPage() }}">
+                        {{ paginator.getCurrentPageIndex() - 1 }}
+                    </a>
+                </li>
+                <li class="pagination-link active">
+                    <a href="{{ paginator.getCurrentPage() }}">
+                        {{ paginator.getCurrentPageIndex() }}
+                    </a>
+                </li>
+                <li class="pagination-link">
+                    <a href="{{ paginator.getNextPage() }}">
+                        {{ paginator.getCurrentPageIndex() + 1 }}
+                    </a>
+                </li>
+                <li class="pagination-link">
+                    <a>...</a>
+                </li>
+                <li class="pagination-link">
+                    <a href="{{ paginator.getLastPage() }}">
+                        {{ paginator.getLastPageIndex() }}
+                    </a>
+                </li>
+            {% endif %}
+            {% if paginator.hasNextPage() %}
+                <li class="pagination-link">
+                    <a href="{{ paginator.getNextPage }}">Вперед</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}

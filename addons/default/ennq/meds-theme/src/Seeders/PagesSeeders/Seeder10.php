@@ -4,67 +4,31 @@
 namespace Ennq\MedsTheme\Seeders\PagesSeeders;
 
 
-use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
-use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
-use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
-class Seeder10 extends Seeder
+use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
+use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
+
+class Seeder10 extends BaseSeeder
 {
-    /**
-     * The page repository.
-     *
-     * @var PageRepositoryInterface
-     */
-    protected $pages;
 
-    /**
-     * The types repository.
-     *
-     * @var TypeRepositoryInterface
-     */
-    protected $types;
+    public const PAGE_SLUG = '/young-clinic1';
 
-    /**
-     * Create a new PageSeeder instance.
-     *
-     * @param PageRepositoryInterface $pages
-     * @param TypeRepositoryInterface $types
-     */
-    public function __construct(PageRepositoryInterface $pages, TypeRepositoryInterface $types)
+    public static function getTitle(): string
     {
-        parent::__construct();
-        $this->pages = $pages;
-        $this->types = $types;
+        return 'Детская поликлиника №1';
     }
 
-    /**
-     * Run the seeder.
-     */
-    public function run()
+    public static function getSlug(): string
     {
-        $type = $this->types->findBySlug('default');
-        $content = $this->getContent();
-        $this->pages->create(
-            [
-                'ru'           => [
-                    'title' => 'Детская поликлиника №1',
-                ],
-                'slug'         => '/youngclinic1',
-                'entry'        => $type->getEntryModel()->create(
-                    [
-                        'ru' => [
-                            'content' => $content,
-                        ]
-                    ]
-                ),
-                'type'         => $type,
-                'enabled'      => true,
-                'theme_layout' => 'theme::layouts/default.twig',
-            ]
-        )->allowedRoles()->sync([]);
+        return self::PAGE_SLUG;
     }
 
-    private function getContent(): string
+    public static function getParentSlug(): ?string
+    {
+        return MenuSeeder::SLUG_YOUNG_SUBDIVISION;
+    }
+
+    protected function getContent(): string
     {
         return
 '
@@ -139,7 +103,9 @@ class Seeder10 extends Seeder
         </a>
     </div>
     <div>
-        <h3 style="padding-bottom: 15px; padding-top: 15px">Услуги оказываемые в Детской поликлинике №1:</h3>
+        <h3 style="padding-bottom: 15px; padding-top: 15px">
+            Услуги, оказываемые в Детской поликлинике №1:
+        </h3>
         <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
                 <tr>

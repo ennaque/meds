@@ -17,8 +17,8 @@
                 allowInput: false,
                 locale: field.getAttribute('data-locale'),
                 altFormat: field.getAttribute('data-alt-format'),
+                altInputClass: 'flatpickr-input ' + field.className,
                 minuteIncrement: field.getAttribute('data-step') || 1,
-                dateFormat: field.getAttribute('data-datetime-format'),
                 time_24hr: Boolean(field.getAttribute('data-alt-format').match(/[GH]/)),
                 enableTime: inputMode !== 'date',
                 noCalendar: inputMode === 'time'

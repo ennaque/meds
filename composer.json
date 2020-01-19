@@ -81,7 +81,9 @@
         "anomaly/html_block-extension": "~1.0.0",
         "anomaly/wysiwyg_block-extension": "~1.0.0",
         "pyrocms/starter-theme": "~1.0.0",
-        "pyrocms/accelerant-theme": "~1.1.0"
+        "pyrocms/accelerant-theme": "~1.1.0",
+        "ext-json": "*",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

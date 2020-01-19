@@ -4,67 +4,30 @@
 namespace Ennq\MedsTheme\Seeders\PagesSeeders;
 
 
-use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
-use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;
-use Anomaly\Streams\Platform\Database\Seeder\Seeder;
+use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
+use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 
-class Seeder11 extends Seeder
+class Seeder11 extends BaseSeeder
 {
-    /**
-     * The page repository.
-     *
-     * @var PageRepositoryInterface
-     */
-    protected $pages;
 
-    /**
-     * The types repository.
-     *
-     * @var TypeRepositoryInterface
-     */
-    protected $types;
+    public const PAGE_SLUG = '/young-clinic2';
 
-    /**
-     * Create a new PageSeeder instance.
-     *
-     * @param PageRepositoryInterface $pages
-     * @param TypeRepositoryInterface $types
-     */
-    public function __construct(PageRepositoryInterface $pages, TypeRepositoryInterface $types)
+    public static function getTitle(): string
     {
-        parent::__construct();
-        $this->pages = $pages;
-        $this->types = $types;
+        return 'Детская поликлиника №2';
     }
 
-    /**
-     * Run the seeder.
-     */
-    public function run()
+    public static function getSlug(): string
     {
-        $type = $this->types->findBySlug('default');
-        $content = $this->getContent();
-        $this->pages->create(
-            [
-                'ru'           => [
-                    'title' => 'Детская поликлиника №2',
-                ],
-                'slug'         => '/youngclinic2',
-                'entry'        => $type->getEntryModel()->create(
-                    [
-                        'ru' => [
-                            'content' => $content,
-                        ]
-                    ]
-                ),
-                'type'         => $type,
-                'enabled'      => true,
-                'theme_layout' => 'theme::layouts/default.twig',
-            ]
-        )->allowedRoles()->sync([]);
+        return self::PAGE_SLUG;
     }
 
-    private function getContent(): string
+    public static function getParentSlug(): ?string
+    {
+        return MenuSeeder::SLUG_YOUNG_SUBDIVISION;
+    }
+
+    protected function getContent(): string
     {
         return
 '
@@ -99,9 +62,9 @@ class Seeder11 extends Seeder
     </div>
     <div>
         <p style="padding-bottom: 7px">
-            <span style="color: red">Call центр (единый центр телефонных звонков)</span>
-            <span style="color: red">8 (495) 150-20-14</span>
-            <span style="color: red">8 (800) 550-50-30</span>
+            <p><span style="color: red">Call центр (единый центр телефонных звонков)</span></p>
+            <p><span style="color: red">8 (495) 150-20-14</span></p>
+            <p><span style="color: red">8 (800) 550-50-30</span></p>
             <b>
                 <p style="padding-bottom: 7px">
                     <p>Регистратура Детской поликлиники №2</p>
@@ -126,7 +89,7 @@ class Seeder11 extends Seeder
             </b>
         </p>
         <p style="padding-bottom: 7px">
-            <b>Детская поликлиника №2</b> расположена по адресу г. Красногорск, Ильинское шоссе, военный городок Павшино, д. 2В.
+            <b>Детская поликлиника №2</b> расположена по адресу г. Красногорск, Ильинское шоссе, военный городок Павшино, д. 2В.</b>
         </p>
     </div>
     <div style="text-align: center; padding-bottom: 20px; padding-top: 20px">
@@ -138,7 +101,7 @@ class Seeder11 extends Seeder
     </div>
     <div>
         <h3 style="padding-bottom: 15px; padding-top: 15px">
-            Услуги оказываемые в Детской поликлинике №2:
+            Услуги, оказываемые в Детской поликлинике №2:
         </h3>
         <table style="width: 100%" id="meds-table" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>

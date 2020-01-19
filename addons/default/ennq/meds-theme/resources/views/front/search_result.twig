@@ -1,0 +1,25 @@
+{% extends 'theme::layouts/default' %}
+
+{% block content %}
+    <div class="search-result-container">
+        <h2 class="search-result-title">
+            Результа поиска "{{ query }}":
+        </h2>
+        {% if paginator.getAllItems() is empty %}
+            Поиск не дал результатов.
+        {% else %}
+            {% for entity in paginator.getAllItems() %}
+                <div class="search-entry">
+                    <a href="{{ entity.link }}" class="search-entry-link">
+                        {{ entity.title }}
+                    </a>
+                    {{ entity.getPath() }}
+                    <div class="search-entry-content">
+                        {{ entity.content() | raw }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {{ paginator.render() | raw }}
+    </div>
+{% endblock %}
