@@ -2,9 +2,9 @@
 
 return [
     'menus' => [
-        'name' => 'Меню',//'Menus',
+        'name' => 'Меню',
     ],
     'links' => [
-        'name' => 'Ссылки',//'Links',
+        'name' => 'Ссылки',
     ],
 ];

@@ -107,13 +107,7 @@
             "php7.1 artisan view:clear"
         ],
         "post-update-cmd": [
-            "php7.1 artisan db:seed --addon=ennq.theme.meds",
-            "php7.1 artisan meds:images:warmup",
-            "php7.1 artisan cache:clear",
-            "php7.1 artisan httpcache:clear",
-            "php7.1 artisan route:clear",
-            "php7.1 artisan twig:clear",
-            "php7.1 artisan view:clear"
+
         ]
     },
     "repositories": [

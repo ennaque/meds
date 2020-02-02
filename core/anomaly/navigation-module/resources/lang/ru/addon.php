@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'title'       => 'Навигация',//'Navigation',
-    'name'        => 'Модуль навигации',//'Navigation Module',
-    'description' => 'Модуль управления навигацией.',//'Powerful navigation management made easy.',
+    'title'       => 'Навигация',
+    'name'        => 'Модуль навигации',
+    'description' => 'Модуль управления навигацией.',
     'section'     => [
-        'menus' => 'Меню',//'Menus',
-        'links' => 'Ссылки',//'Links',
+        'menus' => 'Меню',
+        'links' => 'Ссылки',
     ],
 ];

@@ -2,19 +2,19 @@
 
 return [
     'menus' => [
-        'name'   => 'Меню',//'Menus',
+        'name'   => 'Меню',
         'option' => [
-            'read'   => 'Доступ к разделу меню.',//'Can access menus section.',
-            'write'  => 'Создание и редактирование меню.',//'Can create and edit menus.',
-            'delete' => 'Удаление меню.',//'Can delete menus.',
+            'read'   => 'Доступ к разделу меню.',
+            'write'  => 'Создание и редактирование меню.',
+            'delete' => 'Удаление меню.',
         ],
     ],
     'links' => [
-        'name'   => 'Ссылки',//'Links',
+        'name'   => 'Ссылки',
         'option' => [
-            'read'   => 'Доступ к разделу ссылок.',//'Can access links section.',
-            'write'  => 'Создание и редактирование ссылок.',//'Can create and edit links.',
-            'delete' => 'Удаление ссылок',//'Can delete links.',
+            'read'   => 'Доступ к разделу ссылок.',
+            'write'  => 'Создание и редактирование ссылок.',
+            'delete' => 'Удаление ссылок',
         ],
     ],
 ];
