@@ -64,14 +64,14 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder7;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder8;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder9;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder52;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder53;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder54;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder55;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder52;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder53;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder54;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder55;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder58;
-//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder59;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder58;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder59;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder60;
 //use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder61;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder62;
@@ -304,14 +304,14 @@ class MenuSeeder extends Seeder
     {
         return [
             Seeder51::class,
-//            Seeder52::class,
-//            Seeder53::class,
-//            Seeder54::class,
-//            Seeder55::class,
+            Seeder52::class,
+            Seeder53::class,
+            Seeder54::class,
+            Seeder55::class,
             Seeder56::class,
             Seeder57::class,
-//            Seeder58::class,
-//            Seeder59::class,
+            Seeder58::class,
+            Seeder59::class,
 //            Seeder60::class,
 //            Seeder61::class,
             Seeder62::class,
