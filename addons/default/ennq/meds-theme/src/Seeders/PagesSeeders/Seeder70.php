@@ -33,11 +33,8 @@ class Seeder70 extends BaseSeeder
         return
 '<div>
     <div>
-        <h3 style="padding-bottom: 7px; text-align: center">
-            Страница находится в разработке
-        </h3>
         <p style="padding-bottom: 5px">
-            <hr>
+            Посмотреть и скачать распоряжение Минздрава Московской области от 24.07.2017г. № 210-р «О мерах по совершенствованию организации оказания амбулаторно-поликлинической помощи населению Московской области» можно по <a href="https://mz.mosreg.ru/download/document/21458">ссылке</a>.
         </p>
     </div>
 </div>';
