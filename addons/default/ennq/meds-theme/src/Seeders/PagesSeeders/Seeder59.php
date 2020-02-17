@@ -10,7 +10,7 @@ use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 use Ennq\MedsTheme\Seeders\BaseSeeders\BaseSeeder;
 use Ennq\MedsTheme\Seeders\Menu\MenuSeeder;
 
-class Seeder58 extends BaseSeeder
+class Seeder59 extends BaseSeeder
 {
 
     public static function getTitle(): string
@@ -20,7 +20,7 @@ class Seeder58 extends BaseSeeder
 
     public static function getSlug(): string
     {
-        return '/doc3';
+        return '/doc4';
     }
 
     public static function getParentSlug(): ?string
