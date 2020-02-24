@@ -95,6 +95,7 @@ class Seeder64 extends BaseSeeder
         </h3>
         <p style="padding-bottom: 5px; text-align: center">
             <img src="/app/default/files-module/local/images/docscan0_64.jpg" class="resizeable" width="800px">
+            <img src="/app/default/files-module/local/images/docscan1_64.jpg" class="resizeable" width="800px">
         </p>
     </div>
 </div>';
