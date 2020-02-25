@@ -63,12 +63,26 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder47;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder48;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder50;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder52;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder53;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder54;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder55;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder56;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder57;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder58;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder59;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder60;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder61;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder62;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder63;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder64;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder65;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder66;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder67;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder68;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder69;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder70;
+//use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder71;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder72;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder73;
 
@@ -149,16 +163,30 @@ class MedsThemeSeeder extends Seeder
             ProfexamSeeder4748::class,
             Seeder47::class,
             Seeder48::class,
-
+            //Seeder49::class,
             Seeder50::class,//TODO
             DocumentSeeder5173::class,
             Seeder51::class,
+            Seeder52::class,
+            Seeder53::class,
+            Seeder54::class,
+            Seeder55::class,
             Seeder56::class,
             Seeder57::class,
+            Seeder58::class,
+            Seeder59::class,
+            //Seeder60::class,
+            //Seeder61::class,
             Seeder62::class,
             Seeder63::class,
+            //Seeder64::class,
+            //Seeder65::class,
+            //Seeder66::class,
+            //Seeder67::class,
             Seeder68::class,
             Seeder69::class,
+            //Seeder70::class,
+            //Seeder71::class,
             Seeder72::class,
             Seeder73::class,
         ]);
