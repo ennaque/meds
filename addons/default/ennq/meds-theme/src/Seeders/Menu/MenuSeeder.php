@@ -11,6 +11,7 @@ use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 use Anomaly\Streams\Platform\Entry\EntryRepository;
 use Anomaly\Streams\Platform\Model\EloquentModel;
 use Anomaly\UrlLinkTypeExtension\UrlLinkTypeModel;
+use Ennq\MedsTheme\Seeders\DefinitionsSeeders\AnotherSeeder;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\CdiaglSeeder2831;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\DispensarySeeder2122;
 use Ennq\MedsTheme\Seeders\DefinitionsSeeders\DocumentSeeder5173;
@@ -48,6 +49,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder35;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder36;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder37;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder38;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder39;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder4;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder40;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder41;
@@ -63,6 +65,7 @@ use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder6;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder7;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder8;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder9;
+use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder50;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder51;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder52;
 use Ennq\MedsTheme\Seeders\PagesSeeders\Seeder53;
@@ -103,6 +106,7 @@ class MenuSeeder extends Seeder
     public const SLUG_FAQ = '/faq';
     public const SLUG_PROFEXAM = '/profexam';
     public const SLUG_DOCS = '/docs';
+    public const SLUG_ANOTHER = '/another';
 
     /**
      * The link repository.
@@ -151,9 +155,9 @@ class MenuSeeder extends Seeder
         $this->runSection($repository, $newMenu, PhysterSeeder3238::class, $this->getPhysterSection());
         $this->runSection($repository, $newMenu, PayrollSeeder4042::class, $this->getPayrollSection());
         $this->runSection($repository, $newMenu, FaqSeeder4346::class, $this->getFaqSection());
-        $this->runSection($repository, $newMenu, ProfexamSeeder4748::class, $this->getFaqSection());
+        $this->runSection($repository, $newMenu, ProfexamSeeder4748::class, $this->getProfexamSection());
         $this->runSection($repository, $newMenu, DocumentSeeder5173::class, $this->getDocumentSection());
-
+        $this->runSection($repository, $newMenu, AnotherSeeder::class, $this->getAnotherSection());
     }
 
     private function runSection(
@@ -180,18 +184,19 @@ class MenuSeeder extends Seeder
                 'type'   => 'anomaly.extension.url_link_type',
             ]
         );
+        if(!empty($subSeeders)) {
+            foreach ($subSeeders as $mainSectionSeeder) {
+                $seederData = $repository->create(
+                    [
+                        'ru'  => [
+                            'title' => $mainSectionSeeder::getTitle(),
+                        ],
+                        'url' => $mainSectionSeeder::getParentSlug() . $mainSectionSeeder::getSlug(),
+                    ]
+                );
 
-        foreach ($subSeeders as $mainSectionSeeder) {
-            $seederData = $repository->create(
-                [
-                    'ru'  => [
-                        'title' => $mainSectionSeeder::getTitle(),
-                    ],
-                    'url' => $mainSectionSeeder::getParentSlug() . $mainSectionSeeder::getSlug(),
-                ]
-            );
-
-            $this->createLink($menuModel, $seederData, $mainLink->getId());
+                $this->createLink($menuModel, $seederData, $mainLink->getId());
+            }
         }
     }
 
@@ -327,6 +332,14 @@ class MenuSeeder extends Seeder
             Seeder72::class,
             Seeder73::class,
 
+        ];
+    }
+
+    private function getAnotherSection(): array
+    {
+        return [
+            Seeder50::class,
+            Seeder39::class,
         ];
     }
 
