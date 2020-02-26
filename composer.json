@@ -95,16 +95,16 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php7.1 -r \"copy('.env.dist', '.env');\"",
-            "php7.1 artisan key:generate",
-            "php7.1 artisan install --ready",
-            "php7.1 artisan db:seed --addon=ennq.theme.meds",
-            "php7.1 artisan meds:images:warmup",
-            "php7.1 artisan cache:clear",
-            "php7.1 artisan httpcache:clear",
-            "php7.1 artisan route:clear",
-            "php7.1 artisan twig:clear",
-            "php7.1 artisan view:clear"
+            "php -r \"copy('.env.dist', '.env');\"",
+            "php artisan key:generate",
+            "php artisan install --ready",
+            "php artisan db:seed --addon=ennq.theme.meds",
+            "php artisan meds:images:warmup",
+            "php artisan cache:clear",
+            "php artisan httpcache:clear",
+            "php artisan route:clear",
+            "php artisan twig:clear",
+            "php artisan view:clear"
         ],
         "post-update-cmd": [
 
