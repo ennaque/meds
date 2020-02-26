@@ -24,7 +24,7 @@ class Seeder39 extends BaseSeeder
 
     public static function getParentSlug(): ?string
     {
-        return MenuSeeder::SLUG_DOCS;
+        return null;
     }
 
     protected function getContent(): string

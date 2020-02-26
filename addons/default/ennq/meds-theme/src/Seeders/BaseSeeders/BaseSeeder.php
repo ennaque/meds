@@ -68,7 +68,7 @@ abstract class BaseSeeder extends Seeder
             'theme_layout' => 'theme::layouts/default.twig',
         ];
 
-        if (null !== static::getParentSlug()) {
+        if (static::getParentSlug() !== null) {
             $dataArray['parent_id'] = $this->pages->findByPath(static::getParentSlug())->getId();
         }
 
