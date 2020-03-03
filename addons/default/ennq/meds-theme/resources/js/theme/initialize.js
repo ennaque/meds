@@ -11,6 +11,8 @@
             "scrollX": true,
             "bAutoWidth": true
         });
+        let $unwrapItem = $('.unwrapItem');
+        $unwrapItem.parent().before($unwrapItem);
     } );
 
 
