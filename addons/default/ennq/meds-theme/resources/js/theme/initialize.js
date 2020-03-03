@@ -12,7 +12,7 @@
             "bAutoWidth": true
         });
         let $unwrapItem = $('.unwrapItem');
-        $unwrapItem.unwrap();
+        $unwrapItem.parent().before($unwrapItem);
     } );
 
 
