@@ -56,6 +56,11 @@ class MedsThemeServiceProvider extends AddonServiceProvider
             'uses' => 'Ennq\MedsTheme\Http\Controller\Front\SearchController@asyncSearch',
             'verb' => 'get',
             'as' => 'async-search'
+        ],
+        '/' => [
+            'uses' => 'Ennq\MedsTheme\Http\Controller\Front\NewsController@index',
+            'verb' => 'get',
+            'as' => 'index'
         ]
     ];
 

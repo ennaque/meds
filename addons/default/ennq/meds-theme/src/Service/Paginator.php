@@ -145,7 +145,7 @@ class Paginator implements PaginatorInterface
      */
     public function getPaginatedItems(): array
     {
-        return array_slice((array)$this->items, ($this->currentPage - 1) * 10, $this->perPage);
+        return array_slice((array)$this->items, ($this->currentPage - 1) * $this->perPage, $this->perPage);
     }
 
     /**

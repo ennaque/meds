@@ -1,0 +1,18 @@
+{% extends 'theme::layouts/default' %}
+
+{% block content %}
+    <div class="search-result-container">
+        {% for entity in paginator.getPaginatedItems() %}
+            <div class="search-entry">
+                <a href="{{ entity.link }}" class="search-entry-link">
+                    {{ entity.title }}
+                </a>
+                {{ entity.getPath() }}
+                <div class="search-entry-content">
+                    {{ entity.content() | raw }}
+                </div>
+            </div>
+        {% endfor %}
+        {{ paginator.render() | raw }}
+    </div>
+{% endblock %}

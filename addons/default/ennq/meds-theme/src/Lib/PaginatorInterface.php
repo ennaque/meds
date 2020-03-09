@@ -26,6 +26,8 @@ interface PaginatorInterface extends \JsonSerializable, Arrayable
 
     public function getLastPage(): string;
 
+    public function getPaginatedItems(): array;
+
     public function getLastPageIndex(): int;
 
     public function getPaginationLength(): int;
