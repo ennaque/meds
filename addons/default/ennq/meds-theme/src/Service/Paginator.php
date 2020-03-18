@@ -67,6 +67,7 @@ class Paginator implements PaginatorInterface
         if ($this->getPaginationLength() > $this->currentPage) {
             throw new \Exception('unexpected page index');
         }
+
         return !($this->getPaginationLength() === $this->currentPage);
     }
 
